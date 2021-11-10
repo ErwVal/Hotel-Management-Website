@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { Home } from "./Components/Home";
 
-const Routes = () => {
+const Routes: React.FunctionComponent = () => {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route exact path={"/"} component={Home} />
     </Switch>
   );
 };
 
-export const App = () => {
+export const App: React.FunctionComponent = () => {
   return (
     <Router>
       <main>
