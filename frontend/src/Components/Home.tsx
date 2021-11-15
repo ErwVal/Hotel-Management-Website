@@ -1,13 +1,12 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import CalendarComponent from "./CalendarComponent";
+import Booking from "./Booking";
 
 
 export const Home: React.FunctionComponent = () => {
   return (
     <Container>
-      <h1>Home page</h1>
-      <CalendarComponent/>
+      <Booking/>
     </Container>
   );
 };
