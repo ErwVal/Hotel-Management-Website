@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 
-const Footer: React.FunctionComponent = () => {
+export const Footer: React.FunctionComponent = () => {
     return (
         <footer>
             <Container>
@@ -14,5 +14,3 @@ const Footer: React.FunctionComponent = () => {
         </footer>
     )
 }
-
-export default Footer;
