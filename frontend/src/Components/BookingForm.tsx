@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from "react";
+import { Alert, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
 import { createBooking } from "../api/apiClient";
 import moment from "moment";
+import "../styling/BookingForm.css";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
@@ -33,38 +35,67 @@ export const BookingForm: React.FunctionComponent = () => {
   };
 
   return (
-    <form onSubmit={submitForm}>
-      <div>
-        <label>Location</label> <br />
-        <select onChange={(e) => setLocation(e.target.value)} required>
-          <option>Cancun</option>
-          <option>Playa del Carmen</option>
-          <option>Tulum</option>
-        </select>
-      </div>
-      <div>
-        <label>Check in</label> <br />
-        <input
-          name="CheckInDate"
-          type="date"
-          min={today}
-          value={checkInDateState}
-          onChange={(event) => setCheckInDate(event.target.value)}
-          required
-        />
-      </div>
-      <div>
+    <Form onSubmit={submitForm}>
+      <Row className="g-4">
+        <Col>
+          <FloatingLabel label="Select a location">
+            <Form.Select onChange={(e) => setLocation(e.target.value)} required>
+              <option>Cancun</option>
+              <option>Playa del Carmen</option>
+              <option>Tulum</option>
+            </Form.Select>
+          </FloatingLabel>
+        </Col>
+        <Col>
+          <label>Check in</label> <br />
+          <input
+            name="CheckInDate"
+            type="date"
+            min={today}
+            value={checkInDateState}
+            onChange={(event) => setCheckInDate(event.target.value)}
+            required
+          />
+        </Col>
+        <Col>
         <label>Check out</label> <br />
-        <input
-          name="CheckOutDate"
-          type="date"
-          min={moment(checkInDateState).add(1, "days").format("YYYY-MM-DD")}
-          value={checkOutDateState}
-          onChange={(event) => setCheckOutDate(event.target.value)}
-          required
-        />
-      </div>
-      <div>
+          <input
+            name="CheckOutDate"
+            type="date"
+            min={moment(checkInDateState).add(1, "days").format("YYYY-MM-DD")}
+            value={checkOutDateState}
+            onChange={(event) => setCheckOutDate(event.target.value)}
+            required
+          />
+
+        </Col>
+        
+        <Col>
+        <FloatingLabel label="Guests">
+          <Form.Select onChange={(e) => setNumGuests(e.target.value)} required>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </Form.Select>
+        </FloatingLabel>
+        </Col>
+
+        <Col>
+          <Button className="btn btn-light" disabled={formStatus === "SUBMITTING"} type="submit">
+            Confirm
+          </Button>
+          {formStatus === "ERROR" && (
+            <Alert variant="warning">Something went wrong! Please try again.</Alert>
+          )}
+        </Col>
+      </Row>
+    </Form>
+  );
+};
+
+{
+  /* <div>
         <label>Number of guests</label> <br />
         <select onChange={(e) => setNumGuests(e.target.value)} required>
           <option>1</option>
@@ -73,17 +104,5 @@ export const BookingForm: React.FunctionComponent = () => {
           <option>4</option>
           <option>more</option>
         </select>
-      </div>
-      <div>
-        <div>
-          <button disabled={formStatus === "SUBMITTING"} type="submit">
-            Confirm
-          </button>
-          {formStatus === "ERROR" && (
-            <p>Something went wrong! Please try again.</p>
-          )}
-        </div>
-      </div>
-    </form>
-  );
-};
+      </div> */
+}
