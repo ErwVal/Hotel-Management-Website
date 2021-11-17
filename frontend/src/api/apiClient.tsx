@@ -1,11 +1,8 @@
-import React from "react";
-
 export interface NewBooking {
-
-  location: string,
-  checkInDate : Date,
-  checkOutDate: Date,
-  numGuests: number,
+  location: string;
+  checkInDate: Date;
+  checkOutDate: Date;
+  numGuests: number;
 }
 
 const baseUrl = process.env["REACT_APP_BACKEND_DOMAIN"];
