@@ -13,13 +13,6 @@ export const CreateBookingForm: React.FunctionComponent = () => {
 
   const today = moment(new Date()).format("YYYY-MM-DD");
 
-  function addDays(date: Date, days: number): Date {
-    date.setDate(date.getDate() + days);
-    return date;
-}
-
-var date = new Date();
-
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
     setFormStatus("SUBMITTING");
@@ -36,7 +29,7 @@ var date = new Date();
   };
 
   return (
-    <form
+    <Form
       
       aria-label="Date"
       id="date-field"
@@ -82,7 +75,7 @@ var date = new Date();
                 disabled={formStatus === "SUBMITTING"}
                 type="submit"
               >
-                Book
+                Confirm
               </button>
               {formStatus === "ERROR" && (
                 <p>Something went wrong! Please try again.</p>
@@ -91,6 +84,6 @@ var date = new Date();
           </div>
         </Col>
       </Row>
-    </form>
+    </Form>
   );
 };
