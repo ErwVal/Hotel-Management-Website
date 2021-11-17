@@ -12,7 +12,13 @@ export const CreateBookingForm: React.FunctionComponent = () => {
   const [formStatus, setFormStatus] = useState<FormStatus>("READY");
 
   const today = moment(new Date()).format("YYYY-MM-DD");
-  const tomorrow = moment(new Date()).day(2).format("YYYY-MM-DD");
+
+  function addDays(date: Date, days: number): Date {
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+var date = new Date();
 
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
@@ -31,18 +37,18 @@ export const CreateBookingForm: React.FunctionComponent = () => {
 
   return (
     <form
-      className="form"
+      
       aria-label="Date"
       id="date-field"
       onSubmit={submitForm}
     >
       <Row className="g-2">
         <Col md>
-          <div className="field">
-            <label className="label">Check in</label>
-            <div className="control">
+          <div >
+            <label >Check in</label>
+            <div >
               <input
-                className="input"
+                
                 name="CheckInDate"
                 type="date"
                 min={today}
@@ -54,14 +60,13 @@ export const CreateBookingForm: React.FunctionComponent = () => {
           </div>
         </Col>
         <Col md>
-          <div className="field">
-            <label className="label">Check out</label>
-            <div className="control">
+          <div >
+            <label>Check out</label>
+            <div>
               <input
-                className="input"
                 name="CheckOutDate"
                 type="date"
-                min={tomorrow}
+                min={moment(checkInDateState).add(1, 'days').format("YYYY-MM-DD")}
                 value={checkOutDateState}
                 onChange={(event) => setCheckOutDate(event.target.value)}
                 required
@@ -71,14 +76,13 @@ export const CreateBookingForm: React.FunctionComponent = () => {
         </Col>
 
         <Col md>
-          <div className="field is-grouped">
-            <div className="control">
+          <div >
+            <div >
               <button
-                className="button is-link primary"
                 disabled={formStatus === "SUBMITTING"}
                 type="submit"
               >
-                Submit booking
+                Book
               </button>
               {formStatus === "ERROR" && (
                 <p>Something went wrong! Please try again.</p>
