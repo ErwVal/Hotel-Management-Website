@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-namespace Database.Models
+namespace App.Database.Models
 {
     public class Hotel 
     {
