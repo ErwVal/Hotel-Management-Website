@@ -7,8 +7,8 @@ namespace react_typescript_dotnet_app.Database.Models
     {
         public int Id { get; set; }
         public string HotelName { get; set; }
-        public string HotelAddress { get; set; }
+        public string Address { get; set; }
          [JsonIgnore]
-        public List<Room> HotelRooms { get; set; }
+        public List<Room> Rooms { get; set; }
     }
 }

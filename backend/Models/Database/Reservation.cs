@@ -7,13 +7,12 @@ namespace react_typescript_dotnet_app.Database.Models
     public class Reservation
     {
         public int Id { get; set; }
-        public DateTime ReservationCheckIn { get; set; }
-        public DateTime ReservationCheckOut { get; set; }
-        public string ReservationGuestName { get; set; }
-        public int ReservationNumGuests { get; set; }
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
+        public string GuestName { get; set; }
+        public int NumGuests { get; set; }
+
          [JsonIgnore]
-        public List<Room> ReservationHotels { get; set; }
-         [JsonIgnore]
-        public List<Room> ReservationRooms { get; set; }
+        public List<Room> BookedRooms { get; set; }
     }
 }
