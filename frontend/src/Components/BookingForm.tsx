@@ -101,15 +101,3 @@ export const BookingForm: React.FunctionComponent = () => {
   );
 };
 
-{
-  /* <div>
-        <label>Number of guests</label> <br />
-        <select onChange={(e) => setNumGuests(e.target.value)} required>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>more</option>
-        </select>
-      </div> */
-}
