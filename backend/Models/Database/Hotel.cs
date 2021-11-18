@@ -9,6 +9,8 @@ namespace react_typescript_dotnet_app.Database.Models
         public string HotelName { get; set; }
         public string Address { get; set; }
          [JsonIgnore]
-        public List<Room> Rooms { get; set; }
+        public virtual List<Room> Rooms { get; set; }
+        [JsonIgnore]
+        public virtual List<Reservation> Reservations { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace react_typescript_dotnet_app.Database.Models
         public int NumGuests { get; set; }
 
          [JsonIgnore]
-        public List<Room> BookedRooms { get; set; }
+        public virtual List<Room> BookedRooms { get; set; }
     }
 }
