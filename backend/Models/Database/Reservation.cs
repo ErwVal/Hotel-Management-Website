@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Database.Models
 {
@@ -10,7 +11,9 @@ namespace Database.Models
         public DateTime ReservationCheckOut { get; set; }
         public string ReservationGuestName { get; set; }
         public int ReservationNumGuests { get; set; }
+         [JsonIgnore]
         public List<Room> ReservationHotels { get; set; }
+         [JsonIgnore]
         public List<Room> ReservationRooms { get; set; }
     }
 }
