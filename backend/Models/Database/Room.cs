@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace App.Database.Models
+namespace react_typescript_dotnet_app.Database.Models
 {
     public class Room
     {

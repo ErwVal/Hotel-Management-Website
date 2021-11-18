@@ -1,4 +1,4 @@
-namespace App.Database.Models
+namespace react_typescript_dotnet_app.Database.Models
 {
     public class User
     {
