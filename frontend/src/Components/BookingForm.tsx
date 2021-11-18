@@ -58,7 +58,7 @@ export const BookingForm: React.FunctionComponent = () => {
           />
         </Col>
         <Col>
-        <label>Check out</label> <br />
+          <label>Check out</label> <br />
           <input
             name="CheckOutDate"
             type="date"
@@ -67,29 +67,36 @@ export const BookingForm: React.FunctionComponent = () => {
             onChange={(event) => setCheckOutDate(event.target.value)}
             required
           />
-
-        </Col>
-        
-        <Col>
-        <FloatingLabel label="Guests">
-          <Form.Select onChange={(e) => setNumGuests(e.target.value)} required>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </Form.Select>
-        </FloatingLabel>
         </Col>
 
         <Col>
-          <Button className="btn btn-light" disabled={formStatus === "SUBMITTING"} type="submit">
+          <FloatingLabel label="Guests">
+            <Form.Select
+              onChange={(e) => setNumGuests(e.target.value)}
+              required
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </Form.Select>
+          </FloatingLabel>
+        </Col>
+
+        <Col>
+          <Button
+            className="btn btn-light"
+            disabled={formStatus === "SUBMITTING"}
+            type="submit"
+          >
             Confirm
           </Button>
-          {formStatus === "ERROR" && (
-            <Alert variant="warning">Something went wrong! Please try again.</Alert>
-          )}
         </Col>
       </Row>
+      <br/>
+      {formStatus === "ERROR" && (
+        <Alert variant="warning">Something went wrong! Please try again.</Alert>
+      )}
     </Form>
   );
 };
