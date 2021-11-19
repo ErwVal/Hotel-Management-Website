@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using System.IO;
+using react_typescript_dotnet_app.Repositories;
+using react_typescript_dotnet_app.Services;
+using react_typescript_dotnet_app.Database;
 
 namespace react_typescript_dotnet_app
 {
@@ -31,6 +34,10 @@ namespace react_typescript_dotnet_app
             {
                 configuration.RootPath = "frontend/build";
             });
+
+            services.AddDbContext<DatabaseDBContext>();
+            services.AddTransient<IRoomsRepo, RoomsRepo>();
+            services.AddTransient<IRoomsService, RoomsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
