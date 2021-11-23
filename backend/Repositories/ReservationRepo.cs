@@ -22,5 +22,5 @@ namespace react_typescript_dotnet_app.Repositories
         {
             return _database.Reservations.ToList();
         }
-    }   
+    }
 }

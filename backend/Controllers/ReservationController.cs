@@ -24,6 +24,9 @@ namespace react_typescript_dotnet_app.Controllers
             _reservationService = reservationService;
         }
 
+        ///<summary>
+        /// Gets the list of reservations from the database.
+        ///</summary>
         [HttpGet]
         public ActionResult<ReservationListResponse> GetReservations()
         {

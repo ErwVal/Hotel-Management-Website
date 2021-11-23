@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace react_typescript_dotnet_app.Repositories
 {
-    public interface IRoomsRepo 
+    public interface IRoomsRepo
     {
         List<Room> GetRooms();
     }

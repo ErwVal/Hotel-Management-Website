@@ -14,7 +14,7 @@ namespace react_typescript_dotnet_app.Services
     public class ReservationService : IReservationService
     {
 
-        private readonly IReservationRepo _reservations;        
+        private readonly IReservationRepo _reservations;
         public ReservationService(IReservationRepo reservations)
         {
             _reservations = reservations;
