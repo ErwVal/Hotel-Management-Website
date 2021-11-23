@@ -8,7 +8,7 @@ export interface NewBooking {
 const baseUrl = process.env["REACT_APP_BACKEND_DOMAIN"];
 
 export const createBooking = async (newBooking: NewBooking) => {
-  const response = await fetch(`${baseUrl}/sightings/create`, {
+  const response = await fetch(`${baseUrl}/booking/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

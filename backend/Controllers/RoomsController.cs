@@ -39,7 +39,5 @@ namespace react_typescript_dotnet_app.Controllers
           .ToList()
       };
     }
-
-    }
-
+  }
 }
