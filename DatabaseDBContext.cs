@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-using react_typescript_dotnet_app.Database.Models;
+using react_typescript_dotnet_app.Models.Database;
+using react_typescript_dotnet_app.Models.Response;
 using Npgsql;
 
 namespace react_typescript_dotnet_app

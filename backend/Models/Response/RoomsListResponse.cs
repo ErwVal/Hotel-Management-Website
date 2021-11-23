@@ -1,4 +1,4 @@
-using react_typescript_dotnet_app.Database.Models;
+using react_typescript_dotnet_app.Models.Database;
 using System.Collections.Generic;
 
 namespace react_typescript_dotnet_app.Models.Response

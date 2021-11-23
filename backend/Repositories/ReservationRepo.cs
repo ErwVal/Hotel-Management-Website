@@ -1,19 +1,19 @@
-using react_typescript_dotnet_app.Database.Models;
+using react_typescript_dotnet_app.Models.Database;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace react_typescript_dotnet_app.Repositories
 {
-    public interface IBookingRepo
+    public interface IReservationRepo
     {
         List<Reservation> GetReservations();
     }
 
-    public class BookingRepo : IBookingRepo
+    public class ReservationRepo : IReservationRepo
     {
         private readonly DatabaseDBContext _database;
 
-        public BookingRepo(DatabaseDBContext database)
+        public ReservationRepo(DatabaseDBContext database)
         {
             _database = database;
         }

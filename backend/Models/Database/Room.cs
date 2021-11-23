@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace react_typescript_dotnet_app.Database.Models
+namespace react_typescript_dotnet_app.Models.Database
 {
     public enum RoomType { Single, Double, Twin, Suite }
     public class Room

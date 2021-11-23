@@ -10,7 +10,8 @@ using System.Reflection;
 using System.IO;
 using react_typescript_dotnet_app.Repositories;
 using react_typescript_dotnet_app.Services;
-using react_typescript_dotnet_app.Database;
+using react_typescript_dotnet_app.Models.Database;
+
 
 namespace react_typescript_dotnet_app
 {

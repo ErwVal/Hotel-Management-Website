@@ -1,6 +1,6 @@
 using react_typescript_dotnet_app.Repositories;
 using react_typescript_dotnet_app.Services;
-using react_typescript_dotnet_app.Database.Models;
+using react_typescript_dotnet_app.Models.Database;
 using react_typescript_dotnet_app.Controllers;
 using System.Collections.Generic;
 using System.Linq;
