@@ -11,6 +11,7 @@ namespace react_typescript_dotnet_app.Models.Response
     {
         public int Id { get; set; }
         public RoomType RoomType { get; set; }
+         public Available Available { get; set; }
         public List<string> Images { get; set; }
         public double RoomPrice { get; set; }
         public int MaxGuests { get; set; }
