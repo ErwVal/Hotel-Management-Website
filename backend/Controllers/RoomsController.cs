@@ -29,12 +29,12 @@ namespace react_typescript_dotnet_app.Controllers
         /// Gets the list of rooms from the database.
         ///</summary>
         [HttpGet]
-        public ActionResult<RoomsListResponse> GetRooms()
+        public ActionResult<RoomsListResponse> GetRoomsList()
         {
             return new RoomsListResponse
             {
                 Rooms = _roomsService
-                .GetRooms()
+                .GetRoomsList()
                 .Select(s => new RoomsResponse(s))
                 .ToList()
             };

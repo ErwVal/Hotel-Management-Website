@@ -8,7 +8,7 @@ namespace react_typescript_dotnet_app.Services
 {
     public interface IRoomsService
     {
-        List<Room> GetRooms();
+        List<Room> GetRoomsList();
     }
 
     public class RoomsService : IRoomsService
@@ -20,9 +20,9 @@ namespace react_typescript_dotnet_app.Services
             _rooms = rooms;
         }
 
-        public List<Room> GetRooms()
+        public List<Room> GetRoomsList()
         {
-            return _rooms.GetRooms();
+            return _rooms.GetRoomsList();
         }
     }
 }

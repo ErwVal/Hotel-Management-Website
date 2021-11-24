@@ -6,7 +6,7 @@ namespace react_typescript_dotnet_app.Repositories
 {
     public interface IRoomsRepo
     {
-        List<Room> GetRooms();
+        List<Room> GetRoomsList();
     }
 
     public class RoomsRepo : IRoomsRepo
@@ -18,7 +18,7 @@ namespace react_typescript_dotnet_app.Repositories
             _database = database;
         }
 
-        public List<Room> GetRooms()
+        public List<Room> GetRoomsList()
         {
             return _database.Rooms.ToList();
         }

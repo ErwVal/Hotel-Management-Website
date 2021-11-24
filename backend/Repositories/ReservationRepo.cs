@@ -6,7 +6,8 @@ namespace react_typescript_dotnet_app.Repositories
 {
     public interface IReservationRepo
     {
-        List<Reservation> GetReservations();
+        Reservation AddReservation(Reservation reservation);
+        List<Reservation> GetReservationsList();
     }
 
     public class ReservationRepo : IReservationRepo
@@ -18,7 +19,14 @@ namespace react_typescript_dotnet_app.Repositories
             _database = database;
         }
 
-        public List<Reservation> GetReservations()
+        public Reservation AddReservation(Reservation reservation)
+        {
+            var result = _database.Reservations.Add(reservation);
+            _database.SaveChanges();
+            return result.Entity;
+        }
+
+        public List<Reservation> GetReservationsList()
         {
             return _database.Reservations.ToList();
         }
