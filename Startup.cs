@@ -39,6 +39,8 @@ namespace react_typescript_dotnet_app
             services.AddDbContext<DatabaseDBContext>();
             services.AddTransient<IRoomsRepo, RoomsRepo>();
             services.AddTransient<IRoomsService, RoomsService>();
+            services.AddTransient<IReservationRepo, ReservationRepo>();
+            services.AddTransient<IReservationService, ReservationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
