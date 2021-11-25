@@ -14,6 +14,7 @@ namespace react_typescript_dotnet_app.Models.Database
         public List<string> Images { get; set; }
         public double RoomPrice { get; set; }
         public int MaxGuests { get; set; }
+        public int HotelId { get; set; }
 
     }
 }

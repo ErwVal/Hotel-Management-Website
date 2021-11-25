@@ -6,6 +6,7 @@ using react_typescript_dotnet_app.Models.Database;
 using react_typescript_dotnet_app.Models.Response;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace react_typescript_dotnet_app.Controllers
 {
@@ -36,6 +37,30 @@ namespace react_typescript_dotnet_app.Controllers
                 Rooms = _roomsService
                 .GetRoomsList()
                 .Select(s => new RoomsResponse(s))
+                .ToList()
+            };
+        }
+
+        ///<summary>
+        /// Gets the list of rooms from the database which satisfy the query.
+        ///</summary>
+        [HttpGet("by-query")]
+
+        public ActionResult<RoomsListResponse> byQuery(
+           [FromQuery] string location,
+           [FromQuery] DateTime checkInDate,
+           [FromQuery] DateTime checkOutDate,
+           [FromQuery] int numGuests
+       )
+        {
+            return new RoomsListResponse
+            {
+                Rooms = _roomsService
+                .GetRoomsList()
+                .Where(r =>
+                r.Available == Available.Yes &&
+                numGuests <= r.MaxGuests)
+          .Select(r => new RoomsResponse(r))
                 .ToList()
             };
         }
