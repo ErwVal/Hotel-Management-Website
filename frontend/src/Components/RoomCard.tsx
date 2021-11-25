@@ -13,9 +13,9 @@ export const RoomCard: React.FunctionComponent<RoomCardProps> = (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={props.room.images[0]} />
       <Card.Body>
-        <Card.Title>{props.room.roomType}</Card.Title>
+        <Card.Title>Room Type {props.room.roomType}</Card.Title>
         <Card.Text>
-          {props.room.roomPrice}
+          Room Price {props.room.roomPrice}
         </Card.Text>
         <Button variant="primary">See room</Button>
       </Card.Body>

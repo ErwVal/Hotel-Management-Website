@@ -63,8 +63,3 @@ export const fetchRoomsListByQuery = async (
   return await response.json();
 };
 
-// To do list:
-// Look at the infintieListByLocation component
-// The objective is to render content based on user input, in this case, the booking form in the home page.
-// Will have to create a RoomCard component to render the characteristics of each room, and the infiniteList
-// will show all these cards after the form has been submitted.
