@@ -17,21 +17,6 @@ export const BookingForm: React.FunctionComponent = () => {
 
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
-    setFormStatus("SUBMITTING");
-
-    const checkInDate: Date = new Date(checkInDateState);
-    const checkOutDate: Date = new Date(checkOutDateState);
-
-    let numGuests = parseInt(numGuestsState);
-
-    createBooking({
-      location,
-      checkInDate,
-      checkOutDate,
-      numGuests,
-    })
-      .then(() => setFormStatus("FINISHED"))
-      .catch(() => setFormStatus("ERROR"));
   };
 
   return (

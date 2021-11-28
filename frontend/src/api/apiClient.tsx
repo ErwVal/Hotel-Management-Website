@@ -1,4 +1,4 @@
-export interface NewBooking {
+export interface NewRoomSearch {
   location: string;
   checkInDate: Date;
   checkOutDate: Date;
@@ -23,20 +23,50 @@ export interface Room {
   images: string[];
   roomPrice: number;
   maxGuests: number;
+  hotelId: number;
 }
 export interface RoomsListResponse {
   room: Room[];
 }
 
-const baseUrl = process.env["REACT_APP_BACKEND_DOMAIN"];
+export async function fetchAllRooms(): Promise<RoomsListResponse> {
+  const response = await fetch(`https://localhost:5001/rooms`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return await response.json();
+}
 
-export const createBooking = async (newBooking: NewBooking) => {
-  const response = await fetch(`${baseUrl}/reservation/create`, {
+export const fetchAllRoomsList = async (): Promise<RoomsListResponse> => {
+  const internalApi = await fetchAllRooms();
+  const roomsInternalList = internalApi.room;
+  return { room: roomsInternalList };
+};
+
+export async function fetchRoomsListByQuery(
+  location: string,
+  checkInDate: Date,
+  checkOutDate: Date,
+  numGuests: number
+) {
+  const response = await fetch(
+    `https://localhost:5001/rooms/by-query?location=${location}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&numGuests=${numGuests}`
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+}
+
+export const createBooking = async (newRoomSearch: NewRoomSearch) => {
+  const response = await fetch(`https://localhost:5001/reservation/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(newBooking),
+    body: JSON.stringify(newRoomSearch),
   });
 
   if (!response.ok) {
@@ -45,21 +75,3 @@ export const createBooking = async (newBooking: NewBooking) => {
 
   return await response.json();
 };
-
-export const fetchRoomsListByQuery = async (
-  location: string,
-  checkInDate: Date,
-  checkOutDate: Date,
-  numGuests: number
-): Promise<RoomsListResponse> => {
-  const response = await fetch(
-    `${baseUrl}/rooms/by-query?location=${location}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&numGuests=${numGuests}`
-  );
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
-};
-

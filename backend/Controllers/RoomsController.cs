@@ -57,10 +57,8 @@ namespace react_typescript_dotnet_app.Controllers
             {
                 Rooms = _roomsService
                 .GetRoomsList()
-                .Where(r =>
-                r.Available == Available.Yes &&
-                numGuests <= r.MaxGuests)
-          .Select(r => new RoomsResponse(r))
+                .Select(r => new RoomsResponse(r))
+                .Where(r => r.MaxGuests >= numGuests)
                 .ToList()
             };
         }
