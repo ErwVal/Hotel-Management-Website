@@ -1,6 +1,13 @@
 import React from "react";
-import { Main } from "./Main";
+import { Container } from "react-bootstrap";
+import { Animation } from "./Animation";
+import { RenderAllRooms } from "./RenderAllRooms";
 
 export const Home: React.FunctionComponent = () => {
-  return <Main />;
+  return (
+    <Container>
+      <Animation />
+      <RenderAllRooms />
+    </Container>
+  );
 };

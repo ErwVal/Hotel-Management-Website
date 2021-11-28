@@ -7,10 +7,11 @@ namespace react_typescript_dotnet_app.Models.Database
     {
         public int Id { get; set; }
         public string HotelName { get; set; }
-        public string Address { get; set; }
+        public string Location { get; set; }
         [JsonIgnore]
         public virtual List<Room> Rooms { get; set; } =  new List<Room>();
         [JsonIgnore]
         public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        
     }
 }
