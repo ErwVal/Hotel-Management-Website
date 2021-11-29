@@ -11,8 +11,8 @@ using react_typescript_dotnet_app;
 namespace react_typescript_dotnet_app.Migrations
 {
     [DbContext(typeof(DatabaseDBContext))]
-    [Migration("20211128192536_UpdateHotelLocation")]
-    partial class UpdateHotelLocation
+    [Migration("20211129112334_CreateHotelDB")]
+    partial class CreateHotelDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

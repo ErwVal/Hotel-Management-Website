@@ -25,9 +25,9 @@ export const BookingForm: React.FunctionComponent = () => {
         <Col>
           <FloatingLabel label="Select a location">
             <Form.Select onChange={(e) => setLocation(e.target.value)} required>
-              <option>Canaries</option>
+              <option>Cancun</option>
               <option>Tulum</option>
-              <option>Bahamas</option>
+              <option>Playa del Carmen</option>
             </Form.Select>
           </FloatingLabel>
         </Col>

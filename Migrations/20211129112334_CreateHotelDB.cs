@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace react_typescript_dotnet_app.Migrations
 {
-    public partial class CreatehotelDB : Migration
+    public partial class CreateHotelDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace react_typescript_dotnet_app.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     HotelName = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true)
+                    Location = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,10 +69,11 @@ namespace react_typescript_dotnet_app.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoomType = table.Column<int>(type: "integer", nullable: false),
+                    Available = table.Column<int>(type: "integer", nullable: false),
                     Images = table.Column<List<string>>(type: "text[]", nullable: true),
                     RoomPrice = table.Column<double>(type: "double precision", nullable: false),
                     MaxGuests = table.Column<int>(type: "integer", nullable: false),
-                    HotelId = table.Column<int>(type: "integer", nullable: true),
+                    HotelId = table.Column<int>(type: "integer", nullable: false),
                     ReservationId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -83,7 +84,7 @@ namespace react_typescript_dotnet_app.Migrations
                         column: x => x.HotelId,
                         principalTable: "Hotels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rooms_Reservations_ReservationId",
                         column: x => x.ReservationId,
