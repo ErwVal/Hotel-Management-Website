@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from "react";
 import { Alert, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
-import { createBooking } from "../api/apiClient";
 import moment from "moment";
 import "../styling/BookingForm.css";
 

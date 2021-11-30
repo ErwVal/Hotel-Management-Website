@@ -1,6 +1,7 @@
 using react_typescript_dotnet_app.Models.Database;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace react_typescript_dotnet_app.Repositories
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-
+using react_typescript_dotnet_app.Models.Database;
 namespace react_typescript_dotnet_app.Models.Database
 {
     public enum RoomType { Single, Double, Twin, Suite }
@@ -15,6 +15,9 @@ namespace react_typescript_dotnet_app.Models.Database
         public double RoomPrice { get; set; }
         public int MaxGuests { get; set; }
         public int HotelId { get; set; }
+
+          [JsonIgnore]
+        public virtual List<Reservation> Reservations { get; set; } 
 
     }
 }
