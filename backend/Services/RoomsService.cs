@@ -10,7 +10,7 @@ namespace react_typescript_dotnet_app.Services
     public interface IRoomsService
     {
         List<Room> GetRoomsList();
-        List<Room> GetAvailableRoomsList(Room room, DateTime arrival, DateTime departure);
+        List<Room> GetAvailableRoomsList(DateTime arrival, DateTime departure);
     }
 
     public class RoomsService : IRoomsService
@@ -29,10 +29,10 @@ namespace react_typescript_dotnet_app.Services
             return _rooms.GetRoomsList();
         }
 
-        public List<Room> GetAvailableRoomsList(Room room, DateTime arrival, DateTime departure)
+        public List<Room> GetAvailableRoomsList(DateTime arrival, DateTime departure)
         {
             return _rooms.GetRoomsList()
-            .Where( r => r.Reservations.All(r => r.CheckOut <= arrival || r.CheckIn >= departure)).ToList();          
+            .Where( r => r.Reservations.All(r => r.CheckOut < arrival || r.CheckIn > departure)).ToList();          
         }
     }
 }

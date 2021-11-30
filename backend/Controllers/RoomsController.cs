@@ -49,15 +49,16 @@ namespace react_typescript_dotnet_app.Controllers
 
         public ActionResult<RoomsListResponse> Search(
            [FromQuery] int hotelId,
-        //    [FromQuery] DateTime checkInDate,
-        //    [FromQuery] DateTime checkOutDate,
-           [FromQuery] int numGuests
+           [FromQuery] int numGuests,
+           [FromQuery] string checkInDate,
+           [FromQuery] string checkOutDate
+        
        )
         {
             return new RoomsListResponse
             {
                 Rooms = _roomsService
-                .GetRoomsList()
+                .GetAvailableRoomsList(DateTime.Parse(checkInDate), DateTime.Parse(checkOutDate))
                 .Select(r => new RoomsResponse(r))
                 .Where(r => r.MaxGuests >= numGuests && r.HotelId == hotelId)
                 .ToList()
