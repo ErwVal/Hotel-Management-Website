@@ -21,7 +21,7 @@ namespace react_typescript_dotnet_app.Repositories
 
         public List<Room> GetRoomsList()
         {
-            return _database.Rooms.ToList();
+            return _database.Rooms.Include(r => r.Reservations).ToList();
         }
     }
 }
