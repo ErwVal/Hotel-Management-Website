@@ -8,6 +8,7 @@ namespace react_typescript_dotnet_app.Repositories
     public interface IRoomsRepo
     {
         List<Room> GetRoomsList();
+        Room GetRoomById(int id);
     }
 
     public class RoomsRepo : IRoomsRepo
@@ -21,7 +22,14 @@ namespace react_typescript_dotnet_app.Repositories
 
         public List<Room> GetRoomsList()
         {
-            return _database.Rooms.Include(r => r.Reservations).ToList();
+            return _database.Rooms
+            .Include(r => r.Reservations)
+            .ToList();
+        }
+
+        public Room GetRoomById(int id)
+        {
+            return _database.Rooms.Include(r => r.Reservations).Where(r => r.Id == id).Single();
         }
     }
 }

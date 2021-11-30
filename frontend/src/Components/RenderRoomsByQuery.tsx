@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Room } from "../api/apiClient";
+import { RoomCard } from "./RoomCard";
 
 interface Props {
     hotelId: number;
@@ -27,10 +28,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = ( props: Props
           <Row>
             {roomsListByQuery.map((room) => (
               <Col>
-                Room Id: {room.id}; Type: {room.roomType}; Room Available:{" "}
-                {room.available}; Room Price: {room.roomPrice}; Room Maximum
-                Guests: {room.maxGuests};
-                Hotel ID: {room.hotelId}
+              <RoomCard room={room}/>
               </Col>
             ))}
           </Row>

@@ -43,6 +43,17 @@ namespace react_typescript_dotnet_app.Controllers
         }
 
         ///<summary>
+        /// Retrieves the room from the database that matches the Id.
+        ///</summary>
+        [HttpGet("{id}")]
+
+        public ActionResult<RoomsResponse> GetRoomById( [FromRoute] int id)
+        {
+            Room room = _roomsService.GetRoomById(id);
+            return new RoomsResponse(room);
+        }
+
+        ///<summary>
         /// Gets the list of rooms from the database which satisfy the query.
         ///</summary>
         [HttpGet("search")]

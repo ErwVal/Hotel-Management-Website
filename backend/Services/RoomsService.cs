@@ -10,6 +10,7 @@ namespace react_typescript_dotnet_app.Services
     public interface IRoomsService
     {
         List<Room> GetRoomsList();
+        Room GetRoomById(int id);
         List<Room> GetAvailableRoomsList(DateTime arrival, DateTime departure);
     }
 
@@ -27,6 +28,11 @@ namespace react_typescript_dotnet_app.Services
         public List<Room> GetRoomsList()
         {
             return _rooms.GetRoomsList();
+        }
+
+        public Room GetRoomById(int id)
+        {
+            return _rooms.GetRoomById(id);
         }
 
         public List<Room> GetAvailableRoomsList(DateTime arrival, DateTime departure)

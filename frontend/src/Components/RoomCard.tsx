@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Room } from "../api/apiClient";
+import { Link } from "react-router-dom";
 
 interface RoomCardProps {
   room: Room;
@@ -17,7 +18,7 @@ export const RoomCard: React.FunctionComponent<RoomCardProps> = (
         <Card.Text>
           Room Price {props.room.roomPrice}
         </Card.Text>
-        <Button variant="primary">See room</Button>
+        <Link to={`/rooms/${props.room.id}`}>See room</Link>
       </Card.Body>
     </Card>
   );

@@ -5,11 +5,13 @@ import { Home } from "./components/Home";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Container } from "react-bootstrap";
+import { RoomComponent } from "./components/RoomComponent";
 
 const Routes: React.FunctionComponent = () => {
   return (
     <Switch>
       <Route exact path={"/"} component={Home} />
+      <Route exact path={"/rooms/:id"} component={RoomComponent} />
     </Switch>
   );
 };
