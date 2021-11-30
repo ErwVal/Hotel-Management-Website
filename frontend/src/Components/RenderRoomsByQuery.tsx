@@ -1,0 +1,42 @@
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Room } from "../api/apiClient";
+
+interface Props {
+    hotelId: number;
+    numGuests: number;
+    checkInDate: string;
+    checkOutDate: string;
+}
+
+export const RenderRoomsByQuery: React.FunctionComponent<Props> = ( props: Props ) => {
+  const [roomsListByQuery, setRoomsListByQuery] = useState<Room[]>([]);
+
+  useEffect(() => {
+    fetch(
+      `https://localhost:5001/rooms/search?hotelId=${props.hotelId}&numGuests=${props.numGuests}&checkInDate=${props.checkInDate}&checkOutDate=${props.checkOutDate}`
+    )
+      .then((response) => response.json())
+      .then((data) => setRoomsListByQuery(data.rooms));
+  });
+
+  return (
+      <Container>
+        <h2>Rooms by Query</h2>
+        {roomsListByQuery.length > 0 ? (
+          <Row>
+            {roomsListByQuery.map((room) => (
+              <Col>
+                Room Id: {room.id}; Type: {room.roomType}; Room Available:{" "}
+                {room.available}; Room Price: {room.roomPrice}; Room Maximum
+                Guests: {room.maxGuests};
+                Hotel ID: {room.hotelId}
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <p>No filtered rooms available. Please contact the administration.</p>
+        )}
+      </Container>
+  );
+};

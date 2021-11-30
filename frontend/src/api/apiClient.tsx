@@ -1,7 +1,7 @@
-export interface NewRoomSearch {
-  location: string;
-  checkInDate: Date;
-  checkOutDate: Date;
+export interface NewReservation {
+  checkIn: string;
+  checkOut: Date;
+  guestName: Date;
   numGuests: number;
 }
 
@@ -29,44 +29,13 @@ export interface RoomsListResponse {
   room: Room[];
 }
 
-export async function fetchAllRooms(): Promise<RoomsListResponse> {
-  const response = await fetch(`https://localhost:5001/rooms`);
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
-
-export const fetchAllRoomsList = async (): Promise<RoomsListResponse> => {
-  const internalApi = await fetchAllRooms();
-  const roomsInternalList = internalApi.room;
-  return { room: roomsInternalList };
-};
-
-export async function fetchRoomsListByQuery(
-  location: string,
-  checkInDate: Date,
-  checkOutDate: Date,
-  numGuests: number
-) {
-  const response = await fetch(
-    `https://localhost:5001/rooms/by-query?location=${location}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&numGuests=${numGuests}`
-  );
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
-}
-
-export const createBooking = async (newRoomSearch: NewRoomSearch) => {
+export const createBooking = async (newReservation: NewReservation) => {
   const response = await fetch(`https://localhost:5001/reservation/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(newRoomSearch),
+    body: JSON.stringify(newReservation),
   });
 
   if (!response.ok) {

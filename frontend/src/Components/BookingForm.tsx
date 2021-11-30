@@ -1,11 +1,13 @@
 import React, { FormEvent, useState } from "react";
 import { Alert, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
+import { RenderRoomsByQuery } from "./RenderRoomsByQuery";
 import moment from "moment";
 import "../styling/BookingForm.css";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
 export const BookingForm: React.FunctionComponent = () => {
+  const [renderRoomsList, setRenderRoomsList] = useState(false);
   const [location, setLocation] = useState(0);
   const [checkInDateState, setCheckInDate] = useState("");
   const [checkOutDateState, setCheckOutDate] = useState("");
@@ -14,8 +16,10 @@ export const BookingForm: React.FunctionComponent = () => {
 
   const today = moment(new Date()).format("YYYY-MM-DD");
 
+
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
+    setRenderRoomsList(true);
   };
 
   const handleLocation = (location: string) => {
@@ -38,6 +42,8 @@ export const BookingForm: React.FunctionComponent = () => {
   }
 
   return (
+    <div>
+    {!renderRoomsList ? (
     <Form onSubmit={submitForm}>
       <Row className="g-4">
         <Col>
@@ -100,7 +106,8 @@ export const BookingForm: React.FunctionComponent = () => {
       {formStatus === "ERROR" && (
         <Alert variant="warning">Something went wrong! Please try again.</Alert>
       )}
-    </Form>
+    </Form> ) : ( <RenderRoomsByQuery hotelId={location} numGuests={parseInt(numGuestsState)} checkInDate={checkInDateState} checkOutDate={checkOutDateState} />)}
+    </div>
   );
 };
 
