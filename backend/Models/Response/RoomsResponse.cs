@@ -15,6 +15,7 @@ namespace react_typescript_dotnet_app.Models.Response
         public List<string> Images { get; set; }
         public double RoomPrice { get; set; }
         public int MaxGuests { get; set; }
+        public int HotelId { get; set; }
 
         public RoomsResponse(Room room)
         {
@@ -23,6 +24,7 @@ namespace react_typescript_dotnet_app.Models.Response
             Images = room.Images;
             RoomPrice = room.RoomPrice;
             MaxGuests = room.MaxGuests;
+            HotelId = room.HotelId;
 
         }
     }

@@ -47,7 +47,7 @@ namespace react_typescript_dotnet_app.Controllers
         [HttpGet("by-query")]
 
         public ActionResult<RoomsListResponse> byQuery(
-        //    [FromQuery] string location,
+           [FromQuery] string location,
         //    [FromQuery] DateTime checkInDate,
         //    [FromQuery] DateTime checkOutDate,
            [FromQuery] int numGuests
