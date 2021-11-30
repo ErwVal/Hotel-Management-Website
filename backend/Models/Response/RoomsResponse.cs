@@ -16,6 +16,7 @@ namespace react_typescript_dotnet_app.Models.Response
         public double RoomPrice { get; set; }
         public int MaxGuests { get; set; }
         public int HotelId { get; set; }
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
         public RoomsResponse(Room room)
         {
@@ -25,6 +26,7 @@ namespace react_typescript_dotnet_app.Models.Response
             RoomPrice = room.RoomPrice;
             MaxGuests = room.MaxGuests;
             HotelId = room.HotelId;
+            Reservations.AddRange(room.Reservations);
 
         }
     }
