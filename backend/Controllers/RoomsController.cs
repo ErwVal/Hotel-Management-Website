@@ -7,6 +7,7 @@ using react_typescript_dotnet_app.Models.Response;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace react_typescript_dotnet_app.Controllers
 {
@@ -44,10 +45,10 @@ namespace react_typescript_dotnet_app.Controllers
         ///<summary>
         /// Gets the list of rooms from the database which satisfy the query.
         ///</summary>
-        [HttpGet("by-query")]
+        [HttpGet("search")]
 
-        public ActionResult<RoomsListResponse> byQuery(
-           [FromQuery] string location,
+        public ActionResult<RoomsListResponse> Search(
+           [FromQuery] int hotelId,
         //    [FromQuery] DateTime checkInDate,
         //    [FromQuery] DateTime checkOutDate,
            [FromQuery] int numGuests
@@ -58,7 +59,7 @@ namespace react_typescript_dotnet_app.Controllers
                 Rooms = _roomsService
                 .GetRoomsList()
                 .Select(r => new RoomsResponse(r))
-                .Where(r => r.MaxGuests >= numGuests)
+                .Where(r => r.MaxGuests >= numGuests && r.HotelId == hotelId)
                 .ToList()
             };
         }

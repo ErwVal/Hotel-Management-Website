@@ -12,14 +12,14 @@ export const RenderAllRooms: React.FunctionComponent = () => {
       .then((data) => setRoomsList(data.rooms));
   }, []);
 
-  // let location: string = "Tulum";
+  let hotelId: number = 1;
   // let checkInDate: Date = new Date();
   // let checkOutDate: Date = new Date();
-  let numGuests = 3;
+  let numGuests:number = 3;
 
   useEffect(() => {
     fetch(
-      `https://localhost:5001/rooms/by-query?numGuests=${numGuests}`
+      `https://localhost:5001/rooms/search?hotelId=${hotelId}&numGuests=${numGuests}`
     )
       .then((response) => response.json())
       .then((data) => setRoomsListByQuery(data.rooms));

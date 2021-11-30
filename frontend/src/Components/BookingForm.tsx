@@ -7,7 +7,7 @@ import "../styling/BookingForm.css";
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
 export const BookingForm: React.FunctionComponent = () => {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(0);
   const [checkInDateState, setCheckInDate] = useState("");
   const [checkOutDateState, setCheckOutDate] = useState("");
   const [formStatus, setFormStatus] = useState<FormStatus>("READY");
@@ -19,12 +19,31 @@ export const BookingForm: React.FunctionComponent = () => {
     event.preventDefault();
   };
 
+  const handleLocation = (location: string) => {
+
+    if(location === "Cancun")
+    {
+      setLocation(1);
+    }
+    else if (location === "Tulum")
+    {
+      setLocation(2);
+    }
+    else if (location === "Playa del Carmen")
+    {
+      setLocation(3)
+    }
+    else{
+      console.log("Error")
+        }
+  }
+
   return (
     <Form onSubmit={submitForm}>
       <Row className="g-4">
         <Col>
           <FloatingLabel label="Select a location">
-            <Form.Select onChange={(e) => setLocation(e.target.value)} required>
+            <Form.Select onChange={(e) => handleLocation(e.target.value)} required>
               <option>Cancun</option>
               <option>Tulum</option>
               <option>Playa del Carmen</option>
