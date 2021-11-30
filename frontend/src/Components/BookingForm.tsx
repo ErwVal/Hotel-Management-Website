@@ -8,7 +8,7 @@ type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
 export const BookingForm: React.FunctionComponent = () => {
   const [renderRoomsList, setRenderRoomsList] = useState(false);
-  const [location, setLocation] = useState(0);
+  const [location, setLocation] = useState(99);
   const [checkInDateState, setCheckInDate] = useState("");
   const [checkOutDateState, setCheckOutDate] = useState("");
   const [formStatus, setFormStatus] = useState<FormStatus>("READY");
@@ -47,8 +47,9 @@ export const BookingForm: React.FunctionComponent = () => {
     <Form onSubmit={submitForm}>
       <Row className="g-4">
         <Col>
-          <FloatingLabel label="Select a location">
+          <FloatingLabel label="Location">
             <Form.Select onChange={(e) => handleLocation(e.target.value)} required>
+              <option>Select</option>
               <option>Cancun</option>
               <option>Tulum</option>
               <option>Playa del Carmen</option>
@@ -84,10 +85,12 @@ export const BookingForm: React.FunctionComponent = () => {
               onChange={(e) => setNumGuests(e.target.value)}
               required
             >
+              <option>Select</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
+              <option>8</option>
             </Form.Select>
           </FloatingLabel>
         </Col>

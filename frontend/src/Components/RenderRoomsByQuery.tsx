@@ -18,7 +18,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = ( props: Props
     )
       .then((response) => response.json())
       .then((data) => setRoomsListByQuery(data.rooms));
-  });
+  }, [props.hotelId, props.numGuests, props.checkInDate, props.checkOutDate]);
 
   return (
       <Container>
