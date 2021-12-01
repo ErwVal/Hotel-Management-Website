@@ -10,8 +10,8 @@ import { RoomComponent } from "./components/RoomComponent";
 const Routes: React.FunctionComponent = () => {
   return (
     <Switch>
-      <Route exact path={"/"} component={Home} />
-      <Route exact path={"/rooms/:id"} component={RoomComponent} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/rooms/:id" component={RoomComponent} />
     </Switch>
   );
 };
