@@ -3,12 +3,16 @@ import { Card, Button } from "react-bootstrap";
 import { Room } from "../api/apiClient";
 import { Link } from "react-router-dom";
 
-interface RoomCardProps {
+interface Props {
   room: Room;
+  hotelId: number;
+  numGuests: number;
+  checkInDate: string;
+  checkOutDate: string;
 }
 
-export const RoomCard: React.FunctionComponent<RoomCardProps> = (
-  props: RoomCardProps
+export const RoomCard: React.FunctionComponent<Props> = (
+  props: Props
 ) => {
   return (
     <Card style={{ width: "18rem" }}>

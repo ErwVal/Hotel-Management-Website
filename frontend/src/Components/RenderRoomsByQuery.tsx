@@ -28,7 +28,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = ( props: Props
           <Row>
             {roomsListByQuery.map((room) => (
               <Col>
-              <RoomCard room={room}/>
+              <RoomCard room={room} hotelId={props.hotelId} numGuests={props.numGuests} checkInDate={props.checkInDate} checkOutDate={props.checkOutDate}/>
               </Col>
             ))}
           </Row>
