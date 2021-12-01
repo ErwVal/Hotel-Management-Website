@@ -4,6 +4,10 @@ import { Container, Carousel, Row, Col } from "react-bootstrap";
 
 interface Props {
   room: Room;
+  hotelId: number | string;
+  numGuests: number | string;
+  checkInDate: string;
+  checkOutDate: string;
 }
 
 enum roomType {
@@ -16,9 +20,24 @@ enum roomType {
 export const RoomBookingCard: React.FunctionComponent<Props> = (
   props: Props
 ) => {
+
+    let location = "";
+
+    if(props.hotelId === 1)
+    {
+        location = "Cancun";
+    }
+    else if (props.hotelId === 2)
+    {
+        location = "Tulum";
+    }
+    else
+    {
+        location = "Playa del Carmen";
+    }
   return (
     <Container fluid>
-      <h2>{roomType[props.room.roomType]} room for stay in LOCATION</h2>
+      <h2>{roomType[props.room.roomType]} room for stay in {location}</h2>
       <Row>
         <Carousel>
           <Carousel.Item>

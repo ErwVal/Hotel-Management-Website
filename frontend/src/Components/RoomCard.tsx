@@ -22,7 +22,7 @@ export const RoomCard: React.FunctionComponent<Props> = (
         <Card.Text>
           Room Price {props.room.roomPrice}
         </Card.Text>
-        <Link to={`/rooms/${props.room.id}`}>See room</Link>
+        <Link to={`/rooms/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}`}>See room</Link>
       </Card.Body>
     </Card>
   );

@@ -4,7 +4,7 @@ import { RoomBookingCard } from "./RoomBookingCard";
 
 export const RoomComponent: React.FunctionComponent = () => {
   const [room, setRoom] = useState<any>();
-  const { id } = useParams<{ id: string }>();
+  const { id, hotelId, numGuests, checkInDate, checkOutDate } = useParams<{ id: string, hotelId: string, numGuests: string, checkInDate: string, checkOutDate: string }>();
 
   useEffect(() => {
     fetch(`https://localhost:5001/rooms/${id}`)
@@ -18,7 +18,7 @@ export const RoomComponent: React.FunctionComponent = () => {
       {!room ? (
         <p>Processing...</p>
       ) : (
-        <RoomBookingCard room={room}/>
+        <RoomBookingCard room={room} hotelId={hotelId} numGuests={numGuests} checkInDate={checkInDate} checkOutDate={checkOutDate}/>
       )}
     </>
   );

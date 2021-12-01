@@ -10,7 +10,7 @@ const Routes: React.FunctionComponent = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/rooms/:id" component={RoomComponent} />
+      <Route exact path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate" component={RoomComponent} />
     </Switch>
   );
 };
