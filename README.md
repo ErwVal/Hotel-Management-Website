@@ -1,5 +1,5 @@
 # Hotel-Management-Website
-A hotel website in React-TypeScript and C#.
+A hotel website using React-TypeScript, C#, and PostgreSQL.
 
 ## Description
 
