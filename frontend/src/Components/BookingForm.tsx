@@ -2,7 +2,6 @@ import React, { FormEvent, useState } from "react";
 import { Alert, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
 import { RenderRoomsByQuery } from "./RenderRoomsByQuery";
 import moment from "moment";
-import "../styling/BookingForm.css";
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 

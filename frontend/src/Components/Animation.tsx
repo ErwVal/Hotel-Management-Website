@@ -1,5 +1,4 @@
 import React from 'react';
-import "../styling/Animation.css";
 
 export const Animation: React.FunctionComponent = () => {
     return (
