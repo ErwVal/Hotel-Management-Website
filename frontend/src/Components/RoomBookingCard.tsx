@@ -1,6 +1,6 @@
 import React from "react";
 import { Room } from "../api/apiClient";
-import { Container, Carousel, Row, Col } from "react-bootstrap";
+import { Container, Carousel, Row, Col, Button } from "react-bootstrap";
 
 interface Props {
   room: Room;
@@ -42,7 +42,7 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
         <Carousel>
           <Carousel.Item>
             <img
-              className="d-block w-100"
+              className="d-block w-50"
               src={props.room.images[0]}
               alt="room"
             />
@@ -68,6 +68,7 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
         <Col> Price per night: {props.room.roomPrice}. </Col>{" "}
         <Col> Accommodates up to {props.room.maxGuests} guests.</Col>
       </Row>
+      <Button>Book this room</Button>
     </Container>
   );
 };

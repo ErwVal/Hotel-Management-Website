@@ -1,8 +1,9 @@
 export interface NewReservation {
-  checkIn: string;
+  checkIn: Date;
   checkOut: Date;
-  guestName: Date;
+  guestName: string;
   numGuests: number;
+  roomId: number;
 }
 
 enum roomType {
@@ -29,7 +30,7 @@ export interface RoomsListResponse {
   room: Room[];
 }
 
-export const createBooking = async (newReservation: NewReservation) => {
+export const createReservation = async (newReservation: NewReservation) => {
   const response = await fetch(`https://localhost:5001/reservation/create`, {
     method: "POST",
     headers: {

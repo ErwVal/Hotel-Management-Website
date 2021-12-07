@@ -1,5 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
 
+body, h1, h2, h3, main {
+  font-family: 'Caudex', serif;
+}
+
+.applyFont {
+  font-family: 'Caudex', serif;
+}
+
 main {
   margin-top: 3rem;
   height: 75vh;
