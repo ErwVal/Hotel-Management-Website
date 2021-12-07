@@ -8,11 +8,6 @@ body, h1, h2, h3, main {
   font-family: 'Caudex', serif;
 }
 
-main {
-  margin-top: 3rem;
-  height: 75vh;
-}
-
 // For animation
 
 #background-video {
@@ -28,7 +23,43 @@ main {
 }
 
 // For booking form
-.btn:hover {
-  background-image: none;
-  background-color: #ff00ff;
+
+.form-container {
+  max-width: 30vw;
+  border-radius: 10%;
+  background-color: #d9b650;
+  padding: 3rem;
+  margin-bottom: 3rem;
+
+  .form-button {
+    margin-top: 2rem;
+  }
+  .form-button:hover{
+    color: white;
+    background-color: #444444;
+
+  }
+}
+
+.form-row {
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.footer-container {
+  background-color: #444444;
+  color: white;
+  height: 8rem;
+}
+
+.landing-page {
+  background-image: url("https://localhost:5001/landing-page-img.jpg");
+  img {
+    opacity: 0.5;
+    max-width: 20rem;
+  }
+}
+
+.rooms-page {
+  background-image: url("https://localhost:5001/pool-img.jpg");
 }

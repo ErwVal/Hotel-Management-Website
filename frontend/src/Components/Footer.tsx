@@ -1,13 +1,17 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
+
 export const Footer: React.FunctionComponent = () => {
   return (
     <footer>
-      <Container>
+      <Container className="footer-container">
         <Row>
-          <Col className="text-center py-3">
-            Copyright &copy; Video by Mylo Kaye from Pexels
+          <Col>
+          342 Las Plazas, Zona Hotelera Cancún, México.
+          </Col>
+          <Col>
+          maya-hotel@maya.com.mx
           </Col>
         </Row>
       </Container>
