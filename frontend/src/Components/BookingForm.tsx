@@ -7,9 +7,26 @@ import {
   FloatingLabel,
   Button,
   Container,
+  Carousel,
 } from "react-bootstrap";
 import { RenderRoomsByQuery } from "./RenderRoomsByQuery";
 import moment from "moment";
+import { motion } from "framer-motion";
+
+const formVariants = {
+  hidden: {
+    opacity: 0,
+    x: "200vw",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 2,
+      when: "beforeChildren",
+    },
+  },
+};
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
@@ -41,82 +58,144 @@ export const BookingForm: React.FunctionComponent = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      variants={formVariants}
+      initial="hidden"
+      animate="visible"
+      className="div-landing-page"
+    >
       {!renderRoomsList ? (
-        <div className="form-container">
-          <h2>Search for a room: </h2>
-          <Form onSubmit={submitForm}>
-            <Col className="g-4">
-              <Row className="form-row">
-                <label>Location</label> <br />
-                  <Form.Select className="sm"
-                    onChange={(e) => handleLocation(e.target.value)}
-                    required
-                  >
-                    <option>Select</option>
-                    <option>Cancun</option>
-                    <option>Tulum</option>
-                    <option>Playa del Carmen</option>
-                  </Form.Select>
-              </Row>
-              <Row className="form-row">
-                <label>Check in</label> <br />
-                <input
-                  name="CheckInDate"
-                  type="date"
-                  min={today}
-                  value={checkInDateState}
-                  onChange={(event) => setCheckInDate(event.target.value)}
-                  required
-                />
-              </Row>
-              <Row className="form-row">
-                <label>Check out</label> <br />
-                <input
-                  name="CheckOutDate"
-                  type="date"
-                  min={moment(checkInDateState)
-                    .add(1, "days")
-                    .format("YYYY-MM-DD")}
-                  value={checkOutDateState}
-                  onChange={(event) => setCheckOutDate(event.target.value)}
-                  required
-                />
-              </Row>
-              <Row className="form-row">
-              <label>Guests</label> <br />
-                  <Form.Select
-                  className="sm"
-                    onChange={(e) => setNumGuests(e.target.value)}
-                    required
-                  >
-                    <option>Select</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>8</option>
-                  </Form.Select>
-              </Row>
-              
-              <Row>
-                <button
-                  className="btn btn-light form-button"
-                  disabled={formStatus === "SUBMITTING"}
-                  type="submit"
-                >
-                  Search
-                </button>
-              </Row>
-            </Col>
-            <br />
-            {formStatus === "ERROR" && (
-              <Alert variant="warning">
-                Something went wrong! Please try again.
-              </Alert>
-            )}
-          </Form>
-        </div>
+        <Row>
+          <Col>
+            <div className="form-container">
+              {/* <video id="background-video" autoPlay loop muted>
+            <source src="/video-resort.mp4" type="video/mp4" />
+          </video> */}
+              <h3>Search for a room: </h3>
+              <Form onSubmit={submitForm}>
+                <Col className="g-4">
+                  <Row className="form-row">
+                    <label>Location</label> <br />
+                    <Form.Select
+                      className="sm"
+                      onChange={(e) => handleLocation(e.target.value)}
+                      required
+                    >
+                      <option>Select</option>
+                      <option>Cancun</option>
+                      <option>Tulum</option>
+                      <option>Playa del Carmen</option>
+                    </Form.Select>
+                  </Row>
+                  <Row className="form-row">
+                    <label>Check in</label> <br />
+                    <input
+                      name="CheckInDate"
+                      type="date"
+                      min={today}
+                      value={checkInDateState}
+                      onChange={(event) => setCheckInDate(event.target.value)}
+                      required
+                    />
+                  </Row>
+                  <Row className="form-row">
+                    <label>Check out</label> <br />
+                    <input
+                      name="CheckOutDate"
+                      type="date"
+                      min={moment(checkInDateState)
+                        .add(1, "days")
+                        .format("YYYY-MM-DD")}
+                      value={checkOutDateState}
+                      onChange={(event) => setCheckOutDate(event.target.value)}
+                      required
+                    />
+                  </Row>
+                  <Row className="form-row">
+                    <label>Adult</label> <br />
+                    <Form.Select
+                      className="sm"
+                      onChange={(e) => setNumGuests(e.target.value)}
+                      required
+                    >
+                      <option>Select</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>8</option>
+                    </Form.Select>
+                  </Row>
+
+                  <Row>
+                    <button
+                      className="btn btn-light form-button"
+                      disabled={formStatus === "SUBMITTING"}
+                      type="submit"
+                    >
+                      Search
+                    </button>
+                  </Row>
+                </Col>
+                <br />
+                {formStatus === "ERROR" && (
+                  <Alert variant="warning">
+                    Something went wrong! Please try again.
+                  </Alert>
+                )}
+              </Form>
+            </div>
+          </Col>
+          <Col>
+            <div className="div-carousel">
+              <h1>Welcome to Maya Hotels</h1>
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="landing-page-img.jpg"
+                    alt="Enjoy a warm winter in the Riviera Maya"
+                  />
+                  <Carousel.Caption>
+                    <h3>Enjoy a warm winter in the Riviera Maya</h3>
+                    <p>
+                      Nulla vitae elit libero, a pharetra augue mollis interdum.
+                    </p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="pool-img.jpg"
+                    alt="Step into Summer 2022 now!"
+                  />
+
+                  <Carousel.Caption>
+                    <h3>Step into Summer 2022 now!</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="diner-img.jpg"
+                    alt="Waking up in a different city won't be a dream"
+                  />
+
+                  <Carousel.Caption>
+                    <h3>Waking up in a different city won't be a dream</h3>
+                    <p>
+                      Praesent commodo cursus magna, vel scelerisque nisl
+                      consectetur.
+                    </p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
+            </div>
+          </Col>
+        </Row>
       ) : (
         <RenderRoomsByQuery
           hotelId={location}
@@ -125,6 +204,6 @@ export const BookingForm: React.FunctionComponent = () => {
           checkOutDate={checkOutDateState}
         />
       )}
-    </div>
+    </motion.div>
   );
 };

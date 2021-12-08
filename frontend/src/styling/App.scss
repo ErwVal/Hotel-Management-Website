@@ -1,62 +1,82 @@
 @import "~bootstrap/scss/bootstrap";
 
-body, h1, h2, h3, main {
-  font-family: 'Caudex', serif;
+// General styling
+body,
+h1,
+h2,
+h3,
+main {
+  font-family: "Caudex", serif;
 }
 
-.applyFont {
-  font-family: 'Caudex', serif;
+.apply-font {
+  font-family: "Caudex", serif;
+  color: #394a51;
 }
 
-// For animation
+// Landing/booking page
+
+.div-landing-page {
+  background-color: #f2f1ef;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  .form-container {
+    max-width: 20rem;
+    max-height: 40rem;
+    border-radius: 10%;
+    background-color: #d9d2cc;
+    padding: 1rem;
+    margin-left: 5rem;
+
+    h3 {
+      text-align: center;
+    }
+
+    .form-button {
+      margin: auto;
+      margin-top: 1rem;
+      max-width: 10rem;
+    }
+    .form-button:hover {
+      color: #fbf2d5;
+      background-color: #394a51;
+    }
+    .form-row {
+      padding: 0.5rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .div-carousel {
+    color: #394a51;
+  }
+}
 
 #background-video {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-// For booking form
-
-.form-container {
-  max-width: 30vw;
-  border-radius: 10%;
-  background-color: #d9b650;
-  padding: 3rem;
-  margin-bottom: 3rem;
-
-  .form-button {
-    margin-top: 2rem;
+    width: 99vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
   }
-  .form-button:hover{
-    color: white;
-    background-color: #444444;
 
-  }
-}
-
-.form-row {
-  padding: 0.5rem;
-  margin-top: 1rem;
-}
-
-.footer-container {
-  background-color: #444444;
-  color: white;
+// footer
+.div-footer {
+  background-color: #394a51;
+  color: #fbf2d5;
   height: 8rem;
-}
 
-.landing-page {
-  background-image: url("https://localhost:5001/landing-page-img.jpg");
-  img {
-    opacity: 0.5;
-    max-width: 20rem;
+  .col-footer {
+    // padding: 0;
+    // margin: 0;
+  }
+  .row-footer {
+    margin: 0;
   }
 }
 

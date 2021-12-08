@@ -11,7 +11,6 @@ const headerVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.5,
       duration: 2,
       when: "beforeChildren",
     },
@@ -29,7 +28,7 @@ export const Header: React.FunctionComponent = () => {
       expand="lg"
       sticky="top"
       collapseOnSelect
-      className="applyFont"
+      className="apply-font"
     >
       <Container>
         <Navbar.Brand href="/">
