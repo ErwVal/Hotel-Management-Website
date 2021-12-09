@@ -30,11 +30,11 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
 
   let location = "";
 
-  if (props.hotelId === 1) {
+  if (props.hotelId == 1) {
     location = "Cancun";
-  } else if (props.hotelId === 2) {
+  } else if (props.hotelId == 2) {
     location = "Tulum";
-  } else {
+  } else if (props.hotelId == 3){
     location = "Playa del Carmen";
   }
   return (

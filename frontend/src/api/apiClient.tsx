@@ -2,8 +2,9 @@ export interface NewReservation {
   checkIn: Date;
   checkOut: Date;
   guestName: string;
-  numAdults: number;
+  numGuests: number;
   roomId: number;
+  hotelId: number;
 }
 
 enum roomType {

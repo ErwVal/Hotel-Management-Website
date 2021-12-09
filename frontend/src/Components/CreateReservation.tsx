@@ -6,8 +6,8 @@ import { createReservation } from "../api/apiClient";
 export const CreateReservation = () => {
   const {
     id,
-    hotelId,
-    numGuests,
+    hotelIdNumber,
+    numAdults,
     checkInDate,
     checkOutDate,
     location,
@@ -15,8 +15,8 @@ export const CreateReservation = () => {
     lengthOfStay,
   } = useParams<{
     id: string;
-    hotelId: string;
-    numGuests: string;
+    hotelIdNumber: string;
+    numAdults: string;
     checkInDate: string;
     checkOutDate: string;
     location: string;
@@ -27,7 +27,8 @@ export const CreateReservation = () => {
   let checkIn = new Date(checkInDate);
   let checkOut = new Date(checkOutDate);
   const [guestName, setGuestName] = useState("");
-  let numAdults = parseInt(numGuests);
+  let numGuests = parseInt(numAdults);
+  let hotelId = parseInt(hotelIdNumber);
   let roomId = parseInt(id);
 
   const submitForm = (event: FormEvent) => {
@@ -36,9 +37,16 @@ export const CreateReservation = () => {
       checkIn,
       checkOut,
       guestName,
-      numAdults,
+      numGuests,
       roomId,
+      hotelId,
     });
+
+    return(
+      <div>
+        <h2>Your reservation has been created. </h2>
+      </div>
+    )
   };
 
   return (

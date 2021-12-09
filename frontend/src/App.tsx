@@ -16,7 +16,7 @@ const Routes: React.FunctionComponent = () => {
         path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"
         component={RoomComponent}
       />
-      <Route exact path="/reservation/create/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay" component={CreateReservation}/>
+      <Route exact path="/reservation/create/:id/:hotelIdNumber/:numAdults/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay" component={CreateReservation}/>
     </Switch>
   );
 };

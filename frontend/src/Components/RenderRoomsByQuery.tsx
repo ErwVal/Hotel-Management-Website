@@ -24,6 +24,16 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
       .then((data) => setRoomsListByQuery(data.rooms));
   }, [props.hotelId, props.numGuests, props.checkInDate, props.checkOutDate]);
 
+  let location = "";
+
+  if (props.hotelId == 1) {
+    location = "Cancun";
+  } else if (props.hotelId == 2) {
+    location = "Tulum";
+  } else if (props.hotelId == 3){
+    location = "Playa del Carmen";
+  }
+
   return (
     <Container>
       {roomsListByQuery.length > 0 ? (
@@ -31,7 +41,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
           <h3>
             Showing available rooms from{" "}
             {moment(props.checkInDate).format("dddd, MMM D")} to{" "}
-            {moment(props.checkOutDate).format("dddd, MMM D")}
+            {moment(props.checkOutDate).format("dddd, MMM D")} in {location}.
           </h3>
 
           <Row>

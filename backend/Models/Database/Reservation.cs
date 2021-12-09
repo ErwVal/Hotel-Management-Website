@@ -14,5 +14,7 @@ namespace react_typescript_dotnet_app.Models.Database
 
         [JsonIgnore]
         public virtual List<Room> BookedRooms { get; set; } = new List<Room>();
+        [JsonIgnore]
+        public virtual int HotelId { get; set; }
     }
 }
