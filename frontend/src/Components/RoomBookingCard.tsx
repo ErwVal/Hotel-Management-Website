@@ -1,9 +1,10 @@
 import React from "react";
 import { Room } from "../api/apiClient";
-import { Container, Carousel, Row, Col, Button } from "react-bootstrap";
+import { Container, Carousel, Row, Col } from "react-bootstrap";
 import { FaWifi, FaSmokingBan, FaBed, FaPoundSign } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 interface Props {
   room: Room;
@@ -127,14 +128,18 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
                 </li>
               </ul>
               <h5>
-                  {" "}
-                  Total for stay: £
-                  {(props.room.roomPrice * lengthOfStay).toFixed(2)}
-                </h5>
+                {" "}
+                Total for stay: £
+                {(props.room.roomPrice * lengthOfStay).toFixed(2)}
+              </h5>
             </p>
           </Col>
           <Col>
-            <button>Reserve now</button>
+            <Link
+              to={`/reservation/create/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}/${location}/${props.room.roomPrice}/${lengthOfStay}`}
+            >
+              <button>Reserve now</button>
+            </Link>
           </Col>
         </Row>
       </div>

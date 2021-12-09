@@ -4,8 +4,8 @@ import "./styling/App.scss";
 import { BookingForm } from "./components/BookingForm";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { Container } from "react-bootstrap";
 import { RoomComponent } from "./components/RoomComponent";
+import { CreateReservation } from "./components/CreateReservation";
 
 const Routes: React.FunctionComponent = () => {
   return (
@@ -16,6 +16,7 @@ const Routes: React.FunctionComponent = () => {
         path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"
         component={RoomComponent}
       />
+      <Route exact path="/reservation/create/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay" component={CreateReservation}/>
     </Switch>
   );
 };

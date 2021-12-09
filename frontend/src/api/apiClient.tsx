@@ -2,7 +2,7 @@ export interface NewReservation {
   checkIn: Date;
   checkOut: Date;
   guestName: string;
-  numGuests: number;
+  numAdults: number;
   roomId: number;
 }
 
@@ -31,7 +31,7 @@ export interface RoomsListResponse {
 }
 
 export const createReservation = async (newReservation: NewReservation) => {
-  const response = await fetch(`https://localhost:5001/reservation/create`, {
+  const response = await fetch(`https://localhost:5001/reservations/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
