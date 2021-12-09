@@ -15,7 +15,6 @@ main {
 }
 
 // Landing/booking page
-
 .div-landing-page {
   background-color: #f2f1ef;
   padding-top: 3rem;
@@ -71,10 +70,6 @@ main {
   color: #fbf2d5;
   height: 8rem;
 
-  .col-footer {
-    // padding: 0;
-    // margin: 0;
-  }
   .row-footer {
     margin: 0;
   }
@@ -85,13 +80,11 @@ main {
 }
 
 // rooms by query component
-
 .div-rooms-query-loading {
   min-height: 50rem;
 }
 
 // room card
-
 .div-room-card {
   .card {
     margin: auto;
@@ -113,5 +106,48 @@ main {
   }
   a:hover {
    color: #fbf2d5;
+  }
+}
+
+// Room booking card
+.div-room-booking-card {
+
+  padding: 3rem;
+
+  img {
+    max-width: 30rem;
+  }
+  button {
+    margin: auto;
+    width: 31rem;
+    height: 14rem;
+    color: #fbf2d5;
+    background-color: #394a51;
+    font-size: 2.5rem;
+  }
+  button:hover {
+    color: #394a51;
+    background-color: #d9d2cc;
+  }
+  p {
+    background-color: #fbf2d5;
+    padding: 3rem;
+  }
+  h3 {
+    padding-bottom: 2rem;
+  }
+  .icon {
+    color: #394a51;
+  }
+  .p-room-price {
+    text-align: center;
+    background-color: #fbf2d5;
+    padding: 1.5rem;
+    ul {
+      text-align: left;
+    }
+  }
+  h5 {
+    text-align: right;
   }
 }
