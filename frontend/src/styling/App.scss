@@ -54,16 +54,16 @@ main {
 }
 
 #background-video {
-    width: 99vw;
-    height: 100vh;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-  }
+  width: 99vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
 
 // footer
 .div-footer {
@@ -86,9 +86,32 @@ main {
 
 // rooms by query component
 
-.div-rooms-query-header {
-  margin-bottom: 3rem;
-}
 .div-rooms-query-loading {
   min-height: 50rem;
+}
+
+// room card
+
+.div-room-card {
+  .card {
+    margin: auto;
+    border-radius: 10%;
+    margin-top: 2rem;
+    text-align: center;
+    .card-title {
+      text-align: center;
+    }
+  }
+  a {
+    color: #394a51;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  .card:hover {
+    background-color: #394a51;
+  }
+  a:hover {
+   color: #fbf2d5;
+  }
 }

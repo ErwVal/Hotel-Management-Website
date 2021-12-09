@@ -26,27 +26,28 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
 
   return (
     <Container>
-      <div className="div-rooms-query-header">
-        <h3>
-          Showing available rooms from{" "}
-          {moment(props.checkInDate).format("dddd, MMM D")} to{" "}
-          {moment(props.checkOutDate).format("dddd, MMM D")}
-        </h3>
-      </div>
       {roomsListByQuery.length > 0 ? (
-        <Row>
-          {roomsListByQuery.map((room) => (
-            <Col>
-              <RoomCard
-                room={room}
-                hotelId={props.hotelId}
-                numGuests={props.numGuests}
-                checkInDate={props.checkInDate}
-                checkOutDate={props.checkOutDate}
-              />
-            </Col>
-          ))}
-        </Row>
+        <div>
+          <h3>
+            Showing available rooms from{" "}
+            {moment(props.checkInDate).format("dddd, MMM D")} to{" "}
+            {moment(props.checkOutDate).format("dddd, MMM D")}
+          </h3>
+
+          <Row>
+            {roomsListByQuery.map((room) => (
+              <Col>
+                <RoomCard
+                  room={room}
+                  hotelId={props.hotelId}
+                  numGuests={props.numGuests}
+                  checkInDate={props.checkInDate}
+                  checkOutDate={props.checkOutDate}
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
       ) : (
         <div className="div-rooms-query-loading">
           <p>Searching for rooms. Please wait a few seconds. </p>

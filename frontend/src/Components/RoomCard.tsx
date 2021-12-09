@@ -35,29 +35,41 @@ const cardVariants = {
   },
 };
 
-export const RoomCard: React.FunctionComponent<Props> = (
-  props: Props
-) => {
-  
+export const RoomCard: React.FunctionComponent<Props> = (props: Props) => {
   let departure = moment(props.checkOutDate);
   let arrival = moment(props.checkInDate);
 
   let lengthOfStay = moment.duration(departure.diff(arrival)).asDays();
 
   return (
-    <motion.div variants={cardVariants} initial="hidden" animate="visible">
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={props.room.images[0]} />
-      <Card.Body>
-        <Card.Title>{roomType[props.room.roomType]} room</Card.Title>
-        <Card.Text>
-          {props.room.roomPrice} x {lengthOfStay} nights
-          <br/>
-         Total stay: {(props.room.roomPrice * lengthOfStay).toFixed(2)}
-        </Card.Text>
-        <Link to={`/rooms/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}`}>See room</Link>
-      </Card.Body>
-    </Card>
-    </motion.div>
+ 
+      <motion.div
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+        whileHover={{
+          scale: 1.1,
+          originX: 0,
+          textShadow: "0px 0px 8px rbg(255,255,255)",
+          boxShadow: "0px 0px 8px rbg(255,255,255)",
+        }}
+        className="div-room-card"
+      >
+           <Link
+      to={`/rooms/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}`}>
+        <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={props.room.images[0]} />
+          <Card.Body>
+            <Card.Title>{roomType[props.room.roomType]} room</Card.Title>
+            <Card.Text>
+              {props.room.roomPrice} x {lengthOfStay} nights
+              <br />
+              Total stay: {(props.room.roomPrice * lengthOfStay).toFixed(2)}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        </Link>
+      </motion.div>
+    
   );
 };
