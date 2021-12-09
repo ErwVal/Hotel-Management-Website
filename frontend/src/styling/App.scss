@@ -83,3 +83,12 @@ main {
 .rooms-page {
   background-image: url("https://localhost:5001/pool-img.jpg");
 }
+
+// rooms by query component
+
+.div-rooms-query-header {
+  margin-bottom: 3rem;
+}
+.div-rooms-query-loading {
+  min-height: 50rem;
+}
