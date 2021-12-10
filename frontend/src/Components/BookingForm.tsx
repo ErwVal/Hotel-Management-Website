@@ -65,13 +65,13 @@ export const BookingForm: React.FunctionComponent = () => {
       className="div-landing-page"
     >
       {!renderRoomsList ? (
-        <Row>
+        <Row className="div-landing-page-row">
           <Col>
             <div className="form-container">
               {/* <video id="background-video" autoPlay loop muted>
             <source src="/video-resort.mp4" type="video/mp4" />
           </video> */}
-              <h3>Search for a room: </h3>
+              <h4>Check room availability</h4>
               <Form onSubmit={submitForm}>
                 <Col className="g-4">
                   <Row className="form-row">
@@ -148,48 +148,26 @@ export const BookingForm: React.FunctionComponent = () => {
           </Col>
           <Col>
             <div className="div-carousel">
-              <h1>Welcome to Maya Hotels</h1>
+              <h1>Welcome</h1>
               <Carousel>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-sm-block w-100"
                     src="landing-page-img.jpg"
                     alt="Enjoy a warm winter in the Riviera Maya"
                   />
                   <Carousel.Caption>
-                    <h3>Enjoy a warm winter in the Riviera Maya</h3>
-                    <p>
-                      Nulla vitae elit libero, a pharetra augue mollis interdum.
-                    </p>
+                    <h3>Enjoy a warm winter in the Riviera</h3>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
-                    className="d-block w-100"
+                    className="d-sm-block w-100"
                     src="pool-img.jpg"
                     alt="Step into Summer 2022 now!"
                   />
-
                   <Carousel.Caption>
                     <h3>Step into Summer 2022 now!</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src="diner-img.jpg"
-                    alt="Waking up in a different city won't be a dream"
-                  />
-
-                  <Carousel.Caption>
-                    <h3>Waking up in a different city won't be a dream</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl
-                      consectetur.
-                    </p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>

@@ -24,11 +24,12 @@ main {
     max-width: 20rem;
     max-height: 40rem;
     border-radius: 10%;
-    background-color: #d9d2cc;
+    background-color: #fbf2d5;
     padding: 1rem;
     margin-left: 5rem;
+    color: #394a51;
 
-    h3 {
+    h4 {
       text-align: center;
     }
 
@@ -48,8 +49,21 @@ main {
   }
 
   .div-carousel {
+    padding-left: 0;
+    margin-left: 0;
     color: #394a51;
+    h3 {
+      color: #fbf2d5;
+    }
+    img {
+      filter: brightness(50%)
+    }
   }
+
+  .div-landing-page-row {
+    margin: 0;
+    padding-right: 4rem;
+  }  
 }
 
 #background-video {
@@ -68,10 +82,18 @@ main {
 .div-footer {
   background-color: #394a51;
   color: #fbf2d5;
-  height: 8rem;
+  height: 14rem;
+  text-align: center;
+  padding-top: 1rem;
 
   .row-footer {
     margin: 0;
+    text-align: center;
+  }
+
+  .icon-light {
+    color: #fbf2d5;
+    margin: 0.5rem;
   }
 }
 
