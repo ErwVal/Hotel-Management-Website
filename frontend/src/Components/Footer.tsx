@@ -8,16 +8,16 @@ export const Footer: React.FunctionComponent = () => {
       <Row className="row-footer">
         <Col>
           {" "}
-          <h3>Hotel</h3>
-          342 Las Plazas, Zona Hotelera.
+          <h3>Dew Breeze Suites</h3>
+          6 Avenida Las Plazas, Zona Hotelera, Cancun, México
           <br />
           Phone: +52 723-4583-3434
           <br />
-          hotel-hotel@hotel.com
+          info@dew-breeze.com
         </Col>
       </Row>
       <br />
-      <Row>
+      <Row className="row-footer">
         <Col>
           <FaTwitter className="icon-light" size={30} />
 

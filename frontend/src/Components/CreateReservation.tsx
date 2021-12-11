@@ -3,7 +3,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { createReservation } from "../api/apiClient";
 
-export const CreateReservation = () => {
+export const CreateReservation: React.FunctionComponent = () => {
   const {
     id,
     hotelIdNumber,

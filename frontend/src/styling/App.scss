@@ -14,9 +14,24 @@ main {
   color: #394a51;
 }
 
+.landing-page {
+  background: url("https://localhost:5001/images/img1.jpg") no-repeat;
+  min-height: 100vw;
+  img {
+    filter: brightness(50%);
+  }
+  background-size: 100%;
+}
+
 // Landing/booking page
 .div-landing-page {
-  background-color: #f2f1ef;
+  // background-color: #f2f1ef;
+  background: url("https://localhost:5001/images/img1.jpg") no-repeat;
+  img {
+    filter: brightness(50%);
+  }
+  background-size: 100%;
+
   padding-top: 3rem;
   padding-bottom: 3rem;
 
@@ -31,6 +46,10 @@ main {
 
     h4 {
       text-align: center;
+    }
+
+    h3 {
+      color: #fbf2d5;
     }
 
     .form-button {
@@ -56,14 +75,14 @@ main {
       color: #fbf2d5;
     }
     img {
-      filter: brightness(50%)
+      filter: brightness(50%);
     }
   }
 
   .div-landing-page-row {
     margin: 0;
     padding-right: 4rem;
-  }  
+  }
 }
 
 #background-video {
@@ -97,10 +116,6 @@ main {
   }
 }
 
-.rooms-page {
-  background-image: url("https://localhost:5001/pool-img.jpg");
-}
-
 // rooms by query component
 .div-rooms-query-loading {
   min-height: 50rem;
@@ -127,13 +142,12 @@ main {
     background-color: #394a51;
   }
   a:hover {
-   color: #fbf2d5;
+    color: #fbf2d5;
   }
 }
 
 // Room booking card
 .div-room-booking-card {
-
   padding: 3rem;
 
   img {

@@ -146,7 +146,7 @@ export const BookingForm: React.FunctionComponent = () => {
               </Form>
             </div>
           </Col>
-          <Col>
+          {/* <Col>
             <div className="div-carousel">
               <h1>Welcome</h1>
               <Carousel>
@@ -172,7 +172,7 @@ export const BookingForm: React.FunctionComponent = () => {
                 </Carousel.Item>
               </Carousel>
             </div>
-          </Col>
+          </Col> */}
         </Row>
       ) : (
         <RenderRoomsByQuery
