@@ -30,8 +30,10 @@ export const LandingPage: React.FunctionComponent = () => {
       animate="visible"
       exit="exit"
     >
+      <h1>Dew Breeze Suites</h1>
+      <h2>LUXURY BOUTIQUE HOTEL</h2>
       <Link to={"/home"}>
-        <button>Accommodation</button>
+        <button>Rooms</button>
       </Link>
 
       <Link to={"/home/contact"}>

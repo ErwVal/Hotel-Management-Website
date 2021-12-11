@@ -15,25 +15,39 @@ main {
 }
 
 .landing-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width:100vw;
-  height: 47vw;
-  overflow: hidden;
-  background-image: url("https://localhost:5001/images/img1.jpg"); 
+  text-align: center;
+  height: 100vh;
+  font-family: "Caudex", serif;
+  padding-top: 9rem;
+  h1 {
+    font-size: 5rem;
+    color: #d9d2cc;
+    padding: 1rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: #fbf2d5;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  button {
+    color: #fbf2d5;
+    background-color: transparent;
+    margin-top: 2rem;
+    opacity: 0.5;
+    font-size: 1.3rem;
+
+  }
+  button:hover {
+    color: #fbf2d5;
+    background-color: #394a51;
+    opacity: 1;
+  }
+  background: rgba(0, 0, 0, 0.7) url("https://localhost:5001/images/img2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.6;
-  button {
-    color: #fbf2d5;
-    background-color: #394a51;
-  }
-  button:hover {
-    color: #394a51;
-    background-color: #d9d2cc;
-  }
+  background-blend-mode: darken;
 }
 
 // Landing/booking page
