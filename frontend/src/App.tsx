@@ -7,6 +7,8 @@ import { Footer } from "./components/Footer";
 import { RoomComponent } from "./components/RoomComponent";
 import { CreateReservation } from "./components/CreateReservation";
 import { LandingPage } from "./components/LandingPage";
+import { Login } from "./components/Login";
+import { SignUp } from "./components/SignUp";
 import { AnimatePresence } from "framer-motion";
 
 export const App: React.FunctionComponent = () => {
@@ -15,7 +17,10 @@ export const App: React.FunctionComponent = () => {
     <>
       <AnimatePresence>
         <Switch location={location} key={location.key}>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/" component={LandingPage} />
+
           <div>
             <Header />
             <Route exact path="/home" component={BookingForm} />

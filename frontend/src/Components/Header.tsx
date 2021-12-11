@@ -29,13 +29,14 @@ export const Header: React.FunctionComponent = () => {
               height="50rem"
               alt="hotel logo"
             />{" "}
+            Dew Breeze Suites
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="/rooms">Rooms</Nav.Link>
-              <Nav.Link href="/">Sign Up</Nav.Link>
-              <Nav.Link href="/">Login</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

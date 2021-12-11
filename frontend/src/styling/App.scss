@@ -13,7 +13,7 @@ nav {
   background-color: #f3f3f3;
   color: #394a51;
   font-family: "Caudex", serif;
-  
+
 }
 
 .landing-page {
@@ -70,12 +70,11 @@ nav {
     margin-left: 5rem;
     color: #fbf2d5;
 
-    h4 {
-      text-align: center;
-    }
-
     h3 {
       color: #fbf2d5;
+    }
+    h4 {
+      text-align: center;
     }
 
     .form-button {
@@ -98,6 +97,28 @@ nav {
     margin: 0;
     padding-right: 4rem;
   }
+
+  h1 {
+    color: #fbf2d5;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 4rem;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  a {
+    color: #f3f3f3;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #fbf2d5;
+  }
+
 }
 
 #background-video {

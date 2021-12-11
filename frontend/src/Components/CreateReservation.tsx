@@ -83,23 +83,6 @@ export const CreateReservation: React.FunctionComponent = () => {
         </Form.Group>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
-            <Form.Control />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>Country</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>US</option>
-              <option>UK</option>
-              <option>EU</option>
-              <option>Canada</option>
-              <option>Mexico</option>
-              <option>Other</option>
-            </Form.Select>
-          </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZip">
             <Form.Label>Postcode</Form.Label>

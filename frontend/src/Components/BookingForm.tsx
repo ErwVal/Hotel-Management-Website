@@ -12,6 +12,7 @@ import {
 import { RenderRoomsByQuery } from "./RenderRoomsByQuery";
 import moment from "moment";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const formVariants = {
   hidden: {
@@ -68,9 +69,6 @@ export const BookingForm: React.FunctionComponent = () => {
         <Row className="div-landing-page-row">
           <Col>
             <div className="form-container">
-              {/* <video id="background-video" autoPlay loop muted>
-            <source src="/video-resort.mp4" type="video/mp4" />
-          </video> */}
               <h4>Check room availability</h4>
               <Form onSubmit={submitForm}>
                 <Col className="g-4">
@@ -145,6 +143,13 @@ export const BookingForm: React.FunctionComponent = () => {
                 )}
               </Form>
             </div>
+          </Col>
+
+          <Col>
+            <h1>Get ready for summer now</h1>
+            <h3>
+              <Link to={"/home/promotions"}>See our promotions</Link>
+            </h3>
           </Col>
         </Row>
       ) : (
