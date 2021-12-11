@@ -43,3 +43,11 @@ The following features will soon be added to the app:
 
 ## License
 [MIT](https://mit-license.org/) License
+
+
+    
+
+    
+
+
+
