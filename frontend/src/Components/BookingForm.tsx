@@ -112,7 +112,7 @@ export const BookingForm: React.FunctionComponent = () => {
                     />
                   </Row>
                   <Row className="form-row">
-                    <label>Adult</label> <br />
+                    <label>Adults</label> <br />
                     <Form.Select
                       className="sm"
                       onChange={(e) => setNumGuests(e.target.value)}
@@ -146,33 +146,6 @@ export const BookingForm: React.FunctionComponent = () => {
               </Form>
             </div>
           </Col>
-          {/* <Col>
-            <div className="div-carousel">
-              <h1>Welcome</h1>
-              <Carousel>
-                <Carousel.Item>
-                  <img
-                    className="d-sm-block w-100"
-                    src="landing-page-img.jpg"
-                    alt="Enjoy a warm winter in the Riviera Maya"
-                  />
-                  <Carousel.Caption>
-                    <h3>Enjoy a warm winter in the Riviera</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-sm-block w-100"
-                    src="pool-img.jpg"
-                    alt="Step into Summer 2022 now!"
-                  />
-                  <Carousel.Caption>
-                    <h3>Step into Summer 2022 now!</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              </Carousel>
-            </div>
-          </Col> */}
         </Row>
       ) : (
         <RenderRoomsByQuery

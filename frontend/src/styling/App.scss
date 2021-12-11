@@ -9,9 +9,11 @@ main {
   font-family: "Caudex", serif;
 }
 
-.apply-font {
-  font-family: "Caudex", serif;
+nav {
+  background-color: #f3f3f3;
   color: #394a51;
+  font-family: "Caudex", serif;
+  
 }
 
 .landing-page {
@@ -36,7 +38,6 @@ main {
     margin-top: 2rem;
     opacity: 0.5;
     font-size: 1.3rem;
-
   }
   button:hover {
     color: #fbf2d5;
@@ -52,21 +53,22 @@ main {
 
 // Landing/booking page
 .div-landing-page {
-  // background-color: #f2f1ef;
-  background: url("https://localhost:5001/images/img1.jpg");
+  background: rgba(0, 0, 0, 0.3) url("https://localhost:5001/images/img3.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  background-blend-mode: darken;
   padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
 
   .form-container {
     max-width: 20rem;
     max-height: 40rem;
     border-radius: 10%;
-    background-color: #fbf2d5;
+    background-color: #394a51;
+    opacity: 0.9;
     padding: 1rem;
     margin-left: 5rem;
-    color: #394a51;
+    color: #fbf2d5;
 
     h4 {
       text-align: center;
@@ -84,22 +86,11 @@ main {
     .form-button:hover {
       color: #fbf2d5;
       background-color: #394a51;
+      opacity: 1;
     }
     .form-row {
       padding: 0.5rem;
       margin-top: 1rem;
-    }
-  }
-
-  .div-carousel {
-    padding-left: 0;
-    margin-left: 0;
-    color: #394a51;
-    h3 {
-      color: #fbf2d5;
-    }
-    img {
-      filter: brightness(50%);
     }
   }
 
