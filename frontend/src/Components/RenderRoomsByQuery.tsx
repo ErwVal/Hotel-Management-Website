@@ -15,13 +15,25 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
   props: Props
 ) => {
   const [roomsListByQuery, setRoomsListByQuery] = useState<Room[]>([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(
       `https://localhost:5001/rooms/search?hotelId=${props.hotelId}&numGuests=${props.numGuests}&checkInDate=${props.checkInDate}&checkOutDate=${props.checkOutDate}`
     )
-      .then((response) => response.json())
-      .then((data) => setRoomsListByQuery(data.rooms));
+      .then((response) => {
+        if (!response.ok) {
+          throw Error("Could not fetch data from resource.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setRoomsListByQuery(data.rooms)
+      setError(null)
+    })
+      .catch(err => {
+        setError(err.message)
+      });
   }, [props.hotelId, props.numGuests, props.checkInDate, props.checkOutDate]);
 
   let location = "";
@@ -30,12 +42,13 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
     location = "Cancun";
   } else if (props.hotelId == 2) {
     location = "Tulum";
-  } else if (props.hotelId == 3){
+  } else if (props.hotelId == 3) {
     location = "Playa del Carmen";
   }
 
   return (
     <Container>
+      {error && <div>{error}</div>}
       {roomsListByQuery.length > 0 ? (
         <div>
           <h3>
