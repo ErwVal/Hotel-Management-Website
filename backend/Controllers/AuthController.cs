@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using react_typescript_dotnet_app.Dtos;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace react_typescript_dotnet_app.Controllers
 {
@@ -56,8 +57,13 @@ namespace react_typescript_dotnet_app.Controllers
 
             var jwt = _jwtService.Generate(user.Id);
 
+            Response.Cookies.Append("jwt", jwt, new CookieOptions
+            {
+                HttpOnly = true // Frontend can only get it and sent it. Only backend can modify it or access it.
+            });
+
             return Ok( new {
-                jwt
+                message = "success"
             });
         }
         
