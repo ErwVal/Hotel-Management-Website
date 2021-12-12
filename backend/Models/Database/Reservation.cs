@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 namespace react_typescript_dotnet_app.Models.Database
 {
     public class Reservation
