@@ -82,10 +82,22 @@ namespace react_typescript_dotnet_app.Controllers
 
             return Ok(user);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return Unauthorized();
             }
+        }
+
+
+        [HttpPost("logout")]
+        public IActionResult Logout() // This function removes the cookie.
+        {
+            Response.Cookies.Delete("jwt");
+
+            return Ok(new 
+            {
+                message = "success"
+            });
         }
         
     }
