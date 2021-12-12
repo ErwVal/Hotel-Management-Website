@@ -41,6 +41,11 @@ namespace react_typescript_dotnet_app
             services.AddTransient<IRoomsService, RoomsService>();
             services.AddTransient<IReservationRepo, ReservationRepo>();
             services.AddTransient<IReservationService, ReservationService>();
+            services.AddTransient<IUsersRepo, UsersRepo>();
+            services.AddTransient<IUsersService, UsersService>();
+
+            services.AddScoped<IUsersRepo, UsersRepo>(); // So that IUsersRepo only accepts UsersRepo type
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

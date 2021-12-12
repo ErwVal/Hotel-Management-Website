@@ -9,6 +9,8 @@ namespace react_typescript_dotnet_app.Repositories
     {
         List<User> GetUsersList();
         User GetUserById(int id);
+
+        User Create(User user);
     }
 
     public class UsersRepo : IUsersRepo
@@ -18,6 +20,14 @@ namespace react_typescript_dotnet_app.Repositories
         public UsersRepo(DatabaseDBContext database)
         {
             _database = database;
+        }
+
+        public User Create(User user)
+        {
+             _database.Users.Add(user);
+             user.Id =_database.SaveChanges();
+             
+             return user;
         }
 
         public List<User> GetUsersList()

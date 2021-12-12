@@ -10,15 +10,22 @@ using System.Collections.Generic;
 
 namespace react_typescript_dotnet_app.Controllers
 {
-    [Route("")]
+    [Route("api")]
     [ApiController]
     public class AuthController : Controller
     {
 
-        [HttpGet]
-        public IActionResult Hello()
+        private readonly IUsersRepo _repository;
+
+        public AuthController(IUsersRepo repository)
         {
-            return Ok("Success wuhuu!");
+            _repository = repository;
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register()
+        {
+            return Ok("Success!");
         }
     }
 
