@@ -5,6 +5,7 @@ using react_typescript_dotnet_app.Services;
 using react_typescript_dotnet_app.Models.Database;
 using react_typescript_dotnet_app.Models.Response;
 using react_typescript_dotnet_app.Models.Request;
+using Microsoft.IdentityModel.Tokens;
 using react_typescript_dotnet_app.Dtos;
 using System.Linq;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace react_typescript_dotnet_app.Controllers
     {
 
         private readonly IUsersRepo _repository;
+        private readonly JtwService _jwtService;
 
-        public AuthController(IUsersRepo repository)
+        public AuthController(IUsersRepo repository, JtwService jwtService)
         {
             _repository = repository;
+            _jwtService = jwtService;
         }
 
         [HttpPost("register")]
@@ -51,7 +54,11 @@ namespace react_typescript_dotnet_app.Controllers
                 return BadRequest(new{message = "Invalid credentials"});
             }
 
-            return Ok(user);
+            var jwt = _jwtService.Generate(user.Id);
+
+            return Ok( new {
+                jwt
+            });
         }
         
     }
