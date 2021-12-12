@@ -9,8 +9,8 @@ namespace react_typescript_dotnet_app.Repositories
     {
         List<User> GetUsersList();
         User GetUserById(int id);
-
         User Create(User user);
+        User GetUserByEmail(string email);
     }
 
     public class UsersRepo : IUsersRepo
@@ -28,6 +28,11 @@ namespace react_typescript_dotnet_app.Repositories
              user.Id =_database.SaveChanges();
              
              return user;
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            return _database.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public List<User> GetUsersList()
