@@ -28,6 +28,8 @@ namespace react_typescript_dotnet_app
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(); // On single-page applications, prevents requests from different ports.
+
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
@@ -68,6 +70,14 @@ namespace react_typescript_dotnet_app
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            // The code below is necessary to send cookies to the frontend. 
+            app.UseCors(options => options
+            .WithOrigins(new []{"http://localhost:3000"})
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            );
 
             app.UseEndpoints(endpoints =>
             {
