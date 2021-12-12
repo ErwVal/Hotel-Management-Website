@@ -7,6 +7,18 @@ export interface NewReservation {
   hotelId: number;
 }
 
+export interface NewUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginUser {
+  email: string;
+  password: string;
+}
+
 enum roomType {
   Single,
   Double,
@@ -32,12 +44,45 @@ export interface RoomsListResponse {
 }
 
 export const createReservation = async (newReservation: NewReservation) => {
-  const response = await fetch(`https://localhost:5001/reservations/create`, {
+  const response = await fetch('https://localhost:5001/reservations/create', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newReservation),
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const registerUser = async (registerUser: NewUser) => {
+  const response = await fetch('http://localhost:8000/api/register', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(registerUser),
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const loginUser = async (loginUser: LoginUser) => {
+  const response = await fetch('http://localhost:8000/api/login', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: 'include',
+    body: JSON.stringify(loginUser),
   });
 
   if (!response.ok) {

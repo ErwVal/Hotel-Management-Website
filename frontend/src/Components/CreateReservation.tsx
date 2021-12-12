@@ -34,12 +34,12 @@ export const CreateReservation: React.FunctionComponent = () => {
   const submitForm = (event: FormEvent) => {
     event.preventDefault();
     createReservation({
-      checkIn,
-      checkOut,
-      guestName,
-      numGuests,
-      roomId,
-      hotelId,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      guestName: guestName,
+      numGuests: numGuests,
+      roomId: roomId,
+      hotelId: hotelId,
     });
 
     return(

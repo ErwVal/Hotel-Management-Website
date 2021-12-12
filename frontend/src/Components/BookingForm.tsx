@@ -31,7 +31,11 @@ const formVariants = {
 
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
-export const BookingForm: React.FunctionComponent = () => {
+interface Props {
+  firstName: String
+}
+
+export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
   const [renderRoomsList, setRenderRoomsList] = useState(false);
   const [location, setLocation] = useState(99);
   const [checkInDateState, setCheckInDate] = useState("");
@@ -146,7 +150,7 @@ export const BookingForm: React.FunctionComponent = () => {
           </Col>
 
           <Col>
-            <h1>Get ready for summer now</h1>
+            <h1>Get ready for summer now {props.firstName}</h1>
             <h3>
               <Link to={"/home/promotions"}>See our promotions</Link>
             </h3>

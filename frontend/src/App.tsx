@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import "./styling/App.scss";
 import { BookingForm } from "./components/BookingForm";
@@ -8,22 +8,42 @@ import { RoomComponent } from "./components/RoomComponent";
 import { CreateReservation } from "./components/CreateReservation";
 import { LandingPage } from "./components/LandingPage";
 import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp";
+import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
 
 export const App: React.FunctionComponent = () => {
   const location = useLocation();
+
+  const [firstName, setFirstName] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("http://localhost:8000/api/user", {
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      const content = await response.json();
+
+      setFirstName(content.firstName);
+    })();
+  });
+
   return (
     <>
       <AnimatePresence>
         <Switch location={location} key={location.key}>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/" component={LandingPage} />
 
           <div>
-            <Header />
-            <Route exact path="/home" component={BookingForm} />
+            <Header firstName={firstName} setFirstName={setFirstName} />
+            <Route exact path="/login" component={() => <Login setFirstName={setFirstName}/>}/>
+            <Route exact path="/register" component={Register} />
+            <Route
+              exact
+              path="/home"
+              component={() => <BookingForm firstName={firstName} />}
+            />
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"
