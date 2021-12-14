@@ -8,7 +8,7 @@ export const RenderAllRooms: React.FunctionComponent = () => {
   const [roomsListByQuery, setRoomsListByQuery] = useState<Room[]>([]);
 
   useEffect(() => {
-    fetch("https://localhost:5001/rooms")
+    fetch("http://localhost:8000/rooms")
       .then((response) => response.json())
       .then((data) => setRoomsList(data.rooms));
   }, []);
@@ -22,7 +22,7 @@ export const RenderAllRooms: React.FunctionComponent = () => {
 
   useEffect(() => {
     fetch(
-      `https://localhost:5001/rooms/search?hotelId=${hotelId}&numGuests=${numGuests}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`
+      `http://localhost:8000/rooms/search?hotelId=${hotelId}&numGuests=${numGuests}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`
     )
       .then((response) => response.json())
       .then((data) => setRoomsListByQuery(data.rooms));

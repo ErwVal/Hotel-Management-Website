@@ -36,7 +36,7 @@ export const Header: React.FunctionComponent<Props> = ( props: Props) => {
 
   let menu;
 
-  if (props.firstName == '') {
+  if (props.firstName === '') {
     menu = (
       <motion.div variants={headerVariants} initial="hidden" animate="visible">
         <Navbar collapseOnSelect>

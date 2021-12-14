@@ -19,7 +19,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
 
   useEffect(() => {
     fetch(
-      `https://localhost:5001/rooms/search?hotelId=${props.hotelId}&numGuests=${props.numGuests}&checkInDate=${props.checkInDate}&checkOutDate=${props.checkOutDate}`
+      `http://localhost:8000/rooms/search?hotelId=${props.hotelId}&numGuests=${props.numGuests}&checkInDate=${props.checkInDate}&checkOutDate=${props.checkOutDate}`
     )
       .then((response) => {
         if (!response.ok) {

@@ -10,11 +10,12 @@ import { LandingPage } from "./components/LandingPage";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
+import Nav from "./components/Nav";
 
 export const App: React.FunctionComponent = () => {
   const location = useLocation();
 
-  const [firstName, setFirstName] = useState('');
+  const [firstName, setFirstName] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -26,7 +27,8 @@ export const App: React.FunctionComponent = () => {
       const content = await response.json();
 
       setFirstName(content.firstName);
-    })();
+      }
+    )();
   });
 
   return (
@@ -36,7 +38,7 @@ export const App: React.FunctionComponent = () => {
           <Route exact path="/" component={LandingPage} />
 
           <div>
-            <Header firstName={firstName} setFirstName={setFirstName} />
+            <Nav firstName={firstName} setFirstName={setFirstName} />
             <Route exact path="/login" component={() => <Login setFirstName={setFirstName}/>}/>
             <Route exact path="/register" component={Register} />
             <Route

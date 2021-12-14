@@ -7,7 +7,7 @@ export const RoomComponent: React.FunctionComponent = () => {
   const { id, hotelId, numGuests, checkInDate, checkOutDate } = useParams<{ id: string, hotelId: string, numGuests: string, checkInDate: string, checkOutDate: string }>();
 
   useEffect(() => {
-    fetch(`https://localhost:5001/rooms/${id}`)
+    fetch(`http://localhost:8000/rooms/${id}`)
       .then((response) => response.json())
       .then((response) => setRoom(response))
       .catch(console.log);

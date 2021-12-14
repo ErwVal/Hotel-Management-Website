@@ -44,7 +44,7 @@ nav {
     background-color: #394a51;
     opacity: 1;
   }
-  background: rgba(0, 0, 0, 0.7) url("https://localhost:5001/images/img2.jpg");
+  background: rgba(0, 0, 0, 0.7) url("http://localhost:8000/images/img2.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -53,7 +53,7 @@ nav {
 
 // Landing/booking page
 .div-landing-page {
-  background: rgba(0, 0, 0, 0.3) url("https://localhost:5001/images/img3.jpg");
+  background: rgba(0, 0, 0, 0.3) url("http://localhost:8000/images/img3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: darken;
