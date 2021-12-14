@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;
+  setUserId:(firstName: string) => void;
 }
 
 export const Login: React.FunctionComponent<Props> = (props: Props) => {
@@ -29,6 +30,7 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
     const content = await response.json();
     setRedirect(true);
     props.setFirstName(content.firstName);
+    props.setUserId(content.id)
 
   };
 

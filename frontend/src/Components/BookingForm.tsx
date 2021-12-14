@@ -32,7 +32,7 @@ const formVariants = {
 type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
 interface Props {
-  firstName: String
+  firstName: String;
 }
 
 export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
@@ -150,7 +150,12 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
           </Col>
 
           <Col>
-            <h1>Get ready for summer now {props.firstName}</h1>
+            {props.firstName ? (
+              <h1>Welcome {props.firstName}</h1>
+            ) : (
+              <h1>Get ready for summer now</h1>
+            )}
+
             <h3>
               <Link to={"/home/promotions"}>See our promotions</Link>
             </h3>

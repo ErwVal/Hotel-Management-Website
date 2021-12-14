@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 const headerVariants = {
   hidden: {
@@ -21,22 +20,24 @@ const headerVariants = {
 interface Props {
   firstName: string;
   setFirstName: (firstName: string) => void;
+  userId: string;
+  setUserId:(firstName: string) => void;
 }
 
-export const Header: React.FunctionComponent<Props> = ( props: Props) => {
+export const Header: React.FunctionComponent<Props> = (props: Props) => {
   const logout = async () => {
-    console.log("LOGOUT TRIGGERED");
     await fetch("http://localhost:8000/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
-    props.setFirstName('');
+    props.setFirstName("");
+    props.setUserId("");
   };
 
   let menu;
 
-  if (props.firstName === '') {
+  if (props.firstName) {
     menu = (
       <motion.div variants={headerVariants} initial="hidden" animate="visible">
         <Navbar collapseOnSelect>
@@ -53,9 +54,8 @@ export const Header: React.FunctionComponent<Props> = ( props: Props) => {
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <Nav.Link href="/rooms">Rooms</Nav.Link>
-                <Nav.Link href="/register">Register</Nav.Link>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/trip">Trip</Nav.Link>
+                <Nav.Link href="/login" onClick={logout}>Logout</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -80,9 +80,8 @@ export const Header: React.FunctionComponent<Props> = ( props: Props) => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
                 <Nav.Link href="/rooms">Rooms</Nav.Link>
-                <Link to="/login" onClick={logout}>
-                  Logout
-                </Link>
+                <Nav.Link href="/register">Register</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

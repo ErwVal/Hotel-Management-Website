@@ -40,6 +40,21 @@ namespace react_typescript_dotnet_app.Controllers
             };
         }
 
+               ///<summary>
+        /// Gets the list of reservations from the database.
+        ///</summary>
+        [HttpGet]
+        public ActionResult<ReservationListResponse> GetUserReservations(int id)
+        {
+            return new ReservationListResponse
+            {
+                Reservations = _reservationService
+                .GetReservationsList()
+                .Select(r => new ReservationResponse(r))
+                .ToList()
+            };
+        }
+
 
         ///<summary>
         /// Creates a new reservation 

@@ -11,6 +11,7 @@ namespace react_typescript_dotnet_app.Repositories
         User GetUserById(int id);
         User Create(User user);
         User GetUserByEmail(string email);
+        
     }
 
     public class UsersRepo : IUsersRepo

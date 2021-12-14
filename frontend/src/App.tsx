@@ -10,12 +10,14 @@ import { LandingPage } from "./components/LandingPage";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
+import Trip from "./components/Trip";
 import Nav from "./components/Nav";
 
 export const App: React.FunctionComponent = () => {
   const location = useLocation();
 
   const [firstName, setFirstName] = useState("");
+  const [ userId, setUserId] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -27,6 +29,7 @@ export const App: React.FunctionComponent = () => {
       const content = await response.json();
 
       setFirstName(content.firstName);
+      setUserId(content.id)
       }
     )();
   });
@@ -38,13 +41,18 @@ export const App: React.FunctionComponent = () => {
           <Route exact path="/" component={LandingPage} />
 
           <div>
-            <Nav firstName={firstName} setFirstName={setFirstName} />
-            <Route exact path="/login" component={() => <Login setFirstName={setFirstName}/>}/>
+            <Header firstName={firstName} userId={userId} setFirstName={setFirstName} setUserId={setUserId}/>
+            <Route exact path="/login" component={() => <Login setFirstName={setFirstName} setUserId={setUserId}/>}/>
             <Route exact path="/register" component={Register} />
             <Route
               exact
               path="/home"
               component={() => <BookingForm firstName={firstName} />}
+            />
+                        <Route
+              exact
+              path="/trip"
+              component={() => <Trip firstName={firstName} userId={userId}/>}
             />
             <Route
               exact

@@ -44,7 +44,7 @@ export interface RoomsListResponse {
 }
 
 export const createReservation = async (newReservation: NewReservation) => {
-  const response = await fetch('https://localhost:5001/reservations/create', {
+  const response = await fetch('http://localhost:8000/reservations/create', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
