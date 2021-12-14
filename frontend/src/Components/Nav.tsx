@@ -8,14 +8,12 @@ interface Props {
 
 export const Nav: React.FunctionComponent<Props> = (props: Props) => {
   const logout = async () => {
-    alert("LOGOUT TRIGGERED");
     await fetch("http://localhost:8000/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
     props.setFirstName("");
-    alert(props.firstName); // -> "u1FirstName"
   };
 
   let menu;
