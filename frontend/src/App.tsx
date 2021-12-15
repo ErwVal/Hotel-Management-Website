@@ -17,7 +17,7 @@ export const App: React.FunctionComponent = () => {
   const location = useLocation();
 
   const [firstName, setFirstName] = useState("");
-  const [ userId, setUserId] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -29,9 +29,8 @@ export const App: React.FunctionComponent = () => {
       const content = await response.json();
 
       setFirstName(content.firstName);
-      setUserId(content.id)
-      }
-    )();
+      setUserId(content.id);
+    })();
   });
 
   return (
@@ -41,18 +40,29 @@ export const App: React.FunctionComponent = () => {
           <Route exact path="/" component={LandingPage} />
 
           <div>
-            <Header firstName={firstName} userId={userId} setFirstName={setFirstName} setUserId={setUserId}/>
-            <Route exact path="/login" component={() => <Login setFirstName={setFirstName} setUserId={setUserId}/>}/>
+            <Header
+              firstName={firstName}
+              userId={userId}
+              setFirstName={setFirstName}
+              setUserId={setUserId}
+            />
+            <Route
+              exact
+              path="/login"
+              component={() => (
+                <Login setFirstName={setFirstName} setUserId={setUserId} />
+              )}
+            />
             <Route exact path="/register" component={Register} />
             <Route
               exact
               path="/home"
               component={() => <BookingForm firstName={firstName} />}
             />
-                        <Route
+            <Route
               exact
               path="/trip"
-              component={() => <Trip firstName={firstName} userId={userId}/>}
+              component={() => <Trip firstName={firstName} userId={userId} />}
             />
             <Route
               exact

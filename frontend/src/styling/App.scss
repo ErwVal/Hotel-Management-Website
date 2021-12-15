@@ -223,3 +223,26 @@ nav {
     text-align: right;
   }
 }
+
+.div-trip {
+  min-height: 60vh;
+}
+
+.div-login {
+  min-height: 60vh;
+  text-align: center;
+  align-items: center;
+
+  h3 {
+    padding: 3rem;
+  }
+  .btn {
+    margin-top: 3rem;
+    color: #fbf2d5;
+    background-color: #394a51;
+  }
+  .btn:hover {
+    color: #394a51;
+    background-color: #d9d2cc;
+  }
+}

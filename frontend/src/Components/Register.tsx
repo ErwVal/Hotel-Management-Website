@@ -8,8 +8,8 @@ export const Register: React.FunctionComponent = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-  const[redirect, setRedirect] = useState(false);
+
+  const [redirect, setRedirect] = useState(false);
 
   const submitForm = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -20,62 +20,59 @@ export const Register: React.FunctionComponent = () => {
       password: password,
     });
 
-    setRedirect(true)
-   
+    setRedirect(true);
   };
 
-  if(redirect){
-    return <Redirect to="/login"/>;
+  if (redirect) {
+    return <Redirect to="/login" />;
   }
 
   return (
     <Container>
-      <h2>Register</h2>
-      <Form onSubmit={submitForm}>
-        <Row>
-          <Col>
-            <Form.Label>First name</Form.Label>
-            <Form.Control
-              placeholder="First name"
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </Col>
-          <Col>
-            <Form.Label>Last name</Form.Label>
-            <Form.Control
-              placeholder="Last name"
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </Col>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </Form.Group>
+      <div className="div-login">
+        <h3>Register</h3>
+        <Form onSubmit={submitForm}>
+          <Row>
+            <Col>
+              <Form.Control
+                placeholder="First name"
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder="Last name"
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Row>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
+          </Row>
 
-        <Button variant="primary" type="submit">
-          Register
-        </Button>
-      </Form>
+          <Button type="submit">
+            Register
+          </Button>
+        </Form>
+      </div>
     </Container>
   );
 };

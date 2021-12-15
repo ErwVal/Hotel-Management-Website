@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;
-  setUserId:(firstName: string) => void;
+  setUserId: (firstName: string) => void;
 }
 
 export const Login: React.FunctionComponent<Props> = (props: Props) => {
@@ -30,8 +30,7 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
     const content = await response.json();
     setRedirect(true);
     props.setFirstName(content.firstName);
-    props.setUserId(content.id)
-
+    props.setUserId(content.id);
   };
 
   if (redirect) {
@@ -40,35 +39,33 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <Container>
-      <h2>Login</h2>
-      <Form onSubmit={handleLogin}>
-        <Col>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Form.Group>
+      <div className="div-login">
+        <h3>Login</h3>
+        <Form onSubmit={handleLogin}>
+          <Col>
+            <Row className="mb-3">
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
-          </Row>
-          <Button variant="primary" type="submit">
-            Log in
-          </Button>
-        </Col>
-      </Form>
+              <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Row>
+            <Button type="submit">Log in</Button>
+          </Col>
+        </Form>
+      </div>
     </Container>
   );
 };
