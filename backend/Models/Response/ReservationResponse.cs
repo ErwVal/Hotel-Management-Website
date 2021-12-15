@@ -22,7 +22,6 @@ namespace react_typescript_dotnet_app.Models.Response
             Id = reservation.Id;
             CheckIn = reservation.CheckIn;
             CheckOut = reservation.CheckOut;
-            GuestName = reservation.GuestName;
             NumGuests = reservation.NumGuests;
             BookedRooms.AddRange(reservation.BookedRooms);
         }

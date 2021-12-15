@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using react_typescript_dotnet_app;
@@ -10,9 +11,10 @@ using react_typescript_dotnet_app;
 namespace react_typescript_dotnet_app.Migrations
 {
     [DbContext(typeof(DatabaseDBContext))]
-    partial class DatabaseDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211215152315_RemoveGuestNameFromReservationSchema")]
+    partial class RemoveGuestNameFromReservationSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

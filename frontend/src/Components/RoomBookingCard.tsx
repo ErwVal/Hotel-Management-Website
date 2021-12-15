@@ -4,7 +4,8 @@ import { Container, Carousel, Row, Col } from "react-bootstrap";
 import { FaWifi, FaSmokingBan, FaBed, FaPoundSign } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { Register } from "./Register";
 
 interface Props {
   room: Room;
@@ -12,6 +13,8 @@ interface Props {
   numGuests: number | string;
   checkInDate: string;
   checkOutDate: string;
+  userId?: string | number;
+  setReservation: (reservation: object) => void;
 }
 
 enum roomType {
@@ -34,9 +37,32 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
     location = "Cancun";
   } else if (props.hotelId == 2) {
     location = "Tulum";
-  } else if (props.hotelId == 3){
+  } else if (props.hotelId == 3) {
     location = "Playa del Carmen";
   }
+
+  const createReservationObject = () => {
+    let checkIn = new Date(props.checkInDate);
+    let checkOut = new Date(props.checkOutDate);
+
+    props.setReservation({
+      checkIn: checkIn,
+      checkOut: checkOut,
+      numGuests: props.numGuests,
+      roomId: props.room.id,
+      hotelId: props.hotelId,
+    });
+
+    if (props.userId) {
+      <Redirect
+      to="/reservation/create"
+        // to={`/reservation/create/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}/${location}/${props.room.roomPrice}/${lengthOfStay}`}
+      />;
+    } else {
+      <Redirect to="/login" />;
+    }
+  };
+
   return (
     <Container>
       <div className="div-room-booking-card">
@@ -134,13 +160,7 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
               </h5>
             </p>
           </Col>
-          <Col>
-            <Link
-              to={`/reservation/create/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}/${location}/${props.room.roomPrice}/${lengthOfStay}`}
-            >
-              <button>Reserve now</button>
-            </Link>
-          </Col>
+          <button onClick={createReservationObject}>Reserve now</button>
         </Row>
       </div>
     </Container>

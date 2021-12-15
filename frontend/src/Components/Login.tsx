@@ -1,7 +1,7 @@
 import React, { FormEvent, SyntheticEvent, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { LoginUser, loginUser } from "../api/apiClient";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;
@@ -52,6 +52,8 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
                   required
                 />
               </Form.Group>
+              </Row>
+              <Row>
 
               <Form.Group as={Col} controlId="formGridPassword">
                 <Form.Control
@@ -63,6 +65,9 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
               </Form.Group>
             </Row>
             <Button type="submit">Log in</Button>
+            <Row>
+              <h4>Haven't got an account? Register <Link to="/register"> here</Link></h4>
+              </Row>
           </Col>
         </Form>
       </div>

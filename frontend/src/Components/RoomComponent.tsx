@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RoomBookingCard } from "./RoomBookingCard";
 
-export const RoomComponent: React.FunctionComponent = () => {
+interface Props {
+  userId?: string | number;
+  setReservation: (reservation: object) => void;
+}
+
+export const RoomComponent: React.FunctionComponent<Props> = ( props: Props) => {
   const [room, setRoom] = useState<any>();
   const { id, hotelId, numGuests, checkInDate, checkOutDate } = useParams<{ id: string, hotelId: string, numGuests: string, checkInDate: string, checkOutDate: string }>();
 
@@ -18,7 +23,7 @@ export const RoomComponent: React.FunctionComponent = () => {
       {!room ? (
         <p>Processing...</p>
       ) : (
-        <RoomBookingCard room={room} hotelId={hotelId} numGuests={numGuests} checkInDate={checkInDate} checkOutDate={checkOutDate}/>
+        <RoomBookingCard setReservation={props.setReservation} room={room} hotelId={hotelId} numGuests={numGuests} checkInDate={checkInDate} checkOutDate={checkOutDate}/>
       )}
     </>
   );

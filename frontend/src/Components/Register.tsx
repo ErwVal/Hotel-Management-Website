@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { NewUser, registerUser } from "../api/apiClient";
 
 export const Register: React.FunctionComponent = () => {
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +20,6 @@ export const Register: React.FunctionComponent = () => {
       email: email,
       password: password,
     });
-
     setRedirect(true);
   };
 

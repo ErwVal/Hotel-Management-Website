@@ -1,106 +1,64 @@
 import React, { FormEvent, useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { createReservation } from "../api/apiClient";
+import { Reservation } from "../App";
 
-export const CreateReservation: React.FunctionComponent = () => {
-  const {
-    id,
-    hotelIdNumber,
-    numAdults,
-    checkInDate,
-    checkOutDate,
-    location,
-    roomPrice,
-    lengthOfStay,
-  } = useParams<{
-    id: string;
-    hotelIdNumber: string;
-    numAdults: string;
-    checkInDate: string;
-    checkOutDate: string;
-    location: string;
-    roomPrice: string;
-    lengthOfStay: string;
-  }>();
+export interface CreateReservationProps {
+  reservation: Reservation;
+  userId: number | string;
+}
 
-  let checkIn = new Date(checkInDate);
-  let checkOut = new Date(checkOutDate);
-  const [guestName, setGuestName] = useState("");
-  let numGuests = parseInt(numAdults);
-  let hotelId = parseInt(hotelIdNumber);
-  let roomId = parseInt(id);
+export const CreateReservation: React.FunctionComponent<CreateReservationProps> = (props: CreateReservationProps) => {
 
-  const submitForm = (event: FormEvent) => {
-    event.preventDefault();
+  const [formStatus, setFormStatus] = useState("PENDING");
+
+  const submit = () => {
     createReservation({
-      checkIn: checkIn,
-      checkOut: checkOut,
-      guestName: guestName,
-      numGuests: numGuests,
-      roomId: roomId,
-      hotelId: hotelId,
+      checkIn: props.reservation.checkIn,
+      checkOut: props.reservation.checkOut,
+      numGuests: props.reservation.numGuests,
+      roomId: props.reservation.roomId,
+      hotelId: props.reservation.hotelId,
+      guestId: props.userId,
     });
 
-    return(
-      <div>
-        <h2>Your reservation has been created. </h2>
-      </div>
-    )
+    alert("Your reservation has been created");
+    setFormStatus("SUBMITTED");
+    if (formStatus === "SUBMITTED") {
+      return <Redirect to="/home" />;
+    } 
   };
 
-  return (
+  if(!props.userId){
+    return(<Redirect to="/home"/>)
+  }
+
+
+  return(
     <div>
-      <h2>Sign in</h2>
-      <Form onSubmit={submitForm}>
-        <Row>
-          <Col>
-            <Form.Control
-              placeholder="First name"
-              onChange={(e) => setGuestName(e.target.value)}
-              required
-            />
-          </Col>
-          <Col>
-            <Form.Control placeholder="Last name" />
-          </Col>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-        </Row>
-
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Row className="mb-3">
-
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Postcode</Form.Label>
-            <Form.Control />
-          </Form.Group>
-        </Row>
-
-        <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="I agree with the terms and conditions."
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      <h3>Please confirm your details are correct: </h3>
+      <ul>
+        <li>
+          Check in: {props.reservation.checkIn}
+        </li>
+        <li>
+          Check out: {props.reservation.checkOut}
+        </li>
+        <li>
+          Adults: {props.reservation.numGuests}
+          </li>
+          <li>
+            Room ID: {props.reservation.roomId}
+          </li>
+          <li>
+            Hotel ID: {props.reservation.hotelId}
+          </li>
+          <li>
+            Guest ID: {props.userId}
+          </li>
+      </ul>
+      <button onClick={submit}>Confirm and make reservation</button>
     </div>
-  );
+  )
 };

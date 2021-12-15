@@ -13,11 +13,21 @@ import { AnimatePresence } from "framer-motion";
 import Trip from "./components/Trip";
 import Nav from "./components/Nav";
 
+export interface Reservation {
+  checkIn?: Date;
+  checkOut?: Date;
+  numGuests?: string | number;
+  roomId?: string | number;
+  hotelId?: string | number;
+  guestId?: string | number;
+}
+
 export const App: React.FunctionComponent = () => {
   const location = useLocation();
 
   const [firstName, setFirstName] = useState("");
   const [userId, setUserId] = useState("");
+  const [reservation, setReservation] = useState<Reservation>();
 
   useEffect(() => {
     (async () => {
@@ -53,7 +63,7 @@ export const App: React.FunctionComponent = () => {
                 <Login setFirstName={setFirstName} setUserId={setUserId} />
               )}
             />
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/register" component={() => <Register />} />
             <Route
               exact
               path="/home"
@@ -67,13 +77,27 @@ export const App: React.FunctionComponent = () => {
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"
-              component={RoomComponent}
+              component={() => (
+                <RoomComponent
+                  userId={userId}
+                  setReservation={setReservation}
+                />
+              )}
             />
-            <Route
-              exact
-              path="/reservation/create/:id/:hotelIdNumber/:numAdults/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay"
-              component={CreateReservation}
-            />
+            {reservation && (
+              <Route
+                exact
+                // path="/reservation/create/:id/:hotelIdNumber/:numAdults/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay"
+                path="/reservation/create"
+                component={() => (
+                  <CreateReservation
+                    reservation={reservation}
+                    userId={userId}
+                  />
+                )}
+              />
+            )}
+
             <Footer />
           </div>
         </Switch>

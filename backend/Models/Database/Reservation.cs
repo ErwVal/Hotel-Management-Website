@@ -10,7 +10,6 @@ namespace react_typescript_dotnet_app.Models.Database
         public int Id { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public string GuestName { get; set; }
         public int NumGuests { get; set; }
 
         [JsonIgnore]

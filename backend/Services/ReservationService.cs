@@ -38,10 +38,10 @@ namespace react_typescript_dotnet_app.Services
 
                 CheckIn = reservation.CheckIn,
                 CheckOut = reservation.CheckOut,
-                GuestName = reservation.GuestName,
                 NumGuests = reservation.NumGuests,
                 BookedRooms = { rooms },
                 HotelId = reservation.HotelId
+                
             };
 
             return _reservations.AddReservation(reservationResult);
