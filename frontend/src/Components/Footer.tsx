@@ -9,7 +9,7 @@ export const Footer: React.FunctionComponent = () => {
         <Col>
           {" "}
           <h3>Dew Breeze Suites</h3>
-          6 Avenida Las Plazas, Zona Hotelera, Cancun, México
+          6 Avenida Las Plazas, Zona Hotelera, Cancun, Mexico
           <br />
           Phone: +52 723-4583-3434
           <br />

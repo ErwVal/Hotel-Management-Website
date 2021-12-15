@@ -40,7 +40,7 @@ export const Header: React.FunctionComponent<Props> = (props: Props) => {
   if (props.firstName) {
     menu = (
       <motion.div variants={headerVariants} initial="hidden" animate="visible">
-        <Navbar collapseOnSelect>
+        <Navbar expand="lg" collapseOnSelect>
           <Container>
             <Navbar.Brand href="/">
               <img
@@ -65,7 +65,7 @@ export const Header: React.FunctionComponent<Props> = (props: Props) => {
   } else {
     menu = (
       <motion.div variants={headerVariants} initial="hidden" animate="visible">
-        <Navbar collapseOnSelect>
+        <Navbar expand="lg" collapseOnSelect>
           <Container>
             <Navbar.Brand href="/">
               <img
