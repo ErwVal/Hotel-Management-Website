@@ -8,28 +8,33 @@ interface Props {
   userId: string;
 }
 
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+
+enum roomType {
+  Single,
+  Double,
+  Twin,
+  Suite,
+}
+
+interface Reservations {
   reservations: any[];
 }
 
 const Trip: React.FunctionComponent<Props> = (props: Props) => {
-  const [user, setUser] = useState<User>();
+
+  const [userReservations, setUserReservations] = useState<Reservations>();
 
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `http://localhost:8000/users/${props.userId}`
+        `http://localhost:8000/reservations/${props.userId}`
       );
 
       if (!response.ok) {
         throw Error("Could not fetch data from resource.");
       }
       const content = await response.json();
-      setUser(content);
+      setUserReservations(content);
     })();
   }, [props.userId]);
 
@@ -44,25 +49,37 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
   }
   return (
     <Container>
-      {user ? (
+      {userReservations ? (
         <div className="div-trip">
           <Row>
             <Col>
               <h3>
-                Hi {user.firstName} {user.lastName}
+                Hi {props.firstName}
               </h3>
             </Col>
           </Row>
           <Row>
-            {user.reservations.length > 0 ? (
+            {userReservations.reservations.length > 0 ? (
               <>
-                <h4>You have {user.reservations.length} reservations.</h4>
-                {user.reservations.map((r) => (
+                <h4>You have {userReservations.reservations.length} reservations.</h4>
+                {userReservations.reservations.map((r) => (
                   <ul>
-                    <li>Check In: {moment(r.checkIn).format("dddd, MMM D")}</li>
-                    <li>Check Out: {moment(r.checkOut).format("dddd, MMM D")}</li>
-                    <li>Adults: {r.numGuests}</li>
-                    {/* <li> Room {r.roomId} </li> */}
+                    <li>Check In: {moment(r.checkIn).format("DD MMMM YYYY")}</li>
+                    <li>
+                      Check Out: {moment(r.checkOut).format("DD MMMM YYYY")}
+                    </li>
+                    <li>Adults: {r.numGuests} of max {r.bookedRooms[0].maxGuests}</li>
+                    <li>Room type: {roomType[r.bookedRooms[0].roomType]} </li>
+                    <li>
+                      Location:{" "}
+                      {r.bookedRooms[0].hotelId == 1 ? (
+                        <>Cancun</>
+                      ) : r.bookedRooms[0].hotelId == 2 ? (
+                        <>Tulum</>
+                      ) : (
+                        <>Playa del Carmen</>
+                      )}{" "}
+                    </li>
                   </ul>
                 ))}
               </>
