@@ -19,14 +19,16 @@ namespace react_typescript_dotnet_app.Services
 
         private readonly IReservationRepo _reservations;
         private readonly IRoomsRepo _rooms;
-        public ReservationService(IReservationRepo reservations, IRoomsRepo rooms)
+        private readonly IUsersRepo _users;
+        public ReservationService(IReservationRepo reservations, IRoomsRepo rooms, IUsersRepo users)
         {
             _reservations = reservations;
             _rooms = rooms;
+            _users = users;
         }
 
         public Reservation Create(CreateReservationRequest reservation)
-        {
+        {   
 
             var roomsList = _rooms.GetRoomsList();
             var rooms = roomsList
@@ -40,10 +42,11 @@ namespace react_typescript_dotnet_app.Services
                 CheckOut = reservation.CheckOut,
                 NumGuests = reservation.NumGuests,
                 BookedRooms = { rooms },
-                HotelId = reservation.HotelId
-                
+                HotelId = reservation.HotelId,
             };
 
+            var user = _users.GetUserById(reservation.UserId);
+            user.Reservations.Add(reservationResult);
             return _reservations.AddReservation(reservationResult);
         }
 

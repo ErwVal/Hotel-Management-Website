@@ -28,13 +28,18 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
       }),
     });
     const content = await response.json();
-    setRedirect(true);
+    if(response.ok){
+      setRedirect(true);
+    }
     props.setFirstName(content.firstName);
     props.setUserId(content.id);
+    if(!response.ok){
+      alert("Incorrect credentials. Please try again.")
+    }
   };
 
   if (redirect) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/trip" />;
   }
 
   return (

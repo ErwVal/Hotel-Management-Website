@@ -1,64 +1,55 @@
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { Redirect, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { createReservation } from "../api/apiClient";
-import { Reservation } from "../App";
 
-export interface CreateReservationProps {
-  reservation: Reservation;
-  userId: number | string;
+interface Props {
+  userId: string;
 }
 
-export const CreateReservation: React.FunctionComponent<CreateReservationProps> = (props: CreateReservationProps) => {
+export const CreateReservation = (props: Props) => {
+  const history = useHistory();
 
-  const [formStatus, setFormStatus] = useState("PENDING");
+  const { roomId, hotelId, numGuests, checkIn, checkOut } = useParams<{
+    roomId: string;
+    hotelId: string;
+    numGuests: string;
+    checkIn: string;
+    checkOut: string;
+  }>();
 
   const submit = () => {
     createReservation({
-      checkIn: props.reservation.checkIn,
-      checkOut: props.reservation.checkOut,
-      numGuests: props.reservation.numGuests,
-      roomId: props.reservation.roomId,
-      hotelId: props.reservation.hotelId,
-      guestId: props.userId,
+      checkIn: new Date(checkIn),
+      checkOut: new Date(checkOut),
+      numGuests: parseInt(numGuests),
+      roomId: parseInt(roomId),
+      hotelId: parseInt(hotelId),
+      userId: parseInt(props.userId),
     });
 
-    alert("Your reservation has been created");
-    setFormStatus("SUBMITTED");
-    if (formStatus === "SUBMITTED") {
-      return <Redirect to="/home" />;
-    } 
+    alert("Your reservation has been created");    
+    history.push("/trip");
   };
 
-  if(!props.userId){
-    return(<Redirect to="/home"/>)
+  if (props.userId === "") {
+    history.push("/login");
   }
 
-
-  return(
-    <div>
-      <h3>Please confirm your details are correct: </h3>
-      <ul>
-        <li>
-          Check in: {props.reservation.checkIn}
-        </li>
-        <li>
-          Check out: {props.reservation.checkOut}
-        </li>
-        <li>
-          Adults: {props.reservation.numGuests}
-          </li>
-          <li>
-            Room ID: {props.reservation.roomId}
-          </li>
-          <li>
-            Hotel ID: {props.reservation.hotelId}
-          </li>
-          <li>
-            Guest ID: {props.userId}
-          </li>
-      </ul>
-      <button onClick={submit}>Confirm and make reservation</button>
-    </div>
-  )
+  return (
+    <>
+      <div>
+        <h3>Please confirm your details are correct: </h3>
+        <ul>
+          <li>Check in: {checkIn}</li>
+          <li>Check out: {checkOut}</li>
+          <li>Adults: {numGuests}</li>
+          <li>Room ID: {roomId}</li>
+          <li>Hotel ID: {hotelId}</li>
+          <li>Guest ID: {props.userId}</li>
+        </ul>
+        <button onClick={submit}>Confirm and make reservation</button>
+      </div>
+    </>
+  );
 };

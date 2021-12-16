@@ -11,7 +11,6 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
 import Trip from "./components/Trip";
-import Nav from "./components/Nav";
 
 export interface Reservation {
   checkIn?: Date;
@@ -27,7 +26,6 @@ export const App: React.FunctionComponent = () => {
 
   const [firstName, setFirstName] = useState("");
   const [userId, setUserId] = useState("");
-  const [reservation, setReservation] = useState<Reservation>();
 
   useEffect(() => {
     (async () => {
@@ -77,26 +75,14 @@ export const App: React.FunctionComponent = () => {
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"
-              component={() => (
-                <RoomComponent
-                  userId={userId}
-                  setReservation={setReservation}
-                />
-              )}
+              component={() => <RoomComponent userId={userId} />}
             />
-            {reservation && (
-              <Route
-                exact
-                // path="/reservation/create/:id/:hotelIdNumber/:numAdults/:checkInDate/:checkOutDate/:location/:roomPrice/:lengthOfStay"
-                path="/reservation/create"
-                component={() => (
-                  <CreateReservation
-                    reservation={reservation}
-                    userId={userId}
-                  />
-                )}
-              />
-            )}
+
+            <Route
+              exact
+              path="/reservation/create/:roomId/:hotelId/:numGuests/:checkIn/:checkOut"
+              component={() => <CreateReservation userId={userId} />}
+            />
 
             <Footer />
           </div>

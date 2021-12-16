@@ -12,5 +12,6 @@ namespace react_typescript_dotnet_app.Models.Request
         public int NumGuests { get; set; }
         public int RoomId { get; set; }
         public int HotelId { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -1,10 +1,10 @@
 export interface NewReservation {
-  checkIn?: Date;
-  checkOut?: Date;
-  numGuests?: string | number;
-  roomId?: string | number;
-  hotelId?: string | number;
-  guestId?: string | number,
+  checkIn: Date;
+  checkOut: Date;
+  numGuests: number;
+  roomId: number;
+  hotelId: number;
+  userId: number,
 }
 
 export interface NewUser {

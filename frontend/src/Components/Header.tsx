@@ -21,7 +21,7 @@ interface Props {
   firstName: string;
   setFirstName: (firstName: string) => void;
   userId: string;
-  setUserId:(firstName: string) => void;
+  setUserId: (firstName: string) => void;
 }
 
 export const Header: React.FunctionComponent<Props> = (props: Props) => {
@@ -54,8 +54,11 @@ export const Header: React.FunctionComponent<Props> = (props: Props) => {
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
+                <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/trip">Trip</Nav.Link>
-                <Nav.Link href="/login" onClick={logout}>Logout</Nav.Link>
+                <Nav.Link href="/login" onClick={logout}>
+                  Logout
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -79,6 +82,7 @@ export const Header: React.FunctionComponent<Props> = (props: Props) => {
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
+                <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/rooms">Rooms</Nav.Link>
                 <Nav.Link href="/register">Register</Nav.Link>
                 <Nav.Link href="/login">Login</Nav.Link>
