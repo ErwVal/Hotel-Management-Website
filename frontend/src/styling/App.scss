@@ -13,7 +13,6 @@ nav {
   background-color: #f3f3f3;
   color: #394a51;
   font-family: "Caudex", serif;
-
 }
 
 .landing-page {
@@ -118,7 +117,6 @@ nav {
   a:hover {
     color: #fbf2d5;
   }
-
 }
 
 #background-video {
@@ -224,10 +222,6 @@ nav {
   }
 }
 
-.div-trip {
-  min-height: 60vh;
-}
-
 .div-login {
   min-height: 60vh;
   text-align: center;
@@ -244,5 +238,37 @@ nav {
   .btn:hover {
     color: #394a51;
     background-color: #d9d2cc;
+  }
+}
+
+// reservation card
+
+.div-reservation-card {
+  min-height: 60vh;
+  
+  .card {
+    margin: auto;
+    border-radius: 10%;
+    margin-top: 2rem;
+    text-align: center;
+    color: #394a51;
+    .card-title {
+      text-align: center;
+    }
+  }
+  a {
+    color: #394a51;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-size: 1.1rem;
+    color: black;
+    text-decoration: none;
+  }
+
+  h3, h4 {
+    padding: 1.5rem;
   }
 }
