@@ -48,9 +48,15 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
           <>
             {userReservations.reservations.length > 0 ? (
               <>
-                <h4>
-                  You have the following {userReservations.reservations.length} reservations:
-                </h4>
+                {userReservations.reservations.length > 1 ? (
+                  <h4>
+                    You have the following{" "}
+                    {userReservations.reservations.length} reservations:
+                  </h4>
+                ) : (
+                  <h4>You have the following reservation:</h4>
+                )}
+
                 <Row>
                   {userReservations.reservations.map((r) => (
                     <Col>

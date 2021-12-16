@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import React from "react";
+import { Alert, Container } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { createReservation } from "../api/apiClient";
+import moment from "moment";
 
 interface Props {
+  firstName: string;
   userId: string;
 }
 
@@ -19,6 +21,11 @@ export const CreateReservation = (props: Props) => {
   }>();
 
   const submit = () => {
+    if (props.userId === "") {
+      history.push(
+        `/login/${roomId}/${hotelId}/${numGuests}/${checkIn}/${checkOut}`
+      );
+    }
     createReservation({
       checkIn: new Date(checkIn),
       checkOut: new Date(checkOut),
@@ -28,17 +35,29 @@ export const CreateReservation = (props: Props) => {
       userId: parseInt(props.userId),
     });
 
-    alert("Your reservation has been created");    
-    history.push("/trip");
-  };
+    alert("Your reservation has been created");
 
-  if (props.userId === "") {
-    history.push("/login");
-  }
+    return (
+      <>
+        {" "}
+        <Alert variant="success">
+          <Alert.Heading>Success {props.firstName} !</Alert.Heading>
+          <p>
+            Your reservation for {numGuests} from{" "}
+            {moment(checkIn).format("DD MMMM YYYY")} to{" "}
+            {moment(checkOut).format("DD MMMM YYYY")} has been successfully
+            created. Thank you for choosing Dew Breeze Suites for your holidays.
+            We hope you enjoy your stay.
+          </p>
+        </Alert>
+        {history.push("/trip")}
+      </>
+    );
+  };
 
   return (
     <>
-      <div>
+      <Container>
         <h3>Please confirm your details are correct: </h3>
         <ul>
           <li>Check in: {checkIn}</li>
@@ -49,7 +68,7 @@ export const CreateReservation = (props: Props) => {
           <li>Guest ID: {props.userId}</li>
         </ul>
         <button onClick={submit}>Confirm and make reservation</button>
-      </div>
+      </Container>
     </>
   );
 };

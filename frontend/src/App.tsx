@@ -10,7 +10,10 @@ import { LandingPage } from "./components/LandingPage";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
+import { LoginParams } from "./components/LoginParams";
+import { RegisterParams } from "./components/RegisterParams";
 import Trip from "./components/Trip";
+import { LoginOrRegister } from "./components/LoginOrRegister";
 
 export interface Reservation {
   checkIn?: Date;
@@ -61,7 +64,30 @@ export const App: React.FunctionComponent = () => {
                 <Login setFirstName={setFirstName} setUserId={setUserId} />
               )}
             />
+            <Route
+              exact
+              path="/login/:roomId/:hotelId/:numGuests/:checkIn/:checkOut"
+              component={() => (
+                <LoginParams
+                  setFirstName={setFirstName}
+                  setUserId={setUserId}
+                />
+              )}
+            />
             <Route exact path="/register" component={() => <Register />} />
+
+            <Route
+              exact
+              path="/register/:roomId/:hotelId/:numGuests/:checkIn/:checkOut"
+              component={() => <RegisterParams />}
+            />
+
+            <Route
+              exact
+              path="/login-register/:roomId/:hotelId/:numGuests/:checkIn/:checkOut"
+              component={() => <LoginOrRegister />}
+            />
+
             <Route
               exact
               path="/home"
@@ -81,7 +107,9 @@ export const App: React.FunctionComponent = () => {
             <Route
               exact
               path="/reservation/create/:roomId/:hotelId/:numGuests/:checkIn/:checkOut"
-              component={() => <CreateReservation userId={userId} />}
+              component={() => (
+                <CreateReservation firstName={firstName} userId={userId} />
+              )}
             />
 
             <Footer />

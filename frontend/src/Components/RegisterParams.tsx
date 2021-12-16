@@ -1,9 +1,18 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { registerUser } from "../api/apiClient";
 
-export const Register: React.FunctionComponent = () => {
+export const RegisterParams: React.FunctionComponent = () => {
+  const history = useHistory();
+
+  const { roomId, hotelId, numGuests, checkIn, checkOut } = useParams<{
+    roomId: string;
+    hotelId: string;
+    numGuests: string;
+    checkIn: string;
+    checkOut: string;
+  }>();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -24,7 +33,9 @@ export const Register: React.FunctionComponent = () => {
   };
 
   if (redirect) {
-    return <Redirect to="/login" />;
+    history.push(
+      `/login/${roomId}/${hotelId}/${numGuests}/${checkIn}/${checkOut}`
+    );
   }
 
   return (
@@ -68,9 +79,7 @@ export const Register: React.FunctionComponent = () => {
             </Form.Group>
           </Row>
 
-          <Button type="submit">
-            Register
-          </Button>
+          <Button type="submit">Register</Button>
         </Form>
       </div>
     </Container>

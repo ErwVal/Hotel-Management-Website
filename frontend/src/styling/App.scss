@@ -245,7 +245,7 @@ nav {
 
 .div-reservation-card {
   min-height: 60vh;
-  
+
   .card {
     margin: auto;
     border-radius: 10%;
@@ -268,7 +268,27 @@ nav {
     text-decoration: none;
   }
 
-  h3, h4 {
+  h3,
+  h4 {
     padding: 1.5rem;
+  }
+}
+
+.div-login-register {
+  min-height: 60vh;
+  text-align: center;
+  align-items: center;
+
+  h3 {
+    padding: 3rem;
+  }
+  .btn {
+    margin-top: 3rem;
+    color: #fbf2d5;
+    background-color: #394a51;
+  }
+  .btn:hover {
+    color: #394a51;
+    background-color: #d9d2cc;
   }
 }

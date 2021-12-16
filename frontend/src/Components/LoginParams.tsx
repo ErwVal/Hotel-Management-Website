@@ -1,17 +1,24 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { LoginUser, loginUser } from "../api/apiClient";
-import { Redirect, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;
   setUserId: (firstName: string) => void;
 }
 
-export const Login: React.FunctionComponent<Props> = (props: Props) => {
+export const LoginParams: React.FunctionComponent<Props> = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const history = useHistory();
+  const { roomId, hotelId, numGuests, checkIn, checkOut } = useParams<{
+    roomId: string;
+    hotelId: string;
+    numGuests: string;
+    checkIn: string;
+    checkOut: string;
+  }>();
 
   const handleLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
@@ -28,18 +35,20 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
       }),
     });
     const content = await response.json();
-    if(response.ok){
+    if (response.ok) {
       setRedirect(true);
     }
     props.setFirstName(content.firstName);
     props.setUserId(content.id);
-    if(!response.ok){
-      alert("Incorrect credentials. Please try again.")
+    if (!response.ok) {
+      alert("Incorrect credentials. Please try again.");
     }
   };
 
   if (redirect) {
-    return <Redirect to="/trip" />;
+    history.push(
+      `/reservation/create/${roomId}/${hotelId}/${numGuests}/${checkIn}/${checkOut}`
+    );
   }
 
   return (
@@ -57,9 +66,8 @@ export const Login: React.FunctionComponent<Props> = (props: Props) => {
                   required
                 />
               </Form.Group>
-              </Row>
-              <Row>
-
+            </Row>
+            <Row>
               <Form.Group as={Col} controlId="formGridPassword">
                 <Form.Control
                   type="password"

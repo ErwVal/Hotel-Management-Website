@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-// import { RoomBookingCard } from "./RoomBookingCard";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { FaWifi, FaSmokingBan, FaBed, FaPoundSign } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import moment from "moment";
-import { Reservation } from "../App";
 
 enum roomType {
   Single,
@@ -54,12 +52,14 @@ export const RoomComponent = (props: Props) => {
     let checkIn = new Date(checkInDate);
     let checkOut = new Date(checkOutDate);
 
-    if (props.userId !== "") {
+    if (props.userId === "" || props.userId === undefined) {
+      history.push(
+        `/login-register/${room.id}/${hotelId}/${numGuests}/${checkIn}/${checkOut}`
+      );
+    } else {
       history.push(
         `/reservation/create/${room.id}/${hotelId}/${numGuests}/${checkIn}/${checkOut}`
       );
-    } else {
-      history.push("/login");
     }
   };
 
