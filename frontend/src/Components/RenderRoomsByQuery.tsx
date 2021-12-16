@@ -47,7 +47,7 @@ export const RenderRoomsByQuery: React.FunctionComponent<Props> = (
   }
 
   return (
-    <Container>
+    <Container className="div-rooms-query">
       {error && <div>{error}</div>}
       {roomsListByQuery.length > 0 ? (
         <div>

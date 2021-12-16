@@ -33,10 +33,10 @@ export const LandingPage: React.FunctionComponent = () => {
       <h1>Dew Breeze Suites</h1>
       <h2>LUXURY BOUTIQUE HOTEL</h2>
       <Link to={"/home"}>
-        <button>Rooms</button>
+        <button>Reserve</button>
       </Link>
 
-      <Link to={"/home/contact"}>
+      <Link to={"/contact"}>
         <button>Contact</button>
       </Link>
     </motion.div>

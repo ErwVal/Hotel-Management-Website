@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
 
 export const Footer: React.FunctionComponent = () => {

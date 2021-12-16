@@ -157,7 +157,7 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
             )}
 
             <h3>
-              <Link to={"/home/promotions"}>See our promotions</Link>
+              <Link to={"/home/rooms"}>See our promotions</Link>
             </h3>
           </Col>
         </Row>

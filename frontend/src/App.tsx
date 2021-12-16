@@ -12,6 +12,8 @@ import { Register } from "./components/Register";
 import { AnimatePresence } from "framer-motion";
 import { LoginParams } from "./components/LoginParams";
 import { RegisterParams } from "./components/RegisterParams";
+import { Contact } from "./components/Contact";
+import { RenderAllRooms } from "./components/RenderAllRooms";
 import Trip from "./components/Trip";
 import { LoginOrRegister } from "./components/LoginOrRegister";
 
@@ -88,6 +90,8 @@ export const App: React.FunctionComponent = () => {
               component={() => <LoginOrRegister />}
             />
 
+            <Route exact path="/home/rooms" component={RenderAllRooms}/>
+
             <Route
               exact
               path="/home"
@@ -98,6 +102,8 @@ export const App: React.FunctionComponent = () => {
               path="/trip"
               component={() => <Trip firstName={firstName} userId={userId} />}
             />
+
+            <Route exact path="/contact" component={Contact} />
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"

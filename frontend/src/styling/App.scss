@@ -37,6 +37,7 @@ nav {
     margin-top: 2rem;
     opacity: 0.5;
     font-size: 1.3rem;
+    margin-inline: 1rem;
   }
   button:hover {
     color: #fbf2d5;
@@ -292,3 +293,18 @@ nav {
     background-color: #d9d2cc;
   }
 }
+
+.div-contact, .div-all-rooms, .div-rooms-query {
+  min-height: 60vh;
+  text-align: center;
+  align-items: center;
+  h3 {
+    padding: 3rem;
+  }
+}
+
+.div-rooms-query h3 {
+  color: #fbf2d5;
+}
+
+
