@@ -16,7 +16,7 @@ namespace react_typescript_dotnet_app.Models.Response
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        public virtual List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
         public UserResponse(User user)
         {

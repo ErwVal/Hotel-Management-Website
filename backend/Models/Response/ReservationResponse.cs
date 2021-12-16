@@ -13,9 +13,9 @@ namespace react_typescript_dotnet_app.Models.Response
         public int Id { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public string GuestName { get; set; }
         public int NumGuests { get; set; }
-        public virtual List<Room> BookedRooms { get; set; } = new List<Room> ();
+        public List<Room> BookedRooms { get; set; } = new List<Room> ();
+        public int HotelId { get; set; }
 
         public ReservationResponse(Reservation reservation)
         {
@@ -24,6 +24,7 @@ namespace react_typescript_dotnet_app.Models.Response
             CheckOut = reservation.CheckOut;
             NumGuests = reservation.NumGuests;
             BookedRooms.AddRange(reservation.BookedRooms);
+            HotelId = reservation.HotelId;
         }
     }
 }

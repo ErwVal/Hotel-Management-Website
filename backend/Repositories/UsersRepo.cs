@@ -40,6 +40,7 @@ namespace react_typescript_dotnet_app.Repositories
         {
             return _database.Users
             .Include(u => u.Reservations)
+            .ThenInclude(r => r.BookedRooms)
             .ToList();
         }
 

@@ -1,6 +1,7 @@
 using react_typescript_dotnet_app.Models.Database;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace react_typescript_dotnet_app.Repositories
 {
@@ -28,7 +29,10 @@ namespace react_typescript_dotnet_app.Repositories
 
         public List<Reservation> GetReservationsList()
         {
-            return _database.Reservations.ToList();
+            return _database.Reservations
+            .Include(r => r.BookedRooms)
+            .ToList();
         }
+
     }
 }

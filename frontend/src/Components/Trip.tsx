@@ -62,6 +62,7 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
                     <li>Check In: {moment(r.checkIn).format("dddd, MMM D")}</li>
                     <li>Check Out: {moment(r.checkOut).format("dddd, MMM D")}</li>
                     <li>Adults: {r.numGuests}</li>
+                    {/* <li> Room {r.roomId} </li> */}
                   </ul>
                 ))}
               </>

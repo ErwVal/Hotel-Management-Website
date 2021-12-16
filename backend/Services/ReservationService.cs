@@ -3,6 +3,7 @@ using react_typescript_dotnet_app.Repositories;
 using react_typescript_dotnet_app.Models.Request;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 
 namespace react_typescript_dotnet_app.Services
@@ -11,6 +12,7 @@ namespace react_typescript_dotnet_app.Services
     {
         Reservation Create(CreateReservationRequest reservation);
         List<Reservation> GetReservationsList();
+        List<Reservation> GetUserReservations(int id);
 
     }
 
@@ -45,9 +47,21 @@ namespace react_typescript_dotnet_app.Services
                 HotelId = reservation.HotelId,
             };
 
+            // var room = _rooms.GetRoomById(rooms.Id);
+            // rooms.Reservations.Add(reservationResult);
+
             var user = _users.GetUserById(reservation.UserId);
             user.Reservations.Add(reservationResult);
             return _reservations.AddReservation(reservationResult);
+        }
+
+        public List<Reservation> GetUserReservations(int id)
+        {
+            var userReservationList = _users.GetUserById(id).Reservations;
+
+            var reservations = _reservations.GetReservationsList().Where(r =>  userReservationList.Contains(r)).ToList();
+
+            return reservations;
         }
 
         public List<Reservation> GetReservationsList()
