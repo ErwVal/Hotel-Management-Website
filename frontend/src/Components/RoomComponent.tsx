@@ -28,7 +28,7 @@ export const RoomComponent = (props: Props) => {
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/rooms/${id}`)
+    fetch(`http://localhost:8000/api/rooms/${id}`)
       .then((response) => response.json())
       .then((response) => setRoom(response))
       .catch(console.log);

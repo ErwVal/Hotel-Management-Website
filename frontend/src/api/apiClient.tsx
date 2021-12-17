@@ -44,7 +44,7 @@ export interface RoomsListResponse {
 }
 
 export const createReservation = async (newReservation: NewReservation) => {
-  const response = await fetch('http://localhost:8000/reservations/create', {
+  const response = await fetch('http://localhost:8000/api/reservations/create', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -90,4 +90,19 @@ export const loginUser = async (loginUser: LoginUser) => {
   }
 
   return await response.json();
+};
+
+export const deleteReservation = async (reservationId: number) => {
+  const response = await fetch(
+    `http://localhost:8000/api/reservations/${reservationId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  if (!response.ok) {
+    throw Error("Unexpected Error");
+  }
 };

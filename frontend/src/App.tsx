@@ -106,7 +106,7 @@ export const App: React.FunctionComponent = () => {
 
             <Route
               exact
-              path="/reservation/change/:reservationId"
+              path="/reservation/change/:roomId/:hotelId/:numGuests/:checkIn/:checkOut/:reservationId"
               component={() => <ChangeReservationForm userId={userId} />}
             />
 

@@ -312,11 +312,14 @@ nav {
 
 .div-change-reservation {
   min-height: 60vh;
-  text-align: center;
-  align-items: center;
 
+  form {
+    max-width: 30rem;
+    margin-left: 20rem;
+  }
   h3 {
     padding: 3rem;
+    text-align: center;
   }
   .btn {
     color: #fbf2d5;
@@ -327,17 +330,8 @@ nav {
     background-color: #ffffff;
   }
   .row {
-    margin: auto;
     padding: 0.5rem;
   }
-  .col {
-    margin: auto;
-    text-align: right;
-  }
-  .col-right {
-    text-align: left;
-  }
-
   .cancel {
     color: #ffffff;
     background-color: rgb(151, 18, 45);

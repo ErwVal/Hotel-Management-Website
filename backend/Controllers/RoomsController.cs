@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace react_typescript_dotnet_app.Controllers
 {
     [ApiController]
-    [Route("/rooms")]
+    [Route("/api/rooms")]
 
     public class RoomsController : ControllerBase
     {

@@ -18,12 +18,8 @@ export const Trip: React.FunctionComponent<Props> = (props: Props) => {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `http://localhost:8000/reservations/${props.userId}`
+        `http://localhost:8000/api/reservations/user/${props.userId}`
       );
-
-      if (!response.ok) {
-        throw Error("Could not fetch data from resource.");
-      }
       const content = await response.json();
       setUserReservations(content);
     })();
@@ -69,6 +65,7 @@ export const Trip: React.FunctionComponent<Props> = (props: Props) => {
                         hotelId={r.hotelId}
                         images={r.bookedRooms[0].images}
                         reservationId={r.id}
+                        roomId={r.bookedRooms[0].id}
                       />
                     </Col>
                   ))}

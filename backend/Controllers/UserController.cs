@@ -14,7 +14,7 @@ using System;
 
 namespace react_typescript_dotnet_app.Controllers
 {
-    [Route("users")]
+    [Route("/api/users")]
     [ApiController]
     public class UserController : Controller
     {

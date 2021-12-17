@@ -9,6 +9,10 @@ namespace react_typescript_dotnet_app.Repositories
     {
         Reservation AddReservation(Reservation reservation);
         List<Reservation> GetReservationsList();
+
+        Reservation GetReservationById(int id);
+
+        void DeleteReservation(Reservation reservation);
     }
 
     public class ReservationRepo : IReservationRepo
@@ -32,6 +36,20 @@ namespace react_typescript_dotnet_app.Repositories
             return _database.Reservations
             .Include(r => r.BookedRooms)
             .ToList();
+        }
+        
+        public Reservation GetReservationById(int id)
+        {
+            return _database.Reservations
+            .Include(r => r.BookedRooms)
+            .Where( r => r.Id == id)
+            .Single();
+        }
+
+        public void DeleteReservation(Reservation reservation)
+        {
+            _database.Reservations.Remove(reservation);
+            _database.SaveChanges();
         }
 
     }

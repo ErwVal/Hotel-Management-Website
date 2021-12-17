@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace react_typescript_dotnet_app.Controllers
 {
     [ApiController]
-    [Route("/reservations")]
+    [Route("/api/reservations")]
     public class ReservationsController : ControllerBase
     {
         private readonly ILogger<ReservationsController> _logger;
@@ -40,27 +40,34 @@ namespace react_typescript_dotnet_app.Controllers
             };
         }
 
-                ///<summary>
+        ///<summary>
         /// Gets the  reservations from the database that matches the Id
         ///</summary>
-        [HttpGet("get/{id}")]
-        public ActionResult<ReservationListResponse> GetReservationById(int id)
+        [HttpGet("{id}")]
+        public ActionResult<ReservationResponse> GetReservationById(int id)
         {
-            return new ReservationListResponse
-            {
-                Reservations = _reservationService
-                .GetReservationsList()
-                .Select(r => new ReservationResponse(r))
-                .Where(r => r.Id == id)
-                .ToList()
-            };
+            var reservation = _reservationRepo.GetReservationById(id);
+            return new ReservationResponse(reservation);
+
         }
 
-               ///<summary>
+        ///<summary>
+        /// Deletes the  reservations from the database that matches the Id
+        ///</summary>
+        [HttpDelete("{id}")]
+        public ActionResult DeleteReservation([FromRoute] int id)
+        {
+
+            var reservation = _reservationRepo.GetReservationById(id);
+            _reservationRepo.DeleteReservation(reservation);
+            return Ok();
+        }
+
+        ///<summary>
         /// Gets the list of reservations of a specific user from the database.
         ///</summary>
-        [HttpGet("{id}")]
-        public ActionResult<ReservationListResponse> GetUserReservations( [FromRoute] int id)
+        [HttpGet("user/{id}")]
+        public ActionResult<ReservationListResponse> GetUserReservations([FromRoute] int id)
         {
             return new ReservationListResponse
             {

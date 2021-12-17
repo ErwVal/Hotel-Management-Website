@@ -7,7 +7,7 @@ export const RenderAllRooms: React.FunctionComponent = () => {
   const [roomsList, setRoomsList] = useState<Room[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/rooms")
+    fetch("http://localhost:8000/api/rooms")
       .then((response) => response.json())
       .then((data) => setRoomsList(data.rooms));
   }, []);

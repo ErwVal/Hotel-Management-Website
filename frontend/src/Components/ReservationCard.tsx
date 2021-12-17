@@ -18,6 +18,7 @@ interface Props {
   hotelId: string | number;
   images: string[];
   reservationId: string | number;
+  roomId: string | number;
 }
 
 export const ReservationCard = (props: Props) => {
@@ -49,7 +50,7 @@ export const ReservationCard = (props: Props) => {
         </ListGroupItem>
       </ListGroup>
       <Card.Body>
-        <Card.Link href={`/reservation/change/${props.reservationId}`}>Amend reservation</Card.Link>
+        <Card.Link href={`/reservation/change/${props.roomId}/${props.hotelId}/${props.numGuests}/${props.checkIn}/${props.checkOut}/${props.reservationId}`}>Amend reservation</Card.Link>
       </Card.Body>
     </Card>
   );
