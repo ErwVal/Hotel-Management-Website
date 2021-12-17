@@ -12,7 +12,7 @@ interface Reservations {
   reservations: any[];
 }
 
-const Trip: React.FunctionComponent<Props> = (props: Props) => {
+export const Trip: React.FunctionComponent<Props> = (props: Props) => {
   const [userReservations, setUserReservations] = useState<Reservations>();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
       const content = await response.json();
       setUserReservations(content);
     })();
-  }, [props.userId]);
+  }, []);
 
   if (!props.firstName) {
     return (
@@ -68,6 +68,7 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
                         roomType={r.bookedRooms[0].roomType}
                         hotelId={r.hotelId}
                         images={r.bookedRooms[0].images}
+                        reservationId={r.id}
                       />
                     </Col>
                   ))}
@@ -86,5 +87,3 @@ const Trip: React.FunctionComponent<Props> = (props: Props) => {
     </Container>
   );
 };
-
-export default Trip;

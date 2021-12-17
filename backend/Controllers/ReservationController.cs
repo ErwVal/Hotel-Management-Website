@@ -40,8 +40,24 @@ namespace react_typescript_dotnet_app.Controllers
             };
         }
 
+                ///<summary>
+        /// Gets the  reservations from the database that matches the Id
+        ///</summary>
+        [HttpGet("get/{id}")]
+        public ActionResult<ReservationListResponse> GetReservationById(int id)
+        {
+            return new ReservationListResponse
+            {
+                Reservations = _reservationService
+                .GetReservationsList()
+                .Select(r => new ReservationResponse(r))
+                .Where(r => r.Id == id)
+                .ToList()
+            };
+        }
+
                ///<summary>
-        /// Gets the list of reservations from the database.
+        /// Gets the list of reservations of a specific user from the database.
         ///</summary>
         [HttpGet("{id}")]
         public ActionResult<ReservationListResponse> GetUserReservations( [FromRoute] int id)

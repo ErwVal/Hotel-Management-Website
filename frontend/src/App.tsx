@@ -14,8 +14,9 @@ import { LoginParams } from "./components/LoginParams";
 import { RegisterParams } from "./components/RegisterParams";
 import { Contact } from "./components/Contact";
 import { RenderAllRooms } from "./components/RenderAllRooms";
-import Trip from "./components/Trip";
+import { Trip } from "./components/Trip";
 import { LoginOrRegister } from "./components/LoginOrRegister";
+import { ChangeReservationForm } from "./components/ChangeReservationForm";
 
 export interface Reservation {
   checkIn?: Date;
@@ -90,7 +91,7 @@ export const App: React.FunctionComponent = () => {
               component={() => <LoginOrRegister />}
             />
 
-            <Route exact path="/home/rooms" component={RenderAllRooms}/>
+            <Route exact path="/home/rooms" component={RenderAllRooms} />
 
             <Route
               exact
@@ -101,6 +102,12 @@ export const App: React.FunctionComponent = () => {
               exact
               path="/trip"
               component={() => <Trip firstName={firstName} userId={userId} />}
+            />
+
+            <Route
+              exact
+              path="/reservation/change/:reservationId"
+              component={() => <ChangeReservationForm userId={userId} />}
             />
 
             <Route exact path="/contact" component={Contact} />

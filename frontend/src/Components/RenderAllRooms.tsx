@@ -24,7 +24,7 @@ export const RenderAllRooms: React.FunctionComponent = () => {
           ))}
         </Row>
       ) : (
-        <p>No rooms available. Please contact the administration.</p>
+        <h3>Loading...</h3>
       )}
     </Container>
   );

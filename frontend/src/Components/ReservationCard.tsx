@@ -17,6 +17,7 @@ interface Props {
   roomType: roomType;
   hotelId: string | number;
   images: string[];
+  reservationId: string | number;
 }
 
 export const ReservationCard = (props: Props) => {
@@ -48,8 +49,7 @@ export const ReservationCard = (props: Props) => {
         </ListGroupItem>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">Change</Card.Link>
-        <Card.Link href="#">Cancel</Card.Link>
+        <Card.Link href={`/reservation/change/${props.reservationId}`}>Amend reservation</Card.Link>
       </Card.Body>
     </Card>
   );

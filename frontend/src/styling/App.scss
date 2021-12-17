@@ -22,7 +22,7 @@ nav {
   padding-top: 9rem;
   h1 {
     font-size: 5rem;
-    color: #d9d2cc;
+    color: #ffffff;
     padding: 1rem;
   }
   h2 {
@@ -38,6 +38,8 @@ nav {
     opacity: 0.5;
     font-size: 1.3rem;
     margin-inline: 1rem;
+    padding: 0.4rem;
+    border-radius: 7%;
   }
   button:hover {
     color: #fbf2d5;
@@ -198,7 +200,7 @@ nav {
   }
   button:hover {
     color: #394a51;
-    background-color: #d9d2cc;
+    background-color: #ffffff;
   }
   p {
     background-color: #fbf2d5;
@@ -238,7 +240,7 @@ nav {
   }
   .btn:hover {
     color: #394a51;
-    background-color: #d9d2cc;
+    background-color: #ffffff;
   }
 }
 
@@ -290,7 +292,7 @@ nav {
   }
   .btn:hover {
     color: #394a51;
-    background-color: #d9d2cc;
+    background-color: #ffffff;
   }
 }
 
@@ -308,3 +310,41 @@ nav {
 }
 
 
+.div-change-reservation {
+  min-height: 60vh;
+  text-align: center;
+  align-items: center;
+
+  h3 {
+    padding: 3rem;
+  }
+  .btn {
+    color: #fbf2d5;
+    background-color: #394a51;
+  }
+  .btn:hover {
+    color: #394a51;
+    background-color: #ffffff;
+  }
+  .row {
+    margin: auto;
+    padding: 0.5rem;
+  }
+  .col {
+    margin: auto;
+    text-align: right;
+  }
+  .col-right {
+    text-align: left;
+  }
+
+  .cancel {
+    color: #ffffff;
+    background-color: rgb(151, 18, 45);
+  }
+  .cancel:hover {
+    color: rgb(151, 18, 45);
+    background-color: #ffffff;
+  }
+
+}
