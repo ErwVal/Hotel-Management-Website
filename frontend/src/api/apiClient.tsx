@@ -106,3 +106,20 @@ export const deleteReservation = async (reservationId: number) => {
     throw Error("Unexpected Error");
   }
 };
+
+export const changeCheckInDate = async (reservationId: number, newCheckInDate: Date) => {
+  const response = await fetch(
+    `http://localhost:8000/api/reservations/arrival/${reservationId}/${newCheckInDate}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw Error("Unexpected Error");
+  }
+};
+

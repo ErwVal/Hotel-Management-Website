@@ -7,6 +7,7 @@ using react_typescript_dotnet_app.Models.Response;
 using react_typescript_dotnet_app.Models.Request;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace react_typescript_dotnet_app.Controllers
 {
@@ -61,6 +62,30 @@ namespace react_typescript_dotnet_app.Controllers
             var reservation = _reservationRepo.GetReservationById(id);
             _reservationRepo.DeleteReservation(reservation);
             return Ok();
+        }
+
+        ///<summary>
+        /// Updates the check in date of the reservation with matching id
+        ///</summary>
+        [HttpPatch("/arrival/{id}/{newCheckInDate}")]
+        public ActionResult UpdateCheckInDate([FromRoute] int id, DateTime newCheckInDate)
+        {
+
+            var reservation = _reservationRepo.GetReservationById(id);
+            _reservationRepo.ChangeCheckInDate(reservation, newCheckInDate);
+            return NoContent();
+        }
+
+        ///<summary>
+        /// Updates the check in date of the reservation with matching id
+        ///</summary>
+        [HttpPatch("/departure/{id}")]
+        public ActionResult UpdateCheckOutDate([FromRoute] int id, DateTime newCheckOutDate)
+        {
+
+            var reservation = _reservationRepo.GetReservationById(id);
+            _reservationRepo.ChangeCheckOutDate(reservation, newCheckOutDate);
+            return NoContent();
         }
 
         ///<summary>
