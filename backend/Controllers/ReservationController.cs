@@ -65,6 +65,19 @@ namespace react_typescript_dotnet_app.Controllers
         }
 
         ///<summary>
+        /// Updates the arrival and departure dates of the reservation with matching id
+        ///</summary>
+        [HttpPatch("/update/{id}/{newCheckInDate}//{newCheckOutDate}")]
+        public ActionResult UpdateDates([FromRoute] int id, DateTime newCheckInDate, DateTime newCheckOutDate)
+        {
+
+            var reservation = _reservationRepo.GetReservationById(id);
+            _reservationRepo.UpdateDates(reservation, newCheckInDate, newCheckOutDate);
+            return NoContent();
+        }
+
+
+        ///<summary>
         /// Updates the check in date of the reservation with matching id
         ///</summary>
         [HttpPatch("/arrival/{id}/{newCheckInDate}")]
@@ -77,7 +90,7 @@ namespace react_typescript_dotnet_app.Controllers
         }
 
         ///<summary>
-        /// Updates the check in date of the reservation with matching id
+        /// Updates the check out date of the reservation with matching id
         ///</summary>
         [HttpPatch("/departure/{id}")]
         public ActionResult UpdateCheckOutDate([FromRoute] int id, DateTime newCheckOutDate)

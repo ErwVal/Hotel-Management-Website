@@ -107,9 +107,9 @@ export const deleteReservation = async (reservationId: number) => {
   }
 };
 
-export const changeCheckInDate = async (reservationId: number, newCheckInDate: Date) => {
+export const updateDates = async (reservationId: number, newCheckInDate: Date, newCheckOutDate: Date) => {
   const response = await fetch(
-    `http://localhost:8000/api/reservations/arrival/${reservationId}/${newCheckInDate}`,
+    `http://localhost:8000/api/reservations/update/${reservationId}/${newCheckInDate}/${newCheckOutDate}`,
     {
       method: "PATCH",
       headers: {

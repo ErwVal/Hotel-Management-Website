@@ -14,6 +14,8 @@ namespace react_typescript_dotnet_app.Repositories
         Reservation GetReservationById(int id);
 
         void DeleteReservation(Reservation reservation);
+
+        void UpdateDates(Reservation reservation, DateTime newCheckInDate, DateTime newCheckOutDate);
         void ChangeCheckInDate(Reservation reservation, DateTime newCheckInDate);
         void ChangeCheckOutDate(Reservation reservation, DateTime newCheckOutDate);
     }
@@ -54,6 +56,18 @@ namespace react_typescript_dotnet_app.Repositories
             _database.Reservations.Remove(reservation);
             _database.SaveChanges();
         }
+
+        public void UpdateDates(Reservation reservation, DateTime newCheckInDate, DateTime newCheckOutDate)
+        {
+             if (DateTime.Today >= newCheckInDate && newCheckInDate > newCheckOutDate)
+             {
+                    reservation.CheckIn = newCheckInDate;
+                    reservation.CheckOut = newCheckOutDate;
+                    _database.Reservations.Update(reservation);
+                    _database.SaveChanges();
+             }
+        }
+
 
         public void ChangeCheckInDate(Reservation reservation, DateTime newCheckInDate)
         {
