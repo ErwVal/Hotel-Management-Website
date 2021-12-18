@@ -4,11 +4,11 @@ using System;
 
 namespace react_typescript_dotnet_app.Models.Response
 {
-    public class UpdateDatesResponse
+    public class UpdateGuestsResponse
     {
         private readonly Reservation _reservation;
 
-        public UpdateDatesResponse(Reservation reservation)
+        public UpdateGuestsResponse(Reservation reservation)
         {
             _reservation = reservation;
         }

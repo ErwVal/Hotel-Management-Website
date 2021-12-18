@@ -75,6 +75,16 @@ namespace react_typescript_dotnet_app.Controllers
             return new UpdateDatesResponse(reservation);
         }
 
+               ///<summary>
+        /// Updates the number of guests of the reservation with matching id
+        ///</summary>
+        [HttpPatch("{id}/guests")]
+        public ActionResult<UpdateGuestsResponse> UpdateGuests([FromRoute] int id, [FromBody] UpdateGuestsRequest updateGuests)
+        {
+            var reservation =_reservationRepo.UpdateGuests(id, updateGuests);
+            return new UpdateGuestsResponse(reservation);
+        }
+
         ///<summary>
         /// Gets the list of reservations of a specific user from the database.
         ///</summary>

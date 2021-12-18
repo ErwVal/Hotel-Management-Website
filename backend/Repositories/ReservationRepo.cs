@@ -1,10 +1,9 @@
 using react_typescript_dotnet_app.Models.Database;
 using react_typescript_dotnet_app.Models.Request;
-using react_typescript_dotnet_app.Models.Response;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System;
+
 
 namespace react_typescript_dotnet_app.Repositories
 {
@@ -17,6 +16,7 @@ namespace react_typescript_dotnet_app.Repositories
 
         void DeleteReservation(Reservation reservation);
         Reservation UpdateDates(int id, UpdateDatesRequest update);
+        Reservation UpdateGuests(int id, UpdateGuestsRequest updateGuests);
     }
 
     public class ReservationRepo : IReservationRepo
@@ -69,6 +69,15 @@ namespace react_typescript_dotnet_app.Repositories
 
         }
 
-
+        public Reservation UpdateGuests(int id, UpdateGuestsRequest updateGuests)
+        {
+            var reservation = GetReservationById(id);
+            reservation.NumGuests = updateGuests.NumGuests;
+            _database.Reservations.Update(reservation);
+            _database.SaveChanges();
+            
+            return reservation;
+        }
     }
+
 }

@@ -48,6 +48,10 @@ export interface Update {
   checkOut: string;
 }
 
+export interface UpdateGuests {
+  numGuests: number;
+}
+
 export const createReservation = async (newReservation: NewReservation) => {
   const response = await fetch('http://localhost:8000/api/reservations/create', {
     method: "POST",
@@ -128,4 +132,22 @@ export const updateDates = async (reservationId: number, update: Update) => {
     throw Error("Unexpected Error");
   }
 };
+
+export const updateGuests = async (reservationId: number, updateGuests: UpdateGuests) => {
+  const response = await fetch(
+    `http://localhost:8000/api/reservations/${reservationId}/guests`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateGuests),
+    }
+  );
+
+  if (!response.ok) {
+    throw Error("Unexpected Error");
+  }
+};
+
 

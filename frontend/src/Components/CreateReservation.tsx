@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert, Container } from "react-bootstrap";
+import { useState } from "react";
+import { Alert, Container, Button } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { createReservation } from "../api/apiClient";
 import moment from "moment";
@@ -20,6 +20,8 @@ export const CreateReservation = (props: Props) => {
     checkOut: string;
   }>();
 
+  const [reservationAlert, setReservationAlert] = useState(false);
+
   const submit = () => {
     if (props.userId === "") {
       history.push(
@@ -35,40 +37,47 @@ export const CreateReservation = (props: Props) => {
       userId: parseInt(props.userId),
     });
 
-    alert("Your reservation has been created");
+    setReservationAlert(true);
+  };
 
+  if (reservationAlert) {
     return (
-      <>
-        {" "}
+      <Container className="div-confirm-details">
         <Alert variant="success">
           <Alert.Heading>Success {props.firstName} !</Alert.Heading>
           <p>
-            Your reservation for {numGuests} from{" "}
+            Your reservation for {numGuests} adults from{" "}
             {moment(checkIn).format("DD MMMM YYYY")} to{" "}
             {moment(checkOut).format("DD MMMM YYYY")} has been successfully
-            created. Thank you for choosing Dew Breeze Suites for your holidays.
-            We hope you enjoy your stay.
+            created.
           </p>
+          <p>
+            Thank you for choosing Dew Breeze Suites for your holidays. We hope
+            you enjoy your stay.
+          </p>
+          <Alert.Link href="/trip">Continue</Alert.Link>.
         </Alert>
-        {history.push("/trip")}
-      </>
+      </Container>
     );
-  };
+  }
 
   return (
-    <>
-      <Container>
-        <h3>Please confirm your details are correct: </h3>
-        <ul>
-          <li>Check in: {checkIn}</li>
-          <li>Check out: {checkOut}</li>
-          <li>Adults: {numGuests}</li>
-          <li>Room ID: {roomId}</li>
-          <li>Hotel ID: {hotelId}</li>
-          <li>Guest ID: {props.userId}</li>
-        </ul>
-        <button onClick={submit}>Confirm and make reservation</button>
-      </Container>
-    </>
+    <Container className="div-confirm-details">
+      <h3>Please confirm the reservations details are correct: </h3>
+      <ul>
+        <li>
+          Location:{" "}
+          {hotelId == "1"
+            ? "Cancun"
+            : hotelId == "2"
+            ? "Tulum"
+            : "Playa del Carmen"}
+        </li>
+        <li>Check in: {moment(checkIn).format("DD MMMM YYYY")}</li>
+        <li>Check out: {moment(checkOut).format("DD MMMM YYYY")}</li>
+        <li>Adults: {numGuests}</li>
+      </ul>
+      <Button onClick={submit}>Confirm and make reservation</Button>
+    </Container>
   );
 };

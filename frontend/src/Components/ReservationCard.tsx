@@ -26,7 +26,7 @@ export const ReservationCard = (props: Props) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Link
-        to={`/reservation/change/${props.roomId}/${props.hotelId}/${props.numGuests}/${props.checkIn}/${props.checkOut}/${props.reservationId}`}
+        to={`/reservation/change/${props.roomId}/${props.hotelId}/${props.numGuests}/${props.checkIn}/${props.checkOut}/${props.reservationId}/${props.maxGuests}`}
       >
         <Card.Img variant="top" src={props.images[0]} />
         <Card.Body>

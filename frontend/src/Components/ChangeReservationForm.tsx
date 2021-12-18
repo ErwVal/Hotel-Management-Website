@@ -1,8 +1,8 @@
-import React, { useState, useEffect, SyntheticEvent } from "react";
+import React, { useState, SyntheticEvent } from "react";
 import { Container, Row, Col, Button, Form, Alert } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import moment from "moment";
-import { deleteReservation, updateDates } from "../api/apiClient";
+import { deleteReservation, updateDates, updateGuests } from "../api/apiClient";
 
 interface Props {
   userId: string;
@@ -19,32 +19,114 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
 ) => {
   const history = useHistory();
   const today = moment(new Date()).format("YYYY-MM-DD");
+  const [updateDatesAlert, setUpdateDatesAlert] = useState(false);
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [updateGuestsAlert, setUpdateGuestsAlert] = useState(false);
+  const [maxGuestsAlert, setMaxGuestsAlert] = useState(false);
 
-  const { roomId, hotelId, numGuests, checkIn, checkOut, reservationId } =
-    useParams<{
-      roomId: string;
-      hotelId: string;
-      numGuests: string;
-      checkIn: string;
-      checkOut: string;
-      reservationId: string;
-    }>();
+  const {
+    roomId,
+    hotelId,
+    numGuests,
+    checkIn,
+    checkOut,
+    reservationId,
+    maxGuests,
+  } = useParams<{
+    roomId: string;
+    hotelId: string;
+    numGuests: string;
+    checkIn: string;
+    checkOut: string;
+    reservationId: string;
+    maxGuests: string;
+  }>();
 
   const [checkInState, setCheckInState] = useState(checkIn);
   const [checkOutState, setCheckOutState] = useState(checkOut);
   const [numGuestsState, setNumGuestsState] = useState(numGuests);
 
-  const submitForm = (event: SyntheticEvent) => {
-    event.preventDefault();
-    console.log("Form activated");
+  const handleMaxGuests = () => {
+    if (numGuestsState <= maxGuests) {
+      updateGuests(parseInt(reservationId), {
+        numGuests: parseInt(numGuestsState),
+      });
+      setUpdateGuestsAlert(true);
+    } else {
+      setMaxGuestsAlert(true);
+    }
   };
+
+  if (updateGuestsAlert) {
+    return (
+      <Container className="div-change-reservation">
+        <Alert variant="success">
+          <Alert.Heading>Success!</Alert.Heading>
+          <p>
+            You have successfully updated the number of adults for your
+            reservation to {numGuestsState}.
+          </p>
+          <Alert.Link href="/trip">Continue</Alert.Link>.
+        </Alert>
+      </Container>
+    );
+  }
+
+  if (maxGuestsAlert) {
+    return (
+      <Container className="div-change-reservation">
+        <Alert variant="danger">
+          <Alert.Heading>Error</Alert.Heading>
+          <p>
+            Your selection ({numGuestsState}) exceeds the room's maximum number
+            of guests ({maxGuests}).
+          </p>
+          <p>Please select a valid option.</p>
+          <Alert.Link href="/trip">Continue</Alert.Link>.
+        </Alert>
+      </Container>
+    );
+  }
+
+  if (updateDatesAlert) {
+    return (
+      <Container className="div-change-reservation">
+        <Alert variant="success">
+          <Alert.Heading>Success!</Alert.Heading>
+          <p>
+            Your arrival date has been changed from{" "}
+            {moment(checkIn).format("DD MMMM YYYY")} to{" "}
+            {moment(checkInState).format("DD MMMM YYYY")}.
+          </p>
+          <p>
+            Your departure date has been changed from{" "}
+            {moment(checkOut).format("DD MMMM YYYY")} to{" "}
+            {moment(checkOutState).format("DD MMMM YYYY")}.
+          </p>
+          <Alert.Link href="/trip">Continue</Alert.Link>.
+        </Alert>
+      </Container>
+    );
+  }
+
+  if (deleteAlert) {
+    return (
+      <Container className="div-change-reservation">
+        <Alert variant="success">
+          <Alert.Heading>Success!</Alert.Heading>
+          <p>Your reservation has been deleted.</p>
+          <Alert.Link href="/trip">Continue</Alert.Link>.
+        </Alert>
+      </Container>
+    );
+  }
 
   return (
     <Container className="div-change-reservation">
       {props.userId !== "" || props.userId !== undefined ? (
         <>
           <h3>Change reservation</h3>
-          <Form onSubmit={submitForm}>
+          <Form>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column sm="2">
                 Adults:
@@ -69,7 +151,9 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                   <option>8</option>
                 </Form.Select>
               </Col>
-              <Button>Change the number of adults</Button>
+              <Button onClick={handleMaxGuests}>
+                Change the number of adults
+              </Button>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
@@ -117,7 +201,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                     checkIn: checkInState,
                     checkOut: checkOutState,
                   });
-                  return history.push("/trip");
+                  setUpdateDatesAlert(true);
                 }}
               >
                 Change dates
@@ -128,21 +212,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                 className="cancel"
                 onClick={() => {
                   deleteReservation(parseInt(reservationId));
-                  return (
-                    <>
-                      {" "}
-                      <Alert variant="success">
-                        <Alert.Heading>Success</Alert.Heading>
-                        <p>
-                          Your reservation for {numGuests} from{" "}
-                          {moment(checkIn).format("DD MMMM YYYY")} to{" "}
-                          {moment(checkOut).format("DD MMMM YYYY")} has been
-                          successfully deleted.
-                        </p>
-                      </Alert>
-                      {history.push("/trip")}
-                    </>
-                  );
+                  setDeleteAlert(true);
                 }}
               >
                 Cancel reservation

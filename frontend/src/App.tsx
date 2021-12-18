@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 import "./styling/App.scss";
+
 import { BookingForm } from "./components/BookingForm";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { RoomComponent } from "./components/RoomComponent";
+import { ChangeReservationForm } from "./components/ChangeReservationForm";
+import { Contact } from "./components/Contact";
 import { CreateReservation } from "./components/CreateReservation";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 import { LandingPage } from "./components/LandingPage";
 import { Login } from "./components/Login";
-import { Register } from "./components/Register";
-import { AnimatePresence } from "framer-motion";
-import { LoginParams } from "./components/LoginParams";
-import { RegisterParams } from "./components/RegisterParams";
-import { Contact } from "./components/Contact";
-import { RenderAllRooms } from "./components/RenderAllRooms";
-import { Trip } from "./components/Trip";
 import { LoginOrRegister } from "./components/LoginOrRegister";
-import { ChangeReservationForm } from "./components/ChangeReservationForm";
+import { LoginParams } from "./components/LoginParams";
+import { Register } from "./components/Register";
+import { RegisterParams } from "./components/RegisterParams";
+import { RenderAllRooms } from "./components/RenderAllRooms";
+import { RoomComponent } from "./components/RoomComponent";
+import { Trip } from "./components/Trip";
 
 export interface Reservation {
   checkIn?: Date;
@@ -106,7 +108,7 @@ export const App: React.FunctionComponent = () => {
 
             <Route
               exact
-              path="/reservation/change/:roomId/:hotelId/:numGuests/:checkIn/:checkOut/:reservationId"
+              path="/reservation/change/:roomId/:hotelId/:numGuests/:checkIn/:checkOut/:reservationId/:maxGuests"
               component={() => <ChangeReservationForm userId={userId} />}
             />
 
