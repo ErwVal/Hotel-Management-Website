@@ -129,7 +129,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
           <Form>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column sm="2">
-                Adults:
+                Adults {maxGuests} max:
               </Form.Label>
               <Col>
                 <Form.Control
