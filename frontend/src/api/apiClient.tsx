@@ -43,6 +43,11 @@ export interface RoomsListResponse {
   room: Room[];
 }
 
+export interface Update {
+  checkIn: string;
+  checkOut: string;
+}
+
 export const createReservation = async (newReservation: NewReservation) => {
   const response = await fetch('http://localhost:8000/api/reservations/create', {
     method: "POST",
@@ -107,14 +112,15 @@ export const deleteReservation = async (reservationId: number) => {
   }
 };
 
-export const updateDates = async (reservationId: number, newCheckInDate: Date, newCheckOutDate: Date) => {
+export const updateDates = async (reservationId: number, update: Update) => {
   const response = await fetch(
-    `http://localhost:8000/api/reservations/update/${reservationId}/${newCheckInDate}/${newCheckOutDate}`,
+    `http://localhost:8000/api/reservations/${reservationId}/update`,
     {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(update),
     }
   );
 

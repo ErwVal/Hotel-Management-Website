@@ -67,38 +67,12 @@ namespace react_typescript_dotnet_app.Controllers
         ///<summary>
         /// Updates the arrival and departure dates of the reservation with matching id
         ///</summary>
-        [HttpPatch("/update/{id}/{newCheckInDate}//{newCheckOutDate}")]
-        public ActionResult UpdateDates([FromRoute] int id, DateTime newCheckInDate, DateTime newCheckOutDate)
+        [HttpPatch("{id}/update")]
+        public ActionResult<UpdateDatesResponse> UpdateDates([FromRoute] int id, [FromBody] UpdateDatesRequest update)
         {
 
-            var reservation = _reservationRepo.GetReservationById(id);
-            _reservationRepo.UpdateDates(reservation, newCheckInDate, newCheckOutDate);
-            return NoContent();
-        }
-
-
-        ///<summary>
-        /// Updates the check in date of the reservation with matching id
-        ///</summary>
-        [HttpPatch("/arrival/{id}/{newCheckInDate}")]
-        public ActionResult UpdateCheckInDate([FromRoute] int id, DateTime newCheckInDate)
-        {
-
-            var reservation = _reservationRepo.GetReservationById(id);
-            _reservationRepo.ChangeCheckInDate(reservation, newCheckInDate);
-            return NoContent();
-        }
-
-        ///<summary>
-        /// Updates the check out date of the reservation with matching id
-        ///</summary>
-        [HttpPatch("/departure/{id}")]
-        public ActionResult UpdateCheckOutDate([FromRoute] int id, DateTime newCheckOutDate)
-        {
-
-            var reservation = _reservationRepo.GetReservationById(id);
-            _reservationRepo.ChangeCheckOutDate(reservation, newCheckOutDate);
-            return NoContent();
+            var reservation =_reservationRepo.UpdateDates(id, update);
+            return new UpdateDatesResponse(reservation);
         }
 
         ///<summary>

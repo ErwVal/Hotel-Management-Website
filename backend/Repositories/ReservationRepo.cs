@@ -1,4 +1,6 @@
 using react_typescript_dotnet_app.Models.Database;
+using react_typescript_dotnet_app.Models.Request;
+using react_typescript_dotnet_app.Models.Response;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +16,7 @@ namespace react_typescript_dotnet_app.Repositories
         Reservation GetReservationById(int id);
 
         void DeleteReservation(Reservation reservation);
-
-        void UpdateDates(Reservation reservation, DateTime newCheckInDate, DateTime newCheckOutDate);
-        void ChangeCheckInDate(Reservation reservation, DateTime newCheckInDate);
-        void ChangeCheckOutDate(Reservation reservation, DateTime newCheckOutDate);
+        Reservation UpdateDates(int id, UpdateDatesRequest update);
     }
 
     public class ReservationRepo : IReservationRepo
@@ -57,39 +56,19 @@ namespace react_typescript_dotnet_app.Repositories
             _database.SaveChanges();
         }
 
-        public void UpdateDates(Reservation reservation, DateTime newCheckInDate, DateTime newCheckOutDate)
+        public Reservation UpdateDates(int id, UpdateDatesRequest update)
         {
-             if (DateTime.Today >= newCheckInDate && newCheckInDate > newCheckOutDate)
-             {
-                    reservation.CheckIn = newCheckInDate;
-                    reservation.CheckOut = newCheckOutDate;
-                    _database.Reservations.Update(reservation);
-                    _database.SaveChanges();
-             }
+            var reservation = GetReservationById(id);
+            reservation.CheckIn = update.CheckIn;
+            reservation.CheckOut = update.CheckOut;
+
+            _database.Reservations.Update(reservation);
+            _database.SaveChanges();
+
+            return reservation;
+
         }
 
-
-        public void ChangeCheckInDate(Reservation reservation, DateTime newCheckInDate)
-        {
-            // checking the new date is not before today and also before the check out date
-            if (newCheckInDate <= DateTime.Today && newCheckInDate > reservation.CheckOut)
-            {
-                reservation.CheckIn = newCheckInDate;
-                _database.Reservations.Update(reservation);
-                _database.SaveChanges();
-            }
-        }
-
-        public void ChangeCheckOutDate(Reservation reservation, DateTime newCheckOutDate)
-        {
-            // Checking the check out date is after the check in date
-            if (newCheckOutDate < reservation.CheckIn)
-            {
-                reservation.CheckOut = newCheckOutDate;
-                _database.Reservations.Update(reservation);
-                _database.SaveChanges();
-            }
-        }
 
     }
 }
