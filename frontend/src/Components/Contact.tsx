@@ -15,10 +15,8 @@ export const Contact: React.FunctionComponent<Props> = (props: Props) => {
   const [emailState, setEmailState] = useState("");
   const [messageState, setMessageState] = useState("");
 
-
   useEffect(() => {
-    fetch(
-      `http://localhost:8000/api/users/${props.userId}`    )
+    fetch(`http://localhost:8000/api/users/${props.userId}`)
       .then((response) => {
         if (!response.ok) {
           throw Error("Could not fetch data from resource.");
@@ -26,15 +24,14 @@ export const Contact: React.FunctionComponent<Props> = (props: Props) => {
         return response.json();
       })
       .then((content) => {
-   
-      setFirstNameState(content.firstName);
-      setLastNameState(content.lastName);
-      setEmailState(content.email);
-    })
-      .catch(err => {
-        console.log(err.message)
+        setFirstNameState(content.firstName);
+        setLastNameState(content.lastName);
+        setEmailState(content.email);
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
-  }, );
+  });
 
   const handleContactForm = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -62,46 +59,42 @@ export const Contact: React.FunctionComponent<Props> = (props: Props) => {
       </Container>
     );
   }
-  
-  if (!props.firstName) {
 
+  if (!props.firstName) {
     return (
       <Container className="div-contact">
         <h4>
-          Please use <Link to="/contact/without-login">this form</Link> to contact Dew Breeze Suites.{" "}
+          Please use <Link to="/contact/without-login">this form</Link> to
+          contact Dew Breeze Suites.{" "}
         </h4>
       </Container>
     );
-  } 
-    return ( 
-      <Container className="div-contact">
-        <Row>
-          <h3>Contact us {props.firstName}</h3>
-        </Row>
-        <Row>
-          <Col>6 Avenida Las Plazas, Zona Hotelera, Cancun, Mexico </Col>
-        </Row>
-        <Row>
-          <Col>Phone: +52 723-4583-3434</Col>
-        </Row>
-        <Row>
-          <Col>info@dew-breeze.com</Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form onSubmit={handleContactForm}>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Write your message here"
-                onChange={(e) => setMessageState(e.target.value)}
-                required
-              />
+  }
+  return (
+    <Container className="div-contact">
+      <Row>
+        <h3>Contact us {props.firstName}</h3>
+      </Row>
+      <br/>
+      <br/>
+      <Row>
+        <Col>
+          <Form onSubmit={handleContactForm}>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Write your message here"
+              onChange={(e) => setMessageState(e.target.value)}
+              required
+            />
+            <br/>
+            <Row>
+              {" "}
               <Button type="submit">Submit</Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    );
-
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  );
 };

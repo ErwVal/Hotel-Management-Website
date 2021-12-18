@@ -323,7 +323,6 @@ nav {
   }
 }
 
-.div-contact,
 .div-all-rooms,
 .div-rooms-query {
   @include div-basic-style();
@@ -337,7 +336,7 @@ nav {
   color: $light-colour3;
 }
 
-.div-change-reservation {
+.div-change-reservation, .div-contact {
   min-height: $min-height;
 
   form {

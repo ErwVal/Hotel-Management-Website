@@ -36,7 +36,7 @@ export const LandingPage: React.FunctionComponent = () => {
         <button>Reserve</button>
       </Link>
 
-      <Link to={"/contact"}>
+      <Link to={"/contact/without-login"}>
         <button>Contact</button>
       </Link>
     </motion.div>

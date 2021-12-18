@@ -123,7 +123,9 @@ export const App: React.FunctionComponent = () => {
             <Route
               exact
               path="/contact/without-login"
-              component={ContactNoLogin}
+              component={() => (
+                <ContactNoLogin firstName={firstName} userId={userId} />
+              )}
             />
 
             <Route

@@ -1,8 +1,16 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Row, Col, Form, Container, Button, Alert } from "react-bootstrap";
 import { createContactQuery } from "../api/apiClient";
+import { Redirect } from "react-router-dom";
 
-export const ContactNoLogin: React.FunctionComponent = () => {
+interface Props {
+  firstName?: string;
+  userId?: string;
+}
+
+export const ContactNoLogin: React.FunctionComponent<Props> = (
+  props: Props
+) => {
   const [alert, setAlert] = useState(false);
   const [firstNameState, setFirstNameState] = useState("");
   const [lastNameState, setLastNameState] = useState("");
@@ -36,20 +44,17 @@ export const ContactNoLogin: React.FunctionComponent = () => {
     );
   }
 
+  if (props.firstName) {
+    return <Redirect to="/contact" />;
+  }
+
   return (
     <Container className="div-contact">
       <Row>
         <h3>Contact us</h3>
       </Row>
-      <Row>
-        <Col>6 Avenida Las Plazas, Zona Hotelera, Cancun, Mexico </Col>
-      </Row>
-      <Row>
-        <Col>Phone: +52 723-4583-3434</Col>
-      </Row>
-      <Row>
-        <Col>info@dew-breeze.com</Col>
-      </Row>
+      <br />
+      <br />
       <Form onSubmit={handleContactForm}>
         <Row>
           <Col>
@@ -82,6 +87,7 @@ export const ContactNoLogin: React.FunctionComponent = () => {
             />
           </Col>
         </Row>
+        <br />
         <Row>
           {" "}
           <Button type="submit">Submit</Button>
