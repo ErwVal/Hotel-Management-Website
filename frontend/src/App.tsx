@@ -7,6 +7,7 @@ import "./styling/App.scss";
 import { BookingForm } from "./components/BookingForm";
 import { ChangeReservationForm } from "./components/ChangeReservationForm";
 import { Contact } from "./components/Contact";
+import { ContactNoLogin } from "./components/ContactNoLogin";
 import { CreateReservation } from "./components/CreateReservation";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -112,7 +113,19 @@ export const App: React.FunctionComponent = () => {
               component={() => <ChangeReservationForm userId={userId} />}
             />
 
-            <Route exact path="/contact" component={() => <Contact firstName={firstName} userId={userId}/>} />
+            <Route
+              exact
+              path="/contact"
+              component={() => (
+                <Contact firstName={firstName} userId={userId} />
+              )}
+            />
+            <Route
+              exact
+              path="/contact/without-login"
+              component={ContactNoLogin}
+            />
+
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"

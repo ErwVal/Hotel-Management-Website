@@ -27,11 +27,11 @@ export const Trip: React.FunctionComponent<Props> = (props: Props) => {
 
   if (!props.firstName) {
     return (
-      <div className="div-trip">
-        <p>
+      <Container className="div-login">
+        <h4>
           You must <Link to="/login">login</Link> to see your reservations.{" "}
-        </p>
-      </div>
+        </h4>
+      </Container>
     );
   }
   return (

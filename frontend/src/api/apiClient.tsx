@@ -110,7 +110,7 @@ export const loginUser = async (loginUser: LoginUser) => {
 
 
 export const createContactQuery = async (contactQuery: ContactQuery) => {
-  const response = await fetch('http://localhost:8000/api/contact', {
+  const response = await fetch('http://localhost:8000/api/contact/create', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

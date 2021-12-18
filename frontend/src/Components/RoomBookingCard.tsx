@@ -54,10 +54,7 @@ export const RoomBookingCard: React.FunctionComponent<Props> = (
     });
 
     if (props.userId) {
-      <Redirect
-      to="/reservation/create"
-        // to={`/reservation/create/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}/${location}/${props.room.roomPrice}/${lengthOfStay}`}
-      />;
+      <Redirect to="/reservation/create" />;
     } else {
       <Redirect to="/login" />;
     }

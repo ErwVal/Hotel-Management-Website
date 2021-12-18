@@ -86,7 +86,7 @@ export const Header: React.FunctionComponent<Props> = (props: Props) => {
               <Nav className="ms-auto">
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/home/rooms">Rooms</Nav.Link>
-                <Nav.Link href="/contact">Contact</Nav.Link>
+                <Nav.Link href="/contact/without-login">Contact</Nav.Link>
                 <Nav.Link href="/register">Register</Nav.Link>
                 <Nav.Link href="/login">Login</Nav.Link>
               </Nav>
