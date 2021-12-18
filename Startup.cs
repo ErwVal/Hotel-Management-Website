@@ -45,6 +45,8 @@ namespace react_typescript_dotnet_app
             services.AddTransient<IReservationService, ReservationService>();
             services.AddTransient<IUsersRepo, UsersRepo>();
             services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IContactQueryRepo, ContactQueryRepo>();
+            services.AddTransient<IContactQueryService, ContactQueryService>();
             services.AddTransient<JtwService>();
 
             services.AddScoped<IUsersRepo, UsersRepo>(); // So that IUsersRepo only accepts UsersRepo type
