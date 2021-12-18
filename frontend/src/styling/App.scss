@@ -1,38 +1,75 @@
 @import "~bootstrap/scss/bootstrap";
 
-// General styling
+// Colours
+$light-colour1: #ffffff;
+$light-colour2: #f3f3f3;
+$light-colour3: #fbf2d5;
+$dark-colour: #394a51;
+
+// Fonts
+$main-font: "Caudex", serif;
+
+// Minimum page height
+$min-height: 60vh;
+
+// Basic styling 
+@mixin div-basic-style {
+  text-align: center;
+  min-height: $min-height;
+}
+
+@mixin button-colour {
+  .btn {
+    color: $light-colour2;
+    background-color: $dark-colour;
+  }
+  .btn:hover {
+    color: $dark-colour;
+    background-color: $light-colour1;
+  }
+}
+
+@mixin background-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+
+
 body,
 h1,
 h2,
 h3,
 main {
-  font-family: "Caudex", serif;
+  font-family: $main-font;
 }
 
 nav {
-  background-color: #f3f3f3;
-  color: #394a51;
-  font-family: "Caudex", serif;
+  background-color: $light-colour1;
+  color: $dark-colour;
+  font-family: $main-font
 }
 
 .landing-page {
   text-align: center;
   height: 100vh;
-  font-family: "Caudex", serif;
+  font-family: $main-font;
   padding-top: 9rem;
   h1 {
     font-size: 5rem;
-    color: #ffffff;
+    color: $light-colour1;
     padding: 1rem;
   }
   h2 {
     font-size: 1.5rem;
-    color: #fbf2d5;
+    color: $light-colour3;
     margin-top: 1rem;
     margin-bottom: 3rem;
   }
   button {
-    color: #fbf2d5;
+    color: $light-colour3;
     background-color: transparent;
     margin-top: 2rem;
     opacity: 0.5;
@@ -42,23 +79,19 @@ nav {
     border-radius: 7%;
   }
   button:hover {
-    color: #fbf2d5;
-    background-color: #394a51;
+    color: $light-colour3;
+    background-color: $dark-colour;
     opacity: 1;
   }
   background: rgba(0, 0, 0, 0.7) url("http://localhost:8000/images/img2.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-blend-mode: darken;
+  @include background-image();
 }
 
 // Landing/booking page
 .div-landing-page {
   background: rgba(0, 0, 0, 0.3) url("http://localhost:8000/images/img3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: darken;
+  @include background-image();
+
   padding-top: 3rem;
   padding-bottom: 2rem;
 
@@ -66,14 +99,14 @@ nav {
     max-width: 20rem;
     max-height: 40rem;
     border-radius: 10%;
-    background-color: #394a51;
+    background-color: $dark-colour;
     opacity: 0.9;
     padding: 1rem;
     margin-left: 5rem;
-    color: #fbf2d5;
+    color: $light-colour3;
 
     h3 {
-      color: #fbf2d5;
+      color: $light-colour3;
     }
     h4 {
       text-align: center;
@@ -85,8 +118,8 @@ nav {
       max-width: 10rem;
     }
     .form-button:hover {
-      color: #fbf2d5;
-      background-color: #394a51;
+      color: $light-colour3;
+      background-color: $dark-colour;
       opacity: 1;
     }
     .form-row {
@@ -101,7 +134,7 @@ nav {
   }
 
   h1 {
-    color: #fbf2d5;
+    color: $light-colour3;
     text-align: center;
     padding: 2rem;
     padding-top: 4rem;
@@ -112,32 +145,20 @@ nav {
   }
 
   a {
-    color: #f3f3f3;
+    color: $light-colour2;
     background-color: transparent;
     text-decoration: none;
   }
 
   a:hover {
-    color: #fbf2d5;
+    color: $light-colour3;
   }
-}
-
-#background-video {
-  width: 99vw;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
 }
 
 // footer
 .div-footer {
-  background-color: #394a51;
-  color: #fbf2d5;
+  background-color: $dark-colour;
+  color: $light-colour3;
   height: 14rem;
   text-align: center;
   padding-top: 1rem;
@@ -148,14 +169,14 @@ nav {
   }
 
   .icon-light {
-    color: #fbf2d5;
+    color: $light-colour3;
     margin: 0.5rem;
   }
 }
 
 // rooms by query component
 .div-rooms-query-loading {
-  min-height: 50rem;
+  @include div-basic-style();
 }
 
 // room card
@@ -170,16 +191,16 @@ nav {
     }
   }
   a {
-    color: #394a51;
+    color: $dark-colour;
     background-color: transparent;
     text-decoration: none;
   }
 
   .card:hover {
-    background-color: #394a51;
+    background-color: $dark-colour;
   }
   a:hover {
-    color: #fbf2d5;
+    color: $light-colour3;
   }
 }
 
@@ -194,27 +215,27 @@ nav {
     margin: auto;
     width: 31rem;
     height: 14rem;
-    color: #fbf2d5;
-    background-color: #394a51;
+    color: $light-colour3;
+    background-color: $dark-colour;
     font-size: 2.5rem;
   }
   button:hover {
-    color: #394a51;
-    background-color: #ffffff;
+    color: $dark-colour;
+    background-color: $light-colour1;
   }
   p {
-    background-color: #fbf2d5;
+    background-color: $light-colour3;
     padding: 3rem;
   }
   h3 {
     padding-bottom: 2rem;
   }
   .icon {
-    color: #394a51;
+    color: $dark-colour;
   }
   .p-room-price {
     text-align: center;
-    background-color: #fbf2d5;
+    background-color: $light-colour3;
     padding: 1.5rem;
     ul {
       text-align: left;
@@ -226,22 +247,19 @@ nav {
 }
 
 .div-login {
-  min-height: 60vh;
-  text-align: center;
+  @include div-basic-style();
   align-items: center;
-  
-
   h3 {
     padding: 3rem;
   }
   .btn {
     margin-top: 3rem;
-    color: #fbf2d5;
-    background-color: #394a51;
+    color: $light-colour3;
+    background-color: $dark-colour;
   }
   .btn:hover {
-    color: #394a51;
-    background-color: #ffffff;
+    color: $dark-colour;
+    background-color: $light-colour1;
   }
   .col {
     margin-inline: 12rem;
@@ -251,33 +269,28 @@ nav {
 // reservation card
 
 .div-reservation-card {
-  min-height: 60vh;
-
+  @include div-basic-style();
   .card {
     margin: auto;
     margin-top: 2rem;
     text-align: center;
-    color: #394a51;
+    color: $dark-colour;
     margin-bottom: 2rem;
-    
-
     .card-title {
       text-align: center;
     }
   }
   a {
-    color: #394a51;
+    color: $dark-colour;
     text-decoration: none;
   }
-
   .card:hover {
-    background-color: #394a51;
+    background-color: $dark-colour;
     border-width: 0.2rem;
   }
   a:hover {
-    color: #fbf2d5;
+    color: $light-colour3;
   }
-
   h3,
   h4 {
     padding: 1.5rem;
@@ -285,14 +298,12 @@ nav {
   .list-group-item {
     border-width: 0;
     border-color: transparent;
-    
   }
 }
 
 .div-login-register,
 .div-confirm-details {
-  min-height: 60vh;
-  text-align: center;
+  @include div-basic-style();
   align-items: center;
 
   h3 {
@@ -300,12 +311,12 @@ nav {
   }
   .btn {
     margin-top: 3rem;
-    color: #fbf2d5;
-    background-color: #394a51;
+    color: $light-colour3;
+    background-color: $dark-colour;
   }
   .btn:hover {
-    color: #394a51;
-    background-color: #ffffff;
+    color: $dark-colour;
+    background-color: $light-colour1;
   }
   .col {
     margin-inline: 12rem;
@@ -315,8 +326,7 @@ nav {
 .div-contact,
 .div-all-rooms,
 .div-rooms-query {
-  min-height: 60vh;
-  text-align: center;
+  @include div-basic-style();
   align-items: center;
   h3 {
     padding: 3rem;
@@ -324,11 +334,11 @@ nav {
 }
 
 .div-rooms-query h3 {
-  color: #fbf2d5;
+  color: $light-colour3;
 }
 
 .div-change-reservation {
-  min-height: 60vh;
+  min-height: $min-height;
 
   form {
     max-width: 30rem;
@@ -339,22 +349,22 @@ nav {
     text-align: center;
   }
   .btn {
-    color: #fbf2d5;
-    background-color: #394a51;
+    color: $light-colour3;
+    background-color: $dark-colour;
   }
   .btn:hover {
-    color: #394a51;
-    background-color: #ffffff;
+    color: $dark-colour;
+    background-color: $light-colour1;
   }
   .row {
     padding: 0.5rem;
   }
   .cancel {
-    color: #ffffff;
+    color: $light-colour1;
     background-color: rgb(151, 18, 45);
   }
   .cancel:hover {
     color: rgb(151, 18, 45);
-    background-color: #ffffff;
+    background-color: $light-colour1;
   }
 }

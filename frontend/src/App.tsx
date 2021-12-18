@@ -112,7 +112,7 @@ export const App: React.FunctionComponent = () => {
               component={() => <ChangeReservationForm userId={userId} />}
             />
 
-            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/contact" component={() => <Contact firstName={firstName} userId={userId}/>} />
             <Route
               exact
               path="/rooms/:id/:hotelId/:numGuests/:checkInDate/:checkOutDate"

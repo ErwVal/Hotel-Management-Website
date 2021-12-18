@@ -52,6 +52,13 @@ export interface UpdateGuests {
   numGuests: number;
 }
 
+export interface ContactQuery {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+}
+
 export const createReservation = async (newReservation: NewReservation) => {
   const response = await fetch('http://localhost:8000/api/reservations/create', {
     method: "POST",
@@ -92,6 +99,24 @@ export const loginUser = async (loginUser: LoginUser) => {
     },
     credentials: 'include',
     body: JSON.stringify(loginUser),
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+
+export const createContactQuery = async (contactQuery: ContactQuery) => {
+  const response = await fetch('http://localhost:8000/api/contact', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: 'include',
+    body: JSON.stringify(contactQuery),
   });
 
   if (!response.ok) {
