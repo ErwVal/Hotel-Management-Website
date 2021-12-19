@@ -1,7 +1,7 @@
-import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 enum roomType {
   Single,
@@ -22,8 +22,29 @@ interface Props {
   roomId: string | number;
 }
 
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    x: "200vw",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 2,
+      when: "beforeChildren",
+    },
+  },
+};
+
 export const ReservationCard = (props: Props) => {
   return (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      className="div-room-card"
+    >
     <Card style={{ width: "18rem" }}>
       <Link
         to={`/reservation/change/${props.roomId}/${props.hotelId}/${props.numGuests}/${props.checkIn}/${props.checkOut}/${props.reservationId}/${props.maxGuests}`}
@@ -55,5 +76,6 @@ export const ReservationCard = (props: Props) => {
         </ListGroup>
       </Link>
     </Card>
+    </motion.div>
   );
 };

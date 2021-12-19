@@ -125,7 +125,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
     <Container className="div-change-reservation">
       {props.userId !== "" || props.userId !== undefined ? (
         <>
-          <h3>Change reservation</h3>
+          <h3>Modify your reservation details:</h3>
           <Form>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column sm="2">
@@ -152,7 +152,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                 </Form.Select>
               </Col>
               <Button onClick={handleMaxGuests}>
-                Change the number of adults
+                Modify the number of adults
               </Button>
             </Form.Group>
 
@@ -166,7 +166,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                   readOnly
                   defaultValue={moment(checkIn).format("DD MMMM YYYY")}
                 />
-                <label>Check in</label> <br />
+                <label>Change date of arrival</label> <br />
                 <input
                   name="CheckIn"
                   type="date"
@@ -185,7 +185,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                   readOnly
                   defaultValue={moment(checkOut).format("DD MMMM YYYY")}
                 />
-                <label>Check out</label> <br />
+                <label>Change date of departure</label> <br />
                 <input
                   name="CheckOut"
                   type="date"
@@ -204,7 +204,7 @@ export const ChangeReservationForm: React.FunctionComponent<Props> = (
                   setUpdateDatesAlert(true);
                 }}
               >
-                Change dates
+                Modify dates
               </Button>
             </Form.Group>
             <Row>

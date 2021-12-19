@@ -59,26 +59,24 @@ export const RegisterParams: React.FunctionComponent = () => {
               />
             </Col>
           </Row>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridEmail">
+          <Row>
+            <Col>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridPassword">
+            </Col>
+            <Col>
               <Form.Control
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </Form.Group>
+            </Col>
           </Row>
-
           <Button type="submit">Register</Button>
         </Form>
       </div>

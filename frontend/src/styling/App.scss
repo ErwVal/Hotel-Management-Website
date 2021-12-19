@@ -12,7 +12,11 @@ $main-font: "Caudex", serif;
 // Minimum page height
 $min-height: 60vh;
 
-// Basic styling 
+// Screen sizes
+$mobile: 430px;
+$tablet: 810px;
+
+// Basic styling
 @mixin div-basic-style {
   text-align: center;
   min-height: $min-height;
@@ -36,7 +40,29 @@ $min-height: 60vh;
   background-blend-mode: darken;
 }
 
+@mixin respond-div {
+  .col {
+    margin-inline: 10rem;
+  }
 
+  @media only screen and (max-width: $tablet) {
+    .col {
+      margin-inline: 5rem;
+    }
+  }
+
+  @media only screen and (max-width: $mobile) {
+    .col {
+      margin-inline: 2rem;
+    }
+    .btn {
+      font-size: small;
+    }
+    .form-control {
+      font-size: small;
+    }
+  }
+}
 
 body,
 h1,
@@ -49,7 +75,7 @@ main {
 nav {
   background-color: $light-colour1;
   color: $dark-colour;
-  font-family: $main-font
+  font-family: $main-font;
 }
 
 .landing-page {
@@ -85,15 +111,49 @@ nav {
   }
   background: rgba(0, 0, 0, 0.7) url("http://localhost:8000/images/img2.jpg");
   @include background-image();
+  @media only screen and (max-width: $tablet) {
+    h1 {
+      padding-bottom: 3rem;
+    }
+  }
+  @media only screen and (max-width: $mobile) {
+    h1 {
+      font-size: xx-large;
+      padding-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: large;
+    }
+  }
 }
 
 // Landing/booking page
 .div-landing-page {
   background: rgba(0, 0, 0, 0.3) url("http://localhost:8000/images/img3.jpg");
   @include background-image();
-
   padding-top: 3rem;
   padding-bottom: 2rem;
+
+  h1 {
+    color: $light-colour3;
+    text-align: center;
+    padding: 2rem;
+    padding-top: 4rem;
+  }
+
+  h3 {
+    text-align: center;
+  }
+  a {
+    color: $light-colour2;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $light-colour3;
+  }
 
   .form-container {
     max-width: 20rem;
@@ -102,7 +162,6 @@ nav {
     background-color: $dark-colour;
     opacity: 0.9;
     padding: 1rem;
-    margin-left: 5rem;
     color: $light-colour3;
 
     h3 {
@@ -127,31 +186,20 @@ nav {
       margin-top: 1rem;
     }
   }
-
   .div-landing-page-row {
-    margin: 0;
-    padding-right: 4rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row {
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  h1 {
-    color: $light-colour3;
-    text-align: center;
-    padding: 2rem;
-    padding-top: 4rem;
-  }
-
-  h3 {
-    text-align: center;
-  }
-
-  a {
-    color: $light-colour2;
-    background-color: transparent;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $light-colour3;
+  @media only screen and (max-width: $mobile) {
+    align-items: center;
+    .form-container {
+      font-size: medium;
+    }
   }
 }
 
@@ -183,7 +231,6 @@ nav {
 .div-room-card {
   .card {
     margin: auto;
-    border-radius: 10%;
     margin-top: 2rem;
     text-align: center;
     .card-title {
@@ -195,9 +242,9 @@ nav {
     background-color: transparent;
     text-decoration: none;
   }
-
   .card:hover {
     background-color: $dark-colour;
+    border-width: 0.2rem;
   }
   a:hover {
     color: $light-colour3;
@@ -210,6 +257,12 @@ nav {
 
   img {
     max-width: 30rem;
+    @media only screen and (max-width: $tablet) {
+      max-width: 40rem;
+    }
+    @media only screen and (max-width: $mobile) {
+      max-width: 20rem;
+    }
   }
   button {
     margin: auto;
@@ -232,6 +285,10 @@ nav {
   }
   .icon {
     color: $dark-colour;
+    @media only screen and (max-width: $mobile) {
+      margin: 0.5rem;
+      margin-top: 1rem;
+    }
   }
   .p-room-price {
     text-align: center;
@@ -243,6 +300,10 @@ nav {
   }
   h5 {
     text-align: right;
+  }
+  .icons-row {
+    text-align: center;
+    align-items: center;
   }
 }
 
@@ -261,9 +322,7 @@ nav {
     color: $dark-colour;
     background-color: $light-colour1;
   }
-  .col {
-    margin-inline: 12rem;
-  }
+  @include respond-div();
 }
 
 // reservation card
@@ -318,9 +377,7 @@ nav {
     color: $dark-colour;
     background-color: $light-colour1;
   }
-  .col {
-    margin-inline: 12rem;
-  }
+  @include respond-div();
 }
 
 .div-all-rooms,
@@ -336,12 +393,16 @@ nav {
   color: $light-colour3;
 }
 
-.div-change-reservation, .div-contact {
+.div-change-reservation,
+.div-contact {
   min-height: $min-height;
 
   form {
     max-width: 30rem;
     margin-left: 20rem;
+  }
+  label {
+    padding-bottom: 0.5rem;
   }
   h3 {
     padding: 3rem;
@@ -350,6 +411,7 @@ nav {
   .btn {
     color: $light-colour3;
     background-color: $dark-colour;
+    margin: 1rem 0;
   }
   .btn:hover {
     color: $dark-colour;
@@ -365,5 +427,31 @@ nav {
   .cancel:hover {
     color: rgb(151, 18, 45);
     background-color: $light-colour1;
+  }
+  @media only screen and (max-width: $tablet) {
+    form {
+      max-width: 30rem;
+      margin: auto;
+      font-size: small;
+    }
+  }
+
+  @media only screen and (max-width: $mobile) {
+    align-items: center;
+    text-align: center;
+    .col {
+      margin-inline: 2rem;
+    }
+    .btn {
+      font-size: small;
+    }
+    .form {
+      max-width: 30rem;
+      font-size: small;
+    }
+    .form-control-plaintext {
+      align-items: center;
+      text-align: center;
+    }
   }
 }

@@ -107,7 +107,7 @@ export const RoomComponent = (props: Props) => {
 
             <br />
             <br />
-            <Row>
+            <Row className="icons-row">
               <Col>
                 {" "}
                 <FaPoundSign className="icon-wifi icon" size={30} />

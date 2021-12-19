@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Room } from "../api/apiClient";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -42,22 +42,16 @@ export const RoomCard: React.FunctionComponent<Props> = (props: Props) => {
   let lengthOfStay = moment.duration(departure.diff(arrival)).asDays();
 
   return (
- 
-      <motion.div
-        variants={cardVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover={{
-          scale: 1.1,
-          originX: 0,
-          textShadow: "0px 0px 8px rbg(255,255,255)",
-          boxShadow: "0px 0px 8px rbg(255,255,255)",
-        }}
-        className="div-room-card"
-      >
-           <Link
-      to={`/rooms/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}`}>
-        <Card style={{ width: "18rem" }}>
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      className="div-room-card"
+    >
+      <Card style={{ width: "18rem" }}>
+        <Link
+          to={`/rooms/${props.room.id}/${props.hotelId}/${props.numGuests}/${props.checkInDate}/${props.checkOutDate}`}
+        >
           <Card.Img variant="top" src={props.room.images[0]} />
           <Card.Body>
             <Card.Title>{roomType[props.room.roomType]} room</Card.Title>
@@ -67,9 +61,8 @@ export const RoomCard: React.FunctionComponent<Props> = (props: Props) => {
               Total stay: {(props.room.roomPrice * lengthOfStay).toFixed(2)}
             </Card.Text>
           </Card.Body>
-        </Card>
         </Link>
-      </motion.div>
-    
+      </Card>
+    </motion.div>
   );
 };

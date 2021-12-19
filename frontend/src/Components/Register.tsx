@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 import { registerUser } from "../api/apiClient";
 
 export const Register: React.FunctionComponent = () => {
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,29 +47,25 @@ export const Register: React.FunctionComponent = () => {
               />
             </Col>
           </Row>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridEmail">
+          <Row>
+            <Col>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridPassword">
+            </Col>
+            <Col>
               <Form.Control
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </Form.Group>
+            </Col>
           </Row>
-
-          <Button type="submit">
-            Register
-          </Button>
+          <Button type="submit">Register</Button>
         </Form>
       </div>
     </Container>

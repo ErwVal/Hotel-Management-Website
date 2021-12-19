@@ -72,6 +72,13 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
       {!renderRoomsList ? (
         <Row className="div-landing-page-row">
           <Col>
+            {props.firstName ? (
+              <h1>Welcome {props.firstName}</h1>
+            ) : (
+              <h1>Get ready for summer now</h1>
+            )}
+          </Col>
+          <Col>
             <div className="form-container">
               <h4>Check room availability</h4>
               <Form onSubmit={submitForm}>
@@ -129,7 +136,7 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
                     </Form.Select>
                   </Row>
 
-                  <Row>
+                  <Row className="form-row">
                     <button
                       className="btn btn-light form-button"
                       disabled={formStatus === "SUBMITTING"}
@@ -147,18 +154,6 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
                 )}
               </Form>
             </div>
-          </Col>
-
-          <Col>
-            {props.firstName ? (
-              <h1>Welcome {props.firstName}</h1>
-            ) : (
-              <h1>Get ready for summer now</h1>
-            )}
-
-            <h3>
-              <Link to={"/home/rooms"}>See our promotions</Link>
-            </h3>
           </Col>
         </Row>
       ) : (
