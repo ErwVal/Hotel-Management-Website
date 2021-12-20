@@ -5,14 +5,14 @@ A hotel website in React-TypeScript and C# ASP.NET.
 
 - React
 - Typescript
+- C# ASP.NET
+- JSON Web Tokens
+- PostgreSQL
+- Entity Framework
 - Boostrap
 - Sass
 - framer-motion
 
-- C# ASP.NET
-- JSON Web Tokens
-- PostgreSQL
-- Entity Framwwork
 
 ## Description
 
