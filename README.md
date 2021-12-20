@@ -1,16 +1,18 @@
 # Hotel-Management-Website
 A hotel website in React-TypeScript and C# ASP.NET.
 
-## Technologies used:
+## Stack used:
 
-React-Typescript
-Boostrap
-Sass
+- React
+- Typescript
+- Boostrap
+- Sass
+- framer-motion
 
-C# ASP.NET
-JSON Web Tokens
-PostgreSQL
-Entity Framwwork
+- C# ASP.NET
+- JSON Web Tokens
+- PostgreSQL
+- Entity Framwwork
 
 ## Description
 
