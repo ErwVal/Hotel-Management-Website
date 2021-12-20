@@ -3,11 +3,10 @@ A hotel website in React-TypeScript and C# ASP.NET.
 
 ## Stack used:
 
-- React
-- Typescript
+- React Typescript
 - C# ASP.NET
-- JSON Web Tokens
-- PostgreSQL
+- Authentication with JSON Web Tokens
+- Relational PostgreSQL database
 - Entity Framework
 - Boostrap
 - Sass
@@ -57,7 +56,6 @@ There are various things to try on the app. You can:
 
 ## Future work
 The following features will soon be added to the app:
-* JSON web tokens for authentication of users. 
 * Redux to handle states in React.
 
 ## License
