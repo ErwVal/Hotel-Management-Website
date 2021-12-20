@@ -1,11 +1,24 @@
 # Hotel-Management-Website
-A hotel website in React-TypeScript and C#.
+A hotel website in React-TypeScript and C# ASP.NET.
+
+## Technologies used:
+
+React-Typescript
+Boostrap
+Sass
+
+C# ASP.NET
+JSON Web Tokens
+PostgreSQL
+Entity Framwwork
 
 ## Description
 
-This is a **work-in-progress** personal project focused on practising React hooks and CRUD (Create, Read, Update, Delete) operations.
+This project focused on practising React and CRUD (Create, Read, Update, Delete) operations.
 
-The project has a **React-TypeScript** front-end. TypeScript was chosen over JavaScript because of its superiority in preventing errors. It was important to get practice using TypeScript as it is used widely in production code. React was chosen over other libraries following a similar mindset. 
+The website has a **React-TypeScript** front-end. TypeScript was chosen over JavaScript because of its superiority in preventing errors. It was important to get practice using TypeScript as it is more commonly in production code. React was chosen over other libraries following a similar mindset. 
+
+For styling, I used Bootstrap and Sass, alongside framer-motion to create animations when switching pages. 
 
 The back-end of this application was developed in **C#**. 
 
@@ -26,7 +39,7 @@ Go to the */frontend* directory and run the following commands:
     npm install
     npm start
 
-This should start the app, and we can see it by going to http://localhost:3001 in the browser.
+This should start the app, and we can see it by going to http://localhost:3000 in the browser.
 
 ## Usage
 
@@ -34,7 +47,11 @@ There are various things to try on the app. You can:
 
 * Filter the available rooms by selecting a location, dates, and the number of guests. 
 * Once these fields are selected, you can make a reservation. This will create a new reservation on the database and prevent the same room to be booked on those dates. 
-* You can also login as an administrator to make CRUD operations on the database. 
+* You can create a profile and look at the rooms you have booked. 
+* You can amend the arrival/departure dates.
+* You can amend the number of guests for your reservation.
+* You can cancel your reservation.
+* You can send a message to the administration using the contact form. The form will ask for your contact details if you are not logged in. 
 
 ## Future work
 The following features will soon be added to the app:
