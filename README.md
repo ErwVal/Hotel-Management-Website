@@ -3,7 +3,7 @@ A hotel website in React-TypeScript and C# ASP.NET.
 
 ## Stack used:
 
-- React Typescript
+- React TypeScript
 - C# ASP.NET
 - Authentication with JSON Web Tokens
 - Relational PostgreSQL database
