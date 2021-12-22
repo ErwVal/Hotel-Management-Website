@@ -29,6 +29,13 @@ A code-first approach was used for creating the schemas and to specify the relat
 
 **Git** was used to handle version control throughout development.
 
+
+## Demo:
+
+https://user-images.githubusercontent.com/85710692/147130549-022adafd-8d96-442f-95f9-ae2b13aa2f27.mp4
+
+
+
 ## Installation
 
 To get setup, download this code, and then run the following command in the root directory of the app:
