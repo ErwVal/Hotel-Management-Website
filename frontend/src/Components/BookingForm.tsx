@@ -1,18 +1,12 @@
 import React, { FormEvent, useState } from "react";
 import {
-  Alert,
   Form,
   Row,
   Col,
-  FloatingLabel,
-  Button,
-  Container,
-  Carousel,
 } from "react-bootstrap";
 import { RenderRoomsByQuery } from "./RenderRoomsByQuery";
 import moment from "moment";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 const formVariants = {
   hidden: {
@@ -29,7 +23,6 @@ const formVariants = {
   },
 };
 
-type FormStatus = "READY" | "SUBMITTING" | "ERROR" | "FINISHED";
 
 interface Props {
   firstName: String;
@@ -40,7 +33,6 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
   const [location, setLocation] = useState(99);
   const [checkInDateState, setCheckInDate] = useState("");
   const [checkOutDateState, setCheckOutDate] = useState("");
-  const [formStatus, setFormStatus] = useState<FormStatus>("READY");
   const [numGuestsState, setNumGuests] = useState("");
 
   const today = moment(new Date()).format("YYYY-MM-DD");
@@ -139,7 +131,6 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
                   <Row className="form-row">
                     <button
                       className="btn btn-light form-button"
-                      disabled={formStatus === "SUBMITTING"}
                       type="submit"
                     >
                       Search
@@ -147,11 +138,6 @@ export const BookingForm: React.FunctionComponent<Props> = (props: Props) => {
                   </Row>
                 </Col>
                 <br />
-                {formStatus === "ERROR" && (
-                  <Alert variant="warning">
-                    Something went wrong! Please try again.
-                  </Alert>
-                )}
               </Form>
             </div>
           </Col>

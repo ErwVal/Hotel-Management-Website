@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { useHistory, Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;

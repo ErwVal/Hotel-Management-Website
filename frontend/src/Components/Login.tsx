@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import { LoginUser, loginUser } from "../api/apiClient";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 interface Props {
   setFirstName: (firstName: string) => void;
