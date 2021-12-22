@@ -21,7 +21,7 @@ The website has a **React-TypeScript** front-end. TypeScript was chosen over Jav
 
 For styling, I used Bootstrap and Sass, alongside framer-motion to create animations when switching pages. 
 
-The back-end of this application was developed in **C#**. 
+The back-end of this application was developed in **C#**. Authentication was handled with **JSON Web Tokens**.
 
 Relationships between various schemas was an important part of this project, thus, the application uses a **PostgreSQL** relational database. 
 
