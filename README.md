@@ -3,7 +3,7 @@ A hotel website in React-TypeScript and C# ASP.NET.
 
 ## Stack used:
 
-- React Typescript
+- React TypeScript
 - C# ASP.NET
 - Authentication with JSON Web Tokens
 - Relational PostgreSQL database
@@ -21,13 +21,20 @@ The website has a **React-TypeScript** front-end. TypeScript was chosen over Jav
 
 For styling, I used Bootstrap and Sass, alongside framer-motion to create animations when switching pages. 
 
-The back-end of this application was developed in **C#**. 
+The back-end of this application was developed in **C#**. Authentication was handled with **JSON Web Tokens**.
 
 Relationships between various schemas was an important part of this project, thus, the application uses a **PostgreSQL** relational database. 
 
 A code-first approach was used for creating the schemas and to specify the relationships amongst them. **Entity Framework** was used to handle migrations.
 
 **Git** was used to handle version control throughout development.
+
+
+## Demo:
+
+https://user-images.githubusercontent.com/85710692/147130549-022adafd-8d96-442f-95f9-ae2b13aa2f27.mp4
+
+
 
 ## Installation
 
