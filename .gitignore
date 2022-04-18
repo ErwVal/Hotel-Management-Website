@@ -230,3 +230,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Ignoring env variables and dbcontext
+DatabaseDBContext.cs
+database.env
